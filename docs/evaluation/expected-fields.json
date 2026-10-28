@@ -1,0 +1,102 @@
+{
+  "title": "Fictional Community Workshop Registration",
+  "fields": [
+    {
+      "id": "participant_name",
+      "label": "Participant full name",
+      "kind": "text",
+      "required": true,
+      "sourceQuote": "Participant full name (required)",
+      "sourcePage": 1,
+      "factKey": "participant.name",
+      "help": "Participant full name"
+    },
+    {
+      "id": "participant_home",
+      "label": "Participant home address",
+      "kind": "text",
+      "required": true,
+      "sourceQuote": "Participant home address (required)",
+      "sourcePage": 1,
+      "factKey": "participant.home",
+      "help": "Participant home address"
+    },
+    {
+      "id": "venue_address",
+      "label": "Workshop venue address",
+      "kind": "text",
+      "required": false,
+      "sourceQuote": "Workshop venue address (optional; the venue's address, not the participant's home)",
+      "sourcePage": 1,
+      "factKey": "venue.address",
+      "help": "Workshop venue address"
+    },
+    {
+      "id": "workshop_topic",
+      "label": "Workshop topic requested",
+      "kind": "longtext",
+      "required": true,
+      "sourceQuote": "Workshop topic requested (required)",
+      "sourcePage": 1,
+      "factKey": "workshop.topic",
+      "help": "Workshop topic requested"
+    },
+    {
+      "id": "companions",
+      "label": "Companions attending with you",
+      "kind": "number",
+      "required": true,
+      "sourceQuote": "Companions attending with you (required; whole number 0-4)",
+      "sourcePage": 1,
+      "factKey": "participant.companions",
+      "help": "Companions attending with you",
+      "min": 0,
+      "max": 4
+    },
+    {
+      "id": "support_needed",
+      "label": "Do you need communication support?",
+      "kind": "yesno",
+      "required": true,
+      "sourceQuote": "Do you need communication support? Yes or No (required)",
+      "sourcePage": 1,
+      "factKey": "participant.support",
+      "help": "Do you need communication support?"
+    },
+    {
+      "id": "support_details",
+      "label": "Describe communication support",
+      "kind": "longtext",
+      "required": false,
+      "sourceQuote": "If Yes, describe communication support (required when Yes)",
+      "sourcePage": 1,
+      "factKey": "participant.supportDetails",
+      "help": "Describe communication support",
+      "requiredWhen": {
+        "fieldId": "support_needed",
+        "equals": "Yes"
+      }
+    },
+    {
+      "id": "home_repeat",
+      "label": "Participant home address on contact slip",
+      "kind": "text",
+      "required": true,
+      "sourceQuote": "Participant home address again (required; same home address as page 1)",
+      "sourcePage": 2,
+      "factKey": "participant.home",
+      "help": "Participant home address on contact slip"
+    },
+    {
+      "id": "email",
+      "label": "Contact email",
+      "kind": "email",
+      "required": false,
+      "sourceQuote": "Contact email (optional)",
+      "sourcePage": 2,
+      "factKey": "participant.email",
+      "help": "Contact email"
+    }
+  ],
+  "warnings": []
+}

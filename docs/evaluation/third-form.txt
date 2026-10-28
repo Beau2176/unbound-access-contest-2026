@@ -1,0 +1,14 @@
+[Page 1]
+FICTIONAL COMMUNITY WORKSHOP REGISTRATION
+Practice only. No real registration is submitted.
+Participant full name (required)
+Participant home address (required)
+Workshop venue address (optional; the venue's address, not the participant's home)
+Workshop topic requested (required)
+Companions attending with you (required; whole number 0-4)
+Do you need communication support? Yes or No (required)
+If Yes, describe communication support (required when Yes)
+[Page 2]
+FICTIONAL PARTICIPANT CONTACT SLIP
+Participant home address again (required; same home address as page 1)
+Contact email (optional)

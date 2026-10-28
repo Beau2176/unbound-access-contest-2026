@@ -1,0 +1,751 @@
+{
+  "fps": 25,
+  "size": [
+    1920,
+    1080
+  ],
+  "audio_sample_rate": 48000,
+  "voice": "FFmpeg libflite slt, offline generic synthetic voice",
+  "listening_review": "not_performed",
+  "review_limit": "Frames, stream metadata and full decode checked. Audible quality and speech recognition were not independently checked.",
+  "target_seconds_max": 180,
+  "measured_sequence_seconds": 135.16,
+  "events": [
+    {
+      "asset_id": "hero",
+      "source_in": 0,
+      "source_out": 4.84,
+      "sequence_start": 0,
+      "sequence_end": 5.16,
+      "speech_end": 4.84,
+      "audio_owner": "work/00.wav",
+      "still_image": "assets/unbound-demo-hero.png",
+      "frames": 129,
+      "playback_rate": 1.0
+    },
+    {
+      "asset_id": "hero",
+      "source_in": 0,
+      "source_out": 4.95,
+      "sequence_start": 5.16,
+      "sequence_end": 10.440000000000001,
+      "speech_end": 10.11,
+      "audio_owner": "work/01.wav",
+      "still_image": "assets/unbound-demo-hero.png",
+      "frames": 132,
+      "playback_rate": 1.0
+    },
+    {
+      "asset_id": "answer-review",
+      "source_in": 0,
+      "source_out": 6.04,
+      "sequence_start": 10.440000000000001,
+      "sequence_end": 16.8,
+      "speech_end": 16.48,
+      "audio_owner": "work/02.wav",
+      "still_image": "assets/unbound-demo-answer-review.png",
+      "frames": 159,
+      "playback_rate": 1.0
+    },
+    {
+      "asset_id": "choice",
+      "source_in": 0,
+      "source_out": 5.04,
+      "sequence_start": 16.8,
+      "sequence_end": 22.16,
+      "speech_end": 21.84,
+      "audio_owner": "work/03.wav",
+      "still_image": "assets/unbound-demo-choice.png",
+      "frames": 134,
+      "playback_rate": 1.0
+    },
+    {
+      "asset_id": "meta-receipt",
+      "source_in": 0,
+      "source_out": 6.73,
+      "sequence_start": 22.16,
+      "sequence_end": 29.2,
+      "speech_end": 28.89,
+      "audio_owner": "work/04.wav",
+      "still_image": "assets/meta-receipt.png",
+      "frames": 176,
+      "playback_rate": 1.0
+    },
+    {
+      "asset_id": "meta-receipt",
+      "source_in": 0,
+      "source_out": 5.565,
+      "sequence_start": 29.2,
+      "sequence_end": 35.08,
+      "speech_end": 34.765,
+      "audio_owner": "work/05.wav",
+      "still_image": "assets/meta-receipt.png",
+      "frames": 147,
+      "playback_rate": 1.0
+    },
+    {
+      "asset_id": "source-review",
+      "source_in": 0,
+      "source_out": 5.29,
+      "sequence_start": 35.08,
+      "sequence_end": 40.68,
+      "speech_end": 40.37,
+      "audio_owner": "work/06.wav",
+      "still_image": "assets/unbound-demo-source-review.png",
+      "frames": 140,
+      "playback_rate": 1.0
+    },
+    {
+      "asset_id": "source-review",
+      "source_in": 0,
+      "source_out": 6.66,
+      "sequence_start": 40.68,
+      "sequence_end": 47.64,
+      "speech_end": 47.34,
+      "audio_owner": "work/07.wav",
+      "still_image": "assets/unbound-demo-source-review.png",
+      "frames": 174,
+      "playback_rate": 1.0
+    },
+    {
+      "asset_id": "source-review",
+      "source_in": 0,
+      "source_out": 6.105,
+      "sequence_start": 47.64,
+      "sequence_end": 54.08,
+      "speech_end": 53.745000000000005,
+      "audio_owner": "work/08.wav",
+      "still_image": "assets/unbound-demo-source-review.png",
+      "frames": 161,
+      "playback_rate": 1.0
+    },
+    {
+      "asset_id": "answer-review",
+      "source_in": 0,
+      "source_out": 4.385,
+      "sequence_start": 54.08,
+      "sequence_end": 58.8,
+      "speech_end": 58.464999999999996,
+      "audio_owner": "work/09.wav",
+      "still_image": "assets/unbound-demo-answer-review.png",
+      "frames": 118,
+      "playback_rate": 1.0
+    },
+    {
+      "asset_id": "number-limit",
+      "source_in": 0,
+      "source_out": 5.56,
+      "sequence_start": 58.8,
+      "sequence_end": 64.67999999999999,
+      "speech_end": 64.36,
+      "audio_owner": "work/10.wav",
+      "still_image": "assets/unbound-demo-number-limit.png",
+      "frames": 147,
+      "playback_rate": 1.0
+    },
+    {
+      "asset_id": "conditional",
+      "source_in": 0,
+      "source_out": 5.31,
+      "sequence_start": 64.67999999999999,
+      "sequence_end": 70.32,
+      "speech_end": 69.99,
+      "audio_owner": "work/11.wav",
+      "still_image": "assets/unbound-demo-conditional.png",
+      "frames": 141,
+      "playback_rate": 1.0
+    },
+    {
+      "asset_id": "linked-correction",
+      "source_in": 0,
+      "source_out": 3.915,
+      "sequence_start": 70.32,
+      "sequence_end": 74.55999999999999,
+      "speech_end": 74.235,
+      "audio_owner": "work/12.wav",
+      "still_image": "assets/unbound-demo-linked-correction.png",
+      "frames": 106,
+      "playback_rate": 1.0
+    },
+    {
+      "asset_id": "linked-correction",
+      "source_in": 0,
+      "source_out": 4.735,
+      "sequence_start": 74.55999999999999,
+      "sequence_end": 79.6,
+      "speech_end": 79.29499999999999,
+      "audio_owner": "work/13.wav",
+      "still_image": "assets/unbound-demo-linked-correction.png",
+      "frames": 126,
+      "playback_rate": 1.0
+    },
+    {
+      "asset_id": "review-top",
+      "source_in": 0,
+      "source_out": 5.58,
+      "sequence_start": 79.6,
+      "sequence_end": 85.47999999999999,
+      "speech_end": 85.17999999999999,
+      "audio_owner": "work/14.wav",
+      "still_image": "assets/unbound-demo-review-top.png",
+      "frames": 147,
+      "playback_rate": 1.0
+    },
+    {
+      "asset_id": "review",
+      "source_in": 0,
+      "source_out": 5.53,
+      "sequence_start": 85.47999999999999,
+      "sequence_end": 91.32,
+      "speech_end": 91.00999999999999,
+      "audio_owner": "work/15.wav",
+      "still_image": "assets/unbound-demo-review.png",
+      "frames": 146,
+      "playback_rate": 1.0
+    },
+    {
+      "asset_id": "pdf-ready",
+      "source_in": 0,
+      "source_out": 5.445,
+      "sequence_start": 91.32,
+      "sequence_end": 97.08,
+      "speech_end": 96.76499999999999,
+      "audio_owner": "work/16.wav",
+      "still_image": "assets/unbound-demo-pdf-ready.png",
+      "frames": 144,
+      "playback_rate": 1.0
+    },
+    {
+      "asset_id": "pdf-output",
+      "source_in": 0,
+      "source_out": 6.11,
+      "sequence_start": 97.08,
+      "sequence_end": 103.52,
+      "speech_end": 103.19,
+      "audio_owner": "work/17.wav",
+      "still_image": "assets/pdf-output.png",
+      "frames": 161,
+      "playback_rate": 1.0
+    },
+    {
+      "asset_id": "pdf-output",
+      "source_in": 0,
+      "source_out": 5.62,
+      "sequence_start": 103.52,
+      "sequence_end": 109.44,
+      "speech_end": 109.14,
+      "audio_owner": "work/18.wav",
+      "still_image": "assets/pdf-output.png",
+      "frames": 148,
+      "playback_rate": 1.0
+    },
+    {
+      "asset_id": "evidence-card",
+      "source_in": 0,
+      "source_out": 7.475,
+      "sequence_start": 109.44,
+      "sequence_end": 117.24,
+      "speech_end": 116.91499999999999,
+      "audio_owner": "work/19.wav",
+      "still_image": "assets/evidence-card.png",
+      "frames": 195,
+      "playback_rate": 1.0
+    },
+    {
+      "asset_id": "evidence-card",
+      "source_in": 0,
+      "source_out": 5.735,
+      "sequence_start": 117.24,
+      "sequence_end": 123.28,
+      "speech_end": 122.975,
+      "audio_owner": "work/20.wav",
+      "still_image": "assets/evidence-card.png",
+      "frames": 151,
+      "playback_rate": 1.0
+    },
+    {
+      "asset_id": "evidence-card",
+      "source_in": 0,
+      "source_out": 5.945,
+      "sequence_start": 123.28,
+      "sequence_end": 129.56,
+      "speech_end": 129.225,
+      "audio_owner": "work/21.wav",
+      "still_image": "assets/evidence-card.png",
+      "frames": 157,
+      "playback_rate": 1.0
+    },
+    {
+      "asset_id": "hero",
+      "source_in": 0,
+      "source_out": 5.27,
+      "sequence_start": 129.56,
+      "sequence_end": 135.16,
+      "speech_end": 134.83,
+      "audio_owner": "work/22.wav",
+      "still_image": "assets/unbound-demo-hero.png",
+      "frames": 140,
+      "playback_rate": 1.0
+    }
+  ],
+  "captions": [
+    {
+      "start": 0,
+      "end": 4.84,
+      "text": "Paperwork can mean small text, repeated facts, and too much typing.",
+      "mode": "subtitle",
+      "timing": "measured full synthesized phrase; no independent transcript alignment"
+    },
+    {
+      "start": 5.16,
+      "end": 10.11,
+      "text": "Unbound Access guides one question at a time, with spoken or typed answers.",
+      "mode": "subtitle",
+      "timing": "measured full synthesized phrase; no independent transcript alignment"
+    },
+    {
+      "start": 10.440000000000001,
+      "end": 16.48,
+      "text": "This edited walkthrough uses actual app screens and fictional typed answers, with synthetic narration.",
+      "mode": "subtitle",
+      "timing": "measured full synthesized phrase; no independent transcript alignment"
+    },
+    {
+      "start": 16.8,
+      "end": 21.84,
+      "text": "For a new form, choose the clearly labelled, reviewed Meta workshop example.",
+      "mode": "subtitle",
+      "timing": "measured full synthesized phrase; no independent transcript alignment"
+    },
+    {
+      "start": 22.16,
+      "end": 28.89,
+      "text": "Meta Muse Glimmer returned nine questions in the public playground. The original proposal failed validation.",
+      "mode": "subtitle",
+      "timing": "measured full synthesized phrase; no independent transcript alignment"
+    },
+    {
+      "start": 29.2,
+      "end": 34.765,
+      "text": "Seven fact keys were empty, and one help sentence added an unsupported legal name requirement.",
+      "mode": "subtitle",
+      "timing": "measured full synthesized phrase; no independent transcript alignment"
+    },
+    {
+      "start": 35.08,
+      "end": 40.37,
+      "text": "The saved example documents those eight corrections. It is not an unchanged model output.",
+      "mode": "subtitle",
+      "timing": "measured full synthesized phrase; no independent transcript alignment"
+    },
+    {
+      "start": 40.68,
+      "end": 47.34,
+      "text": "The app checks source quotes, pages, constraints, and shared facts before asking for your approval.",
+      "mode": "subtitle",
+      "timing": "measured full synthesized phrase; no independent transcript alignment"
+    },
+    {
+      "start": 47.64,
+      "end": 53.745000000000005,
+      "text": "Loading this captured example makes no new model call. You approve the questions before starting.",
+      "mode": "subtitle",
+      "timing": "measured full synthesized phrase; no independent transcript alignment"
+    },
+    {
+      "start": 54.08,
+      "end": 58.464999999999996,
+      "text": "Type or speak an answer. Check the proposed value before confirming it.",
+      "mode": "subtitle",
+      "timing": "measured full synthesized phrase; no independent transcript alignment"
+    },
+    {
+      "start": 58.8,
+      "end": 64.36,
+      "text": "The source allows zero to four companions. Five is rejected, while zero is accepted.",
+      "mode": "subtitle",
+      "timing": "measured full synthesized phrase; no independent transcript alignment"
+    },
+    {
+      "start": 64.67999999999999,
+      "end": 69.99,
+      "text": "Answering yes to communication support reveals the required follow up question.",
+      "mode": "subtitle",
+      "timing": "measured full synthesized phrase; no independent transcript alignment"
+    },
+    {
+      "start": 70.32,
+      "end": 74.235,
+      "text": "Now change the home address from forty to forty one Practice Street.",
+      "mode": "subtitle",
+      "timing": "measured full synthesized phrase; no independent transcript alignment"
+    },
+    {
+      "start": 74.55999999999999,
+      "end": 79.29499999999999,
+      "text": "Before saving, the app shows both linked home questions and their previous values.",
+      "mode": "subtitle",
+      "timing": "measured full synthesized phrase; no independent transcript alignment"
+    },
+    {
+      "start": 79.6,
+      "end": 85.17999999999999,
+      "text": "After confirmation, both home answers match. The separate venue address stays unchanged.",
+      "mode": "subtitle",
+      "timing": "measured full synthesized phrase; no independent transcript alignment"
+    },
+    {
+      "start": 85.47999999999999,
+      "end": 91.00999999999999,
+      "text": "Review every answer and check the review box. Incomplete answers produce a labelled draft.",
+      "mode": "subtitle",
+      "timing": "measured full synthesized phrase; no independent transcript alignment"
+    },
+    {
+      "start": 91.32,
+      "end": 96.76499999999999,
+      "text": "The reviewed answer record is ready, with persistent Save PDF and Open PDF links.",
+      "mode": "subtitle",
+      "timing": "measured full synthesized phrase; no independent transcript alignment"
+    },
+    {
+      "start": 97.08,
+      "end": 103.19,
+      "text": "This page was generated by the same app PDF exporter, using these nine fictional answers.",
+      "mode": "subtitle",
+      "timing": "measured full synthesized phrase; no independent transcript alignment"
+    },
+    {
+      "start": 103.52,
+      "end": 109.14,
+      "text": "It is a readable answer record. It does not fill or submit the original agency form.",
+      "mode": "subtitle",
+      "timing": "measured full synthesized phrase; no independent transcript alignment"
+    },
+    {
+      "start": 109.44,
+      "end": 116.91499999999999,
+      "text": "Seventy nine automated checks passed. One tester reported working phone sound, microphone, and saved PDF opening.",
+      "mode": "subtitle",
+      "timing": "measured full synthesized phrase; no independent transcript alignment"
+    },
+    {
+      "start": 117.24,
+      "end": 122.975,
+      "text": "That was a basic device check, not a timed usability study or a complete dictated journey.",
+      "mode": "subtitle",
+      "timing": "measured full synthesized phrase; no independent transcript alignment"
+    },
+    {
+      "start": 123.28,
+      "end": 129.225,
+      "text": "The automatic Meta API has no key configured. Live server inference and answer mapping remain untested.",
+      "mode": "subtitle",
+      "timing": "measured full synthesized phrase; no independent transcript alignment"
+    },
+    {
+      "start": 129.56,
+      "end": 134.83,
+      "text": "Try the app and inspect the complete source package. You control every confirmed answer.",
+      "mode": "subtitle",
+      "timing": "measured full synthesized phrase; no independent transcript alignment"
+    }
+  ],
+  "assets": [
+    {
+      "asset_id": "hero",
+      "path": "assets/unbound-demo-hero.png",
+      "width": 1348,
+      "height": 926,
+      "role": "actual app screenshot"
+    },
+    {
+      "asset_id": "hero",
+      "path": "assets/unbound-demo-hero.png",
+      "width": 1348,
+      "height": 926,
+      "role": "actual app screenshot"
+    },
+    {
+      "asset_id": "answer-review",
+      "path": "assets/unbound-demo-answer-review.png",
+      "width": 1348,
+      "height": 926,
+      "role": "actual app screenshot"
+    },
+    {
+      "asset_id": "choice",
+      "path": "assets/unbound-demo-choice.png",
+      "width": 1348,
+      "height": 926,
+      "role": "actual app screenshot"
+    },
+    {
+      "asset_id": "meta-receipt",
+      "path": "assets/meta-receipt.png",
+      "width": 1348,
+      "height": 926,
+      "role": "source-derived editorial graphic / app-exporter PDF"
+    },
+    {
+      "asset_id": "meta-receipt",
+      "path": "assets/meta-receipt.png",
+      "width": 1348,
+      "height": 926,
+      "role": "source-derived editorial graphic / app-exporter PDF"
+    },
+    {
+      "asset_id": "source-review",
+      "path": "assets/unbound-demo-source-review.png",
+      "width": 1348,
+      "height": 926,
+      "role": "actual app screenshot"
+    },
+    {
+      "asset_id": "source-review",
+      "path": "assets/unbound-demo-source-review.png",
+      "width": 1348,
+      "height": 926,
+      "role": "actual app screenshot"
+    },
+    {
+      "asset_id": "source-review",
+      "path": "assets/unbound-demo-source-review.png",
+      "width": 1348,
+      "height": 926,
+      "role": "actual app screenshot"
+    },
+    {
+      "asset_id": "answer-review",
+      "path": "assets/unbound-demo-answer-review.png",
+      "width": 1348,
+      "height": 926,
+      "role": "actual app screenshot"
+    },
+    {
+      "asset_id": "number-limit",
+      "path": "assets/unbound-demo-number-limit.png",
+      "width": 1348,
+      "height": 926,
+      "role": "actual app screenshot"
+    },
+    {
+      "asset_id": "conditional",
+      "path": "assets/unbound-demo-conditional.png",
+      "width": 1348,
+      "height": 926,
+      "role": "actual app screenshot"
+    },
+    {
+      "asset_id": "linked-correction",
+      "path": "assets/unbound-demo-linked-correction.png",
+      "width": 1348,
+      "height": 926,
+      "role": "actual app screenshot"
+    },
+    {
+      "asset_id": "linked-correction",
+      "path": "assets/unbound-demo-linked-correction.png",
+      "width": 1348,
+      "height": 926,
+      "role": "actual app screenshot"
+    },
+    {
+      "asset_id": "review-top",
+      "path": "assets/unbound-demo-review-top.png",
+      "width": 1348,
+      "height": 926,
+      "role": "actual app screenshot"
+    },
+    {
+      "asset_id": "review",
+      "path": "assets/unbound-demo-review.png",
+      "width": 1348,
+      "height": 926,
+      "role": "actual app screenshot"
+    },
+    {
+      "asset_id": "pdf-ready",
+      "path": "assets/unbound-demo-pdf-ready.png",
+      "width": 1348,
+      "height": 926,
+      "role": "actual app screenshot"
+    },
+    {
+      "asset_id": "pdf-output",
+      "path": "assets/pdf-output.png",
+      "width": 1348,
+      "height": 926,
+      "role": "source-derived editorial graphic / app-exporter PDF"
+    },
+    {
+      "asset_id": "pdf-output",
+      "path": "assets/pdf-output.png",
+      "width": 1348,
+      "height": 926,
+      "role": "source-derived editorial graphic / app-exporter PDF"
+    },
+    {
+      "asset_id": "evidence-card",
+      "path": "assets/evidence-card.png",
+      "width": 1348,
+      "height": 926,
+      "role": "source-derived editorial graphic / app-exporter PDF"
+    },
+    {
+      "asset_id": "evidence-card",
+      "path": "assets/evidence-card.png",
+      "width": 1348,
+      "height": 926,
+      "role": "source-derived editorial graphic / app-exporter PDF"
+    },
+    {
+      "asset_id": "evidence-card",
+      "path": "assets/evidence-card.png",
+      "width": 1348,
+      "height": 926,
+      "role": "source-derived editorial graphic / app-exporter PDF"
+    },
+    {
+      "asset_id": "hero",
+      "path": "assets/unbound-demo-hero.png",
+      "width": 1348,
+      "height": 926,
+      "role": "actual app screenshot"
+    }
+  ],
+  "output_probe": {
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "h264",
+        "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+        "profile": "High",
+        "codec_type": "video",
+        "codec_tag_string": "avc1",
+        "codec_tag": "0x31637661",
+        "width": 1920,
+        "height": 1080,
+        "coded_width": 1920,
+        "coded_height": 1080,
+        "closed_captions": 0,
+        "film_grain": 0,
+        "has_b_frames": 2,
+        "pix_fmt": "yuv420p",
+        "level": 40,
+        "chroma_location": "left",
+        "field_order": "progressive",
+        "refs": 1,
+        "is_avc": "true",
+        "nal_length_size": "4",
+        "id": "0x1",
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "time_base": "1/25000",
+        "start_pts": 525,
+        "start_time": "0.021000",
+        "duration_ts": 3379000,
+        "duration": "135.160000",
+        "bit_rate": "100070",
+        "bits_per_raw_sample": "8",
+        "nb_frames": "3379",
+        "extradata_size": 46,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "VideoHandler",
+          "vendor_id": "[0][0][0][0]",
+          "encoder": "Lavc60.31.102 libx264"
+        }
+      },
+      {
+        "index": 1,
+        "codec_name": "aac",
+        "codec_long_name": "AAC (Advanced Audio Coding)",
+        "profile": "LC",
+        "codec_type": "audio",
+        "codec_tag_string": "mp4a",
+        "codec_tag": "0x6134706d",
+        "sample_fmt": "fltp",
+        "sample_rate": "48000",
+        "channels": 2,
+        "channel_layout": "stereo",
+        "bits_per_sample": 0,
+        "initial_padding": 0,
+        "id": "0x2",
+        "r_frame_rate": "0/0",
+        "avg_frame_rate": "0/0",
+        "time_base": "1/48000",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 6488704,
+        "duration": "135.181333",
+        "bit_rate": "121326",
+        "nb_frames": "6326",
+        "extradata_size": 5,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "SoundHandler",
+          "vendor_id": "[0][0][0][0]"
+        }
+      }
+    ],
+    "format": {
+      "filename": "/workspace/sites/unbound-access-contest-2026/public/artifacts/unbound-access-demo.mp4",
+      "nb_streams": 2,
+      "nb_programs": 0,
+      "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+      "format_long_name": "QuickTime / MOV",
+      "start_time": "0.000000",
+      "duration": "135.181333",
+      "size": "3846698",
+      "bit_rate": "227646",
+      "probe_score": 100,
+      "tags": {
+        "major_brand": "isom",
+        "minor_version": "512",
+        "compatible_brands": "isomiso2avc1mp41",
+        "encoder": "Lavf60.16.100"
+      }
+    }
+  }
+}

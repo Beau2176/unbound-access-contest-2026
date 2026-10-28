@@ -1,0 +1,1 @@
+Complete contest source export. Site project identity, Git metadata, secrets, dependencies, build intermediates and generated downloads are excluded. The demo is reproducible with demo/render.py. See README.md for setup and docs/SUBMISSION_DRAFT.md for honest current status.

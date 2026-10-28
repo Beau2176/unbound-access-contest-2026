@@ -1,0 +1,58 @@
+[
+  {
+    "field": "participant_full_name",
+    "property": "factKey",
+    "before": "",
+    "after": "participant_full_name",
+    "reason": "Give each unrelated question its own nonempty key; retain original repeated-home link."
+  },
+  {
+    "field": "workshop_venue_address",
+    "property": "factKey",
+    "before": "",
+    "after": "workshop_venue_address",
+    "reason": "Give each unrelated question its own nonempty key; retain original repeated-home link."
+  },
+  {
+    "field": "workshop_topic_requested",
+    "property": "factKey",
+    "before": "",
+    "after": "workshop_topic_requested",
+    "reason": "Give each unrelated question its own nonempty key; retain original repeated-home link."
+  },
+  {
+    "field": "companions_attending",
+    "property": "factKey",
+    "before": "",
+    "after": "companions_attending",
+    "reason": "Give each unrelated question its own nonempty key; retain original repeated-home link."
+  },
+  {
+    "field": "communication_support_needed",
+    "property": "factKey",
+    "before": "",
+    "after": "communication_support_needed",
+    "reason": "Give each unrelated question its own nonempty key; retain original repeated-home link."
+  },
+  {
+    "field": "communication_support_description",
+    "property": "factKey",
+    "before": "",
+    "after": "communication_support_description",
+    "reason": "Give each unrelated question its own nonempty key; retain original repeated-home link."
+  },
+  {
+    "field": "contact_email",
+    "property": "factKey",
+    "before": "",
+    "after": "contact_email",
+    "reason": "Give each unrelated question its own nonempty key; retain original repeated-home link."
+  },
+  {
+    "field": "participant_full_name",
+    "property": "help",
+    "before": "Identifies the registrant by full legal name.",
+    "after": "Enter the participant\u2019s full name.",
+    "reason": "The source does not require a legal name."
+  }
+]

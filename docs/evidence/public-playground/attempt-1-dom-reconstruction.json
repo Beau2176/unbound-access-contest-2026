@@ -1,0 +1,102 @@
+{
+  "title": "FICTIONAL COMMUNITY WORKSHOP REGISTRATION",
+  "fields": [
+    {
+      "id": "participant_full_name",
+      "label": "Participant full name",
+      "kind": "text",
+      "required": true,
+      "sourceQuote": "Participant full name (required)",
+      "sourcePage": 1,
+      "factKey": "",
+      "help": "Identifies the registrant by full legal name."
+    },
+    {
+      "id": "participant_home_address",
+      "label": "Participant home address",
+      "kind": "text",
+      "required": true,
+      "sourceQuote": "Participant home address (required)",
+      "sourcePage": 1,
+      "factKey": "participant_home_address",
+      "help": "Records the participant's residential address."
+    },
+    {
+      "id": "workshop_venue_address",
+      "label": "Workshop venue address",
+      "kind": "text",
+      "required": false,
+      "sourceQuote": "Workshop venue address (optional; the venue's address, not the participant's home)",
+      "sourcePage": 1,
+      "factKey": "",
+      "help": "Captures the location where the workshop will be held."
+    },
+    {
+      "id": "workshop_topic_requested",
+      "label": "Workshop topic requested",
+      "kind": "text",
+      "required": true,
+      "sourceQuote": "Workshop topic requested (required)",
+      "sourcePage": 1,
+      "factKey": "",
+      "help": "Specifies the workshop subject the participant wants."
+    },
+    {
+      "id": "companions_attending",
+      "label": "Companions attending with you",
+      "kind": "number",
+      "required": true,
+      "sourceQuote": "Companions attending with you (required; whole number 0-4)",
+      "sourcePage": 1,
+      "factKey": "",
+      "help": "Counts how many additional people will attend with the participant.",
+      "min": 0,
+      "max": 4
+    },
+    {
+      "id": "communication_support_needed",
+      "label": "Do you need communication support? Yes or No",
+      "kind": "yesno",
+      "required": true,
+      "sourceQuote": "Do you need communication support? Yes or No (required)",
+      "sourcePage": 1,
+      "factKey": "",
+      "help": "Asks if the participant requires communication accommodations."
+    },
+    {
+      "id": "communication_support_description",
+      "label": "If Yes, describe communication support",
+      "kind": "longtext",
+      "required": false,
+      "sourceQuote": "If Yes, describe communication support (required when Yes)",
+      "sourcePage": 1,
+      "factKey": "",
+      "help": "Details what communication support is needed if requested.",
+      "requiredWhen": {
+        "fieldId": "communication_support_needed",
+        "equals": "Yes"
+      }
+    },
+    {
+      "id": "participant_home_address_again",
+      "label": "Participant home address again",
+      "kind": "text",
+      "required": true,
+      "sourceQuote": "Participant home address again (required; same home address as page 1)",
+      "sourcePage": 2,
+      "factKey": "participant_home_address",
+      "help": "Re-requests the same home address for verification on contact slip."
+    },
+    {
+      "id": "contact_email",
+      "label": "Contact email",
+      "kind": "email",
+      "required": false,
+      "sourceQuote": "Contact email (optional)",
+      "sourcePage": 2,
+      "factKey": "",
+      "help": "Provides an optional email for follow-up contact."
+    }
+  ],
+  "warnings": []
+}

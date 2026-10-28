@@ -1,0 +1,14 @@
+import fs from 'node:fs/promises';
+import {importManualMeta} from '../lib/manual-meta.ts';
+import {createSession,applyProposal,proposeAnswer,issues} from '../lib/access.ts';
+import {reviewDocument} from '../lib/pdf.ts';
+const source=await fs.readFile(new URL('../docs/evaluation/third-form.txt',import.meta.url),'utf8');
+const proposal=await fs.readFile(new URL('../docs/evidence/public-playground/attempt-1-reviewed.json',import.meta.url),'utf8');
+let session=createSession(importManualMeta(proposal,source));
+for(const [id,value] of Object.entries({participant_full_name:'Alex Example',participant_home_address:'40 Practice Street',workshop_venue_address:'900 Separate Venue Road',workshop_topic_requested:'Introductory pottery',companions_attending:'0',communication_support_needed:'Yes',communication_support_description:'Questions read aloud',contact_email:'alex@example.invalid'}))session=applyProposal(session,proposeAnswer(session,id,value));
+session=applyProposal(session,proposeAnswer(session,'participant_home_address','41 Practice Street'));
+if(issues(session).length)throw Error('Incomplete review');
+const font=new Uint8Array(await fs.readFile(new URL('../public/fonts/DejaVuSans.ttf',import.meta.url)));
+const {doc,complete}=await reviewDocument(session,true,font);if(!complete)throw Error('Incomplete PDF');
+await fs.writeFile(new URL('../demo/assets/workshop-reviewed.pdf',import.meta.url),new Uint8Array(doc.output('arraybuffer')));
+console.log('Rendered the same nine fictional answers with the application PDF exporter.');

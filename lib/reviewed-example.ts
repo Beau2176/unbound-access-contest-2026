@@ -1,0 +1,4 @@
+import proposal from "../docs/evidence/public-playground/attempt-1-reviewed.json";
+import { importManualMeta } from "./manual-meta";
+export const reviewedExampleSource = "[Page 1]\nFICTIONAL COMMUNITY WORKSHOP REGISTRATION\nPractice only. No real registration is submitted.\nParticipant full name (required)\nParticipant home address (required)\nWorkshop venue address (optional; the venue's address, not the participant's home)\nWorkshop topic requested (required)\nCompanions attending with you (required; whole number 0-4)\nDo you need communication support? Yes or No (required)\nIf Yes, describe communication support (required when Yes)\n[Page 2]\nFICTIONAL PARTICIPANT CONTACT SLIP\nParticipant home address again (required; same home address as page 1)\nContact email (optional)\n";
+export function reviewedMetaExample() { return importManualMeta(JSON.stringify(proposal), reviewedExampleSource); }

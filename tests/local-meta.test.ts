@@ -6,7 +6,7 @@ const source = "Fictional move-in practice\n[Page 1]\nApplicant name (required)\
 const questions = { line_1: "skip", line_2: "text", line_3: "text", line_4: "text", line_5: "text" };
 const output = (fields: unknown = questions) => JSON.stringify({ fields });
 test("model receipts and loading identities cannot confuse the small and large Meta checkpoints",()=>{
-  for(const key of ["small","large"] as const){
+  for(const key of ["small","large","compact"] as const){
     const model=LOCAL_META_MODELS[key];assert.ok(model.url.includes(model.revision));
     assertLocalModelMetadata(key,{"general.architecture":"llama","general.name":`Llama-3.2-${model.family}-Instruct`});
     assert.throws(()=>assertLocalModelMetadata(key,{"general.architecture":"llama","general.name":`Llama-3.2-${key==="small"?"3B":"1B"}-Instruct`}));

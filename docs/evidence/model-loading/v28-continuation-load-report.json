@@ -1,0 +1,139 @@
+{
+  "scope": "On-device development checks, not a user study",
+  "loads": [
+    {
+      "at": "2026-10-29T05:37:55.506Z",
+      "model": "Meta Llama 3.2 3B Instruct",
+      "revision": "eb72f2a08dd2b9edd07ffacfe5aa56938b7939b0",
+      "outcome": "interrupted",
+      "elapsedMs": 403,
+      "events": [
+        {
+          "stage": "checking",
+          "detail": "worker-start",
+          "elapsedMs": 0
+        },
+        {
+          "stage": "checking",
+          "detail": "runtime-import",
+          "elapsedMs": 91
+        },
+        {
+          "stage": "checking",
+          "detail": "storage-open",
+          "elapsedMs": 93
+        },
+        {
+          "stage": "checking",
+          "detail": "model-index",
+          "elapsedMs": 96
+        },
+        {
+          "stage": "downloading",
+          "progress": 100,
+          "elapsedMs": 105
+        },
+        {
+          "stage": "checking",
+          "detail": "model-open",
+          "elapsedMs": 107
+        },
+        {
+          "stage": "checking",
+          "detail": "model-header-read",
+          "elapsedMs": 108
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "runtime-native",
+          "elapsedMs": 110
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "runtime-start",
+          "elapsedMs": 395
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "weights-load",
+          "elapsedMs": 403
+        }
+      ],
+      "error": "The page was reloaded before a completed load was recorded."
+    },
+    {
+      "at": "2026-10-29T05:38:59.385Z",
+      "model": "Meta Llama 3.2 1B Instruct",
+      "revision": "7d1f70022fcab2038000074bd0342e03e1d8b755",
+      "outcome": "ready",
+      "elapsedMs": 4617,
+      "events": [
+        {
+          "stage": "checking",
+          "detail": "worker-start",
+          "elapsedMs": 0
+        },
+        {
+          "stage": "checking",
+          "detail": "runtime-import",
+          "elapsedMs": 766
+        },
+        {
+          "stage": "checking",
+          "detail": "storage-open",
+          "elapsedMs": 770
+        },
+        {
+          "stage": "checking",
+          "detail": "model-index",
+          "elapsedMs": 772
+        },
+        {
+          "stage": "downloading",
+          "progress": 100,
+          "elapsedMs": 783
+        },
+        {
+          "stage": "checking",
+          "detail": "model-open",
+          "elapsedMs": 786
+        },
+        {
+          "stage": "checking",
+          "detail": "model-header-read",
+          "elapsedMs": 788
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "runtime-native",
+          "elapsedMs": 789
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "runtime-start",
+          "elapsedMs": 1412
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "weights-load",
+          "elapsedMs": 1422
+        }
+      ],
+      "storage": "Origin-private files",
+      "params": {
+        "n_ctx": 4096,
+        "n_parallel": 1,
+        "warmup": false,
+        "n_batch": 128,
+        "n_ubatch": 128
+      }
+    }
+  ],
+  "receipts": []
+}

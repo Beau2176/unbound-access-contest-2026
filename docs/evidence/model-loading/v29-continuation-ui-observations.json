@@ -1,0 +1,47 @@
+{
+  "scope": "Additional actual UI observations on October 28, 2026 America/Denver; an authored development case, not a benchmark or phone study.",
+  "siteVersion": 29,
+  "sourcePdfSha256": "2d5f61ca0edb379cf940ab6fa93c205bccb765b6fae20537b68e9d96b0a54209",
+  "frozenExpectationsSha256": "3bad6056dab6cdbe04d793efb6627c10740a885df2e6ca1fa948f0c9dc6c60d9",
+  "rawExtractedSourceSha256": "48ee065d7b4277f815341e0888457b3e0241ad2fc7537df8eec7f37f3d2aa85f",
+  "sourceCheck": "Original PDF bytes unchanged. Its extracted text has trailing spaces and a blank page separator compared with expected-source.txt. indexLocalSource and every one of the ten source-line-types-v3 model requests match the original frozen expectations exactly. The expectations were not edited.",
+  "q4Control": {
+    "siteVersion": 28,
+    "model": "Meta Llama 3.2 3B Instruct",
+    "revision": "eb72f2a08dd2b9edd07ffacfe5aa56938b7939b0",
+    "backendRequested": "CPU / WebAssembly",
+    "lastRecordedStage": "weights-load",
+    "observation": "Browser DOM inspection timed out after loading began. Reload recovered the page. A recovered loading report was downloaded; no extraction was requested for this attempt.",
+    "loadingDurationMeasured": false
+  },
+  "smallControl": {
+    "siteVersion": 28,
+    "model": "Meta Llama 3.2 1B Instruct",
+    "revision": "7d1f70022fcab2038000074bd0342e03e1d8b755",
+    "outcome": "ready",
+    "elapsedMs": 4617,
+    "backendRequested": "CPU / WebAssembly",
+    "observation": "The UI showed ready and an actual downloaded loading report recorded success. Question extraction remained disabled for this model, as designed. It was turned off before the next attempt."
+  },
+  "compactAttempt": {
+    "model": "Meta Llama 3.2 3B Instruct (IQ3_M)",
+    "revision": "b0a3958968ddb3ff6466ed3148b3afcd75d434af",
+    "quantization": "IQ3_M",
+    "backendRequested": "CPU / WebAssembly",
+    "loading": "The actual UI displayed the selected model as ready after its separately consented download.",
+    "loadingDurationMeasured": false,
+    "extraction": "Propose questions with Meta was clicked for the unchanged extracted source. The last observed UI said Meta is reading question 1 of 10. Subsequent DOM inspection timed out. Screenshot capture timed out and reset the browser runtime. Reconnecting and reloading through documented APIs then failed at Emulation.setFocusEmulationEnabled.",
+    "completedModelResponsesCaptured": 0,
+    "rawExtractionReceiptCaptured": false,
+    "accuracyScore": null,
+    "proposalApproved": false,
+    "reviewedPdfProduced": false
+  },
+  "limits": [
+    "This file records actual UI observations, not an invented raw loading or inference receipt.",
+    "Inspection failure does not establish the model's final outcome or its cause.",
+    "Compact quantization is a different artifact and does not establish reliability or equal quality of the Q4 model.",
+    "No phone, microphone, hands-free, GPU, timed usability or arbitrary-form accuracy result is claimed.",
+    "No payment, new account, agreement or paid inference was used."
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "model": "Meta Llama 3.2 3B Instruct",
+  "quantization": "IQ3_M",
+  "quantization_provider": "bartowski",
+  "revision": "b0a3958968ddb3ff6466ed3148b3afcd75d434af",
+  "expected_bytes": 1599668768,
+  "expected_sha256": "deac83b571f3982a12377181fdfd7780bf4ce8cbfbdcac179e4bf2ad47b1b228",
+  "primary_file_metadata": "https://huggingface.co/bartowski/Llama-3.2-3B-Instruct-GGUF/blob/main/Llama-3.2-3B-Instruct-IQ3_M.gguf",
+  "primary_pinned_commit": "https://huggingface.co/bartowski/Llama-3.2-3B-Instruct-GGUF/commit/b0a3958968ddb3ff6466ed3148b3afcd75d434af",
+  "primary_pointer": "https://huggingface.co/bartowski/Llama-3.2-3B-Instruct-GGUF/raw/main/Llama-3.2-3B-Instruct-IQ3_M.gguf",
+  "scope": "Separate compact-model attempt following stalled Q4 initialization. Different quantization and revision; not an unchanged-model comparison or a claim of equal quality. The original source and scoring expectations stay unchanged.",
+  "hash_verification": "Expected hash recorded from publisher; no whole-model digest is recomputed by the browser."
+}

@@ -12,9 +12,9 @@ const cases: { field: LocalField; utterance: string; expected: string; clarify: 
   { field: { id: "companions", label: "How many companions will attend?", kind: "number" }, utterance: "I am not sure how many people will come.", expected: "", clarify: true },
 ];
 export default function LocalMetaCheck() {
-  const state = useLocalMeta(), [running, setRunning] = useState(false), [results, setResults] = useState<string[]>([]), [source, setSource] = useState(CHECK_FORM), [output, setOutput] = useState("");
+  const state = useLocalMeta(), [running, setRunning] = useState(false), [results, setResults] = useState<string[]>([]), [source, setSource] = useState(CHECK_FORM), [output, setOutput] = useState(""), [allowSmallSource,setAllowSmallSource] = useState(false);
   const ready = state.phase === "ready" && !running;
-  const canExtract = ready && state.modelKey === "large";
+  const canExtract = ready && (state.modelKey === "large" || state.modelKey === "compact" || (state.modelKey === "small" && allowSmallSource));
   async function checks() {
     setRunning(true); setResults([]);
     try {
@@ -39,7 +39,7 @@ export default function LocalMetaCheck() {
     <p>The paperwork app now asks for clarification before calling AI when it detects uncertainty. These raw model checks deliberately still send the uncertain example to Meta, then validate its response. Application clarification is not counted as a correct model answer.</p>
     <LocalMetaPanel />
     <section><h2>Interpret four fictional answers</h2><p>Checks: a household count, zero dollars, a No answer, and an uncertain count that needs clarification.</p><button className="primary" disabled={!ready} onClick={() => void checks()}>Run four live answer checks</button><ul aria-live="polite">{results.map((r, i) => <li key={i}>{r}</li>)}</ul></section>
-    <section><h2>Propose source-linked questions</h2><p>Question proposals use the experimental 3B model. The smaller 1B model remains available for answer experiments; its question-type tests were unreliable. Proposals can take several minutes on a CPU.</p><label htmlFor="local-check-source">Short fictional form, one question per line</label><textarea id="local-check-source" rows={7} maxLength={4000} value={source} disabled={running} onChange={e => setSource(e.target.value)} /><button className="primary" disabled={!canExtract} onClick={() => void extract()}>Run live question proposal</button>{output && <pre data-testid="local-extraction-result">{output}</pre>}</section>
+    <section><h2>Propose source-linked questions</h2><p>Question proposals use the experimental 3B model. The smaller 1B model failed earlier question-type tests and requires explicit experimental opt-in here. Proposals can take several minutes on a CPU.</p>{ready&&state.modelKey==="small"&&<label className="consent"><input type="checkbox" checked={allowSmallSource} onChange={e=>setAllowSmallSource(e.target.checked)}/><span>I want to inspect an experimental source proposal from the smaller model.</span></label>}<label htmlFor="local-check-source">Short fictional form, one question per line</label><textarea id="local-check-source" rows={7} maxLength={4000} value={source} disabled={running} onChange={e => setSource(e.target.value)} /><button className="primary" disabled={!canExtract} onClick={() => void extract()}>Run live question proposal</button>{output && <pre data-testid="local-extraction-result">{output}</pre>}</section>
     <section><h2>Actual run receipts</h2><p>Elapsed time, input, unchanged raw model output and validation result. Stored only in this page’s memory. No automatic upload.</p><button className="secondary" disabled={!state.receipts.length || running} onClick={downloadLocalMetaReceipts}>Download run receipts</button><pre data-testid="local-meta-receipts">{JSON.stringify(state.receipts, null, 2)}</pre></section>
   </main>;
 }

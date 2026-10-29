@@ -1,0 +1,728 @@
+{
+  "scope": "On-device development checks, not a user study",
+  "loads": [
+    {
+      "at": "2026-10-29T05:27:55.460Z",
+      "model": "Meta Llama 3.2 3B Instruct",
+      "revision": "eb72f2a08dd2b9edd07ffacfe5aa56938b7939b0",
+      "outcome": "interrupted",
+      "elapsedMs": 216,
+      "events": [
+        {
+          "stage": "checking",
+          "detail": "worker-start",
+          "elapsedMs": 0
+        },
+        {
+          "stage": "checking",
+          "detail": "runtime-import",
+          "elapsedMs": 191
+        },
+        {
+          "stage": "checking",
+          "detail": "storage-open",
+          "elapsedMs": 193
+        },
+        {
+          "stage": "checking",
+          "detail": "model-index",
+          "elapsedMs": 201
+        },
+        {
+          "stage": "downloading",
+          "progress": 100,
+          "elapsedMs": 213
+        },
+        {
+          "stage": "checking",
+          "detail": "model-open",
+          "elapsedMs": 215
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "elapsedMs": 216
+        }
+      ],
+      "error": "The page was reloaded before a completed load was recorded."
+    },
+    {
+      "at": "2026-10-29T05:30:37.560Z",
+      "model": "Meta Llama 3.2 1B Instruct",
+      "revision": "7d1f70022fcab2038000074bd0342e03e1d8b755",
+      "outcome": "ready",
+      "elapsedMs": 4352,
+      "events": [
+        {
+          "stage": "checking",
+          "detail": "worker-start",
+          "elapsedMs": 0
+        },
+        {
+          "stage": "checking",
+          "detail": "runtime-import",
+          "elapsedMs": 631
+        },
+        {
+          "stage": "checking",
+          "detail": "storage-open",
+          "elapsedMs": 633
+        },
+        {
+          "stage": "checking",
+          "detail": "model-index",
+          "elapsedMs": 638
+        },
+        {
+          "stage": "downloading",
+          "progress": 100,
+          "elapsedMs": 645
+        },
+        {
+          "stage": "checking",
+          "detail": "model-open",
+          "elapsedMs": 646
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "elapsedMs": 647
+        }
+      ],
+      "storage": "Origin-private files",
+      "params": {
+        "n_ctx": 4096,
+        "n_parallel": 1,
+        "warmup": false
+      }
+    },
+    {
+      "at": "2026-10-29T05:35:08.695Z",
+      "model": "Meta Llama 3.2 3B Instruct",
+      "revision": "eb72f2a08dd2b9edd07ffacfe5aa56938b7939b0",
+      "outcome": "interrupted",
+      "elapsedMs": 564,
+      "events": [
+        {
+          "stage": "checking",
+          "detail": "worker-start",
+          "elapsedMs": 0
+        },
+        {
+          "stage": "checking",
+          "detail": "runtime-import",
+          "elapsedMs": 161
+        },
+        {
+          "stage": "checking",
+          "detail": "storage-open",
+          "elapsedMs": 164
+        },
+        {
+          "stage": "checking",
+          "detail": "model-index",
+          "elapsedMs": 171
+        },
+        {
+          "stage": "downloading",
+          "progress": 100,
+          "elapsedMs": 177
+        },
+        {
+          "stage": "checking",
+          "detail": "model-open",
+          "elapsedMs": 179
+        },
+        {
+          "stage": "checking",
+          "detail": "model-header-read",
+          "elapsedMs": 180
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "runtime-native",
+          "elapsedMs": 181
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "runtime-start",
+          "elapsedMs": 558
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "weights-load",
+          "elapsedMs": 564
+        }
+      ],
+      "error": "The page was reloaded before a completed load was recorded."
+    },
+    {
+      "at": "2026-10-29T05:41:16.683Z",
+      "model": "Meta Llama 3.2 3B Instruct (IQ3_M)",
+      "revision": "b0a3958968ddb3ff6466ed3148b3afcd75d434af",
+      "quantization": "IQ3_M",
+      "outcome": "error",
+      "elapsedMs": 50452,
+      "events": [
+        {
+          "stage": "checking",
+          "detail": "worker-start",
+          "elapsedMs": 0
+        },
+        {
+          "stage": "checking",
+          "detail": "runtime-import",
+          "elapsedMs": 192
+        },
+        {
+          "stage": "checking",
+          "detail": "storage-open",
+          "elapsedMs": 195
+        },
+        {
+          "stage": "checking",
+          "detail": "model-index",
+          "elapsedMs": 201
+        },
+        {
+          "stage": "downloading",
+          "progress": 0,
+          "elapsedMs": 1567
+        },
+        {
+          "stage": "downloading",
+          "progress": 1,
+          "elapsedMs": 1993
+        },
+        {
+          "stage": "downloading",
+          "progress": 2,
+          "elapsedMs": 2398
+        },
+        {
+          "stage": "downloading",
+          "progress": 3,
+          "elapsedMs": 2600
+        },
+        {
+          "stage": "downloading",
+          "progress": 4,
+          "elapsedMs": 3041
+        },
+        {
+          "stage": "downloading",
+          "progress": 5,
+          "elapsedMs": 3345
+        },
+        {
+          "stage": "downloading",
+          "progress": 6,
+          "elapsedMs": 3689
+        },
+        {
+          "stage": "downloading",
+          "progress": 7,
+          "elapsedMs": 4113
+        },
+        {
+          "stage": "downloading",
+          "progress": 8,
+          "elapsedMs": 4645
+        },
+        {
+          "stage": "downloading",
+          "progress": 9,
+          "elapsedMs": 5175
+        },
+        {
+          "stage": "downloading",
+          "progress": 10,
+          "elapsedMs": 5580
+        },
+        {
+          "stage": "downloading",
+          "progress": 11,
+          "elapsedMs": 6012
+        },
+        {
+          "stage": "downloading",
+          "progress": 12,
+          "elapsedMs": 6568
+        },
+        {
+          "stage": "downloading",
+          "progress": 13,
+          "elapsedMs": 7026
+        },
+        {
+          "stage": "downloading",
+          "progress": 14,
+          "elapsedMs": 7531
+        },
+        {
+          "stage": "downloading",
+          "progress": 15,
+          "elapsedMs": 7964
+        },
+        {
+          "stage": "downloading",
+          "progress": 16,
+          "elapsedMs": 8469
+        },
+        {
+          "stage": "downloading",
+          "progress": 17,
+          "elapsedMs": 8920
+        },
+        {
+          "stage": "downloading",
+          "progress": 18,
+          "elapsedMs": 9367
+        },
+        {
+          "stage": "downloading",
+          "progress": 19,
+          "elapsedMs": 9898
+        },
+        {
+          "stage": "downloading",
+          "progress": 20,
+          "elapsedMs": 10338
+        },
+        {
+          "stage": "downloading",
+          "progress": 21,
+          "elapsedMs": 10863
+        },
+        {
+          "stage": "downloading",
+          "progress": 22,
+          "elapsedMs": 11272
+        },
+        {
+          "stage": "downloading",
+          "progress": 23,
+          "elapsedMs": 11988
+        },
+        {
+          "stage": "downloading",
+          "progress": 24,
+          "elapsedMs": 12494
+        },
+        {
+          "stage": "downloading",
+          "progress": 25,
+          "elapsedMs": 12909
+        },
+        {
+          "stage": "downloading",
+          "progress": 26,
+          "elapsedMs": 13484
+        },
+        {
+          "stage": "downloading",
+          "progress": 27,
+          "elapsedMs": 13888
+        },
+        {
+          "stage": "downloading",
+          "progress": 28,
+          "elapsedMs": 14398
+        },
+        {
+          "stage": "downloading",
+          "progress": 29,
+          "elapsedMs": 14852
+        },
+        {
+          "stage": "downloading",
+          "progress": 30,
+          "elapsedMs": 15303
+        },
+        {
+          "stage": "downloading",
+          "progress": 31,
+          "elapsedMs": 15809
+        },
+        {
+          "stage": "downloading",
+          "progress": 32,
+          "elapsedMs": 16285
+        },
+        {
+          "stage": "downloading",
+          "progress": 33,
+          "elapsedMs": 16799
+        },
+        {
+          "stage": "downloading",
+          "progress": 34,
+          "elapsedMs": 17246
+        },
+        {
+          "stage": "downloading",
+          "progress": 35,
+          "elapsedMs": 17751
+        },
+        {
+          "stage": "downloading",
+          "progress": 36,
+          "elapsedMs": 18195
+        },
+        {
+          "stage": "downloading",
+          "progress": 37,
+          "elapsedMs": 18742
+        },
+        {
+          "stage": "downloading",
+          "progress": 38,
+          "elapsedMs": 19146
+        },
+        {
+          "stage": "downloading",
+          "progress": 39,
+          "elapsedMs": 19694
+        },
+        {
+          "stage": "downloading",
+          "progress": 40,
+          "elapsedMs": 20201
+        },
+        {
+          "stage": "downloading",
+          "progress": 41,
+          "elapsedMs": 20611
+        },
+        {
+          "stage": "downloading",
+          "progress": 42,
+          "elapsedMs": 21152
+        },
+        {
+          "stage": "downloading",
+          "progress": 43,
+          "elapsedMs": 21595
+        },
+        {
+          "stage": "downloading",
+          "progress": 44,
+          "elapsedMs": 22221
+        },
+        {
+          "stage": "downloading",
+          "progress": 45,
+          "elapsedMs": 22660
+        },
+        {
+          "stage": "downloading",
+          "progress": 46,
+          "elapsedMs": 23125
+        },
+        {
+          "stage": "downloading",
+          "progress": 47,
+          "elapsedMs": 23544
+        },
+        {
+          "stage": "downloading",
+          "progress": 48,
+          "elapsedMs": 23979
+        },
+        {
+          "stage": "downloading",
+          "progress": 49,
+          "elapsedMs": 24464
+        },
+        {
+          "stage": "downloading",
+          "progress": 50,
+          "elapsedMs": 24907
+        },
+        {
+          "stage": "downloading",
+          "progress": 51,
+          "elapsedMs": 25314
+        },
+        {
+          "stage": "downloading",
+          "progress": 52,
+          "elapsedMs": 25851
+        },
+        {
+          "stage": "downloading",
+          "progress": 53,
+          "elapsedMs": 26267
+        },
+        {
+          "stage": "downloading",
+          "progress": 54,
+          "elapsedMs": 26711
+        },
+        {
+          "stage": "downloading",
+          "progress": 55,
+          "elapsedMs": 27148
+        },
+        {
+          "stage": "downloading",
+          "progress": 56,
+          "elapsedMs": 27658
+        },
+        {
+          "stage": "downloading",
+          "progress": 57,
+          "elapsedMs": 28094
+        },
+        {
+          "stage": "downloading",
+          "progress": 58,
+          "elapsedMs": 28533
+        },
+        {
+          "stage": "downloading",
+          "progress": 59,
+          "elapsedMs": 29069
+        },
+        {
+          "stage": "downloading",
+          "progress": 60,
+          "elapsedMs": 29531
+        },
+        {
+          "stage": "downloading",
+          "progress": 61,
+          "elapsedMs": 29936
+        },
+        {
+          "stage": "downloading",
+          "progress": 62,
+          "elapsedMs": 30377
+        },
+        {
+          "stage": "downloading",
+          "progress": 63,
+          "elapsedMs": 30930
+        },
+        {
+          "stage": "downloading",
+          "progress": 64,
+          "elapsedMs": 31334
+        },
+        {
+          "stage": "downloading",
+          "progress": 65,
+          "elapsedMs": 31890
+        },
+        {
+          "stage": "downloading",
+          "progress": 66,
+          "elapsedMs": 32497
+        },
+        {
+          "stage": "downloading",
+          "progress": 67,
+          "elapsedMs": 33012
+        },
+        {
+          "stage": "downloading",
+          "progress": 68,
+          "elapsedMs": 33550
+        },
+        {
+          "stage": "downloading",
+          "progress": 69,
+          "elapsedMs": 33974
+        },
+        {
+          "stage": "downloading",
+          "progress": 70,
+          "elapsedMs": 34417
+        },
+        {
+          "stage": "downloading",
+          "progress": 71,
+          "elapsedMs": 34961
+        },
+        {
+          "stage": "downloading",
+          "progress": 72,
+          "elapsedMs": 35369
+        },
+        {
+          "stage": "downloading",
+          "progress": 73,
+          "elapsedMs": 35805
+        },
+        {
+          "stage": "downloading",
+          "progress": 74,
+          "elapsedMs": 36352
+        },
+        {
+          "stage": "downloading",
+          "progress": 75,
+          "elapsedMs": 36755
+        },
+        {
+          "stage": "downloading",
+          "progress": 76,
+          "elapsedMs": 37296
+        },
+        {
+          "stage": "downloading",
+          "progress": 77,
+          "elapsedMs": 37735
+        },
+        {
+          "stage": "downloading",
+          "progress": 78,
+          "elapsedMs": 38184
+        },
+        {
+          "stage": "downloading",
+          "progress": 79,
+          "elapsedMs": 38590
+        },
+        {
+          "stage": "downloading",
+          "progress": 80,
+          "elapsedMs": 39115
+        },
+        {
+          "stage": "downloading",
+          "progress": 81,
+          "elapsedMs": 39556
+        },
+        {
+          "stage": "downloading",
+          "progress": 82,
+          "elapsedMs": 40062
+        },
+        {
+          "stage": "downloading",
+          "progress": 83,
+          "elapsedMs": 40508
+        },
+        {
+          "stage": "downloading",
+          "progress": 84,
+          "elapsedMs": 41055
+        },
+        {
+          "stage": "downloading",
+          "progress": 85,
+          "elapsedMs": 41503
+        },
+        {
+          "stage": "downloading",
+          "progress": 86,
+          "elapsedMs": 41911
+        },
+        {
+          "stage": "downloading",
+          "progress": 87,
+          "elapsedMs": 42581
+        },
+        {
+          "stage": "downloading",
+          "progress": 88,
+          "elapsedMs": 43022
+        },
+        {
+          "stage": "downloading",
+          "progress": 89,
+          "elapsedMs": 43463
+        },
+        {
+          "stage": "downloading",
+          "progress": 90,
+          "elapsedMs": 43800
+        },
+        {
+          "stage": "downloading",
+          "progress": 91,
+          "elapsedMs": 44255
+        },
+        {
+          "stage": "downloading",
+          "progress": 92,
+          "elapsedMs": 44686
+        },
+        {
+          "stage": "downloading",
+          "progress": 93,
+          "elapsedMs": 45127
+        },
+        {
+          "stage": "downloading",
+          "progress": 94,
+          "elapsedMs": 45760
+        },
+        {
+          "stage": "downloading",
+          "progress": 95,
+          "elapsedMs": 46189
+        },
+        {
+          "stage": "downloading",
+          "progress": 96,
+          "elapsedMs": 46493
+        },
+        {
+          "stage": "downloading",
+          "progress": 97,
+          "elapsedMs": 46936
+        },
+        {
+          "stage": "downloading",
+          "progress": 98,
+          "elapsedMs": 47386
+        },
+        {
+          "stage": "downloading",
+          "progress": 99,
+          "elapsedMs": 47828
+        },
+        {
+          "stage": "downloading",
+          "progress": 100,
+          "elapsedMs": 48362
+        },
+        {
+          "stage": "checking",
+          "detail": "model-open",
+          "elapsedMs": 48519
+        },
+        {
+          "stage": "checking",
+          "detail": "model-header-read",
+          "elapsedMs": 48523
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "runtime-native",
+          "elapsedMs": 48526
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "runtime-start",
+          "elapsedMs": 48790
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "weights-load",
+          "elapsedMs": 48797
+        }
+      ],
+      "error": "File read failed: NotReadableError: The requested file could not be read, typically due to permission problems that have occurred after a reference to a file was acquired."
+    }
+  ],
+  "receipts": []
+}

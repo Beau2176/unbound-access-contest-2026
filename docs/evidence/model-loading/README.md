@@ -1,0 +1,27 @@
+# Model-loading reliability work
+
+October 28, 2026 (America/Denver). The unchanged version-24 source PDF and expectations remain in `../fresh-repair-visit/`. Its two earlier stalled loads are preserved. New runtime observations and the retry result are recorded separately; implementation checks alone are not successful model inference.
+
+## Changes
+
+- The app owns an outer inference worker. Model initialization, file access and inference run there. Cancel terminates this worker and rejects its pending request even if the underlying initialization never settles. Late messages cannot mark a cancelled or superseded runtime ready.
+- The preferred model cache streams model downloads into a dedicated origin-private directory. Size checks and enumeration use disk-file metadata rather than reading whole model bodies. Legacy cache entries are retained but are not automatically enumerated or migrated after a live migration attempt stalled. The larger model requires the origin-private file path; restricted contexts can still use prepared forms, manual proposals or the smaller model.
+- Loading has a ninety-second no-progress limit while checking/downloading, two minutes for runtime initialization and a ten-minute absolute ceiling. Failure/cancellation releases the app controls and preserves form answers. These bounds rely on the browser delivering timers; they cannot recover an operating-system or entire-browser failure.
+- The model uses one request slot and skips the optional initialization warm-up. The original Q4 model and pinned revision remain available. Request messages, response schemas, seed, temperature and output-token limits are unchanged. A separately selected IQ3_M 3B artifact is a new compact option, not an unchanged-model comparison or a claim of equal quality. Each 3B option uses a 1,024-token context and batch sizes of thirty-two; the smaller model retains its 4,096-token context. Longer answer requests have not been tested at this context size. Ten sequential source rows have a bounded extraction budget that scales with row count, rather than the old three-minute total; each worker completion is also bounded.
+- Downloadable loading reports retain stage timings, outcome and runtime settings separately from unchanged raw inference receipts. No model success is inferred from a completed download.
+
+## Implementation checks
+
+Ten deterministic regression checks exercise cancellation of an uncooperative runtime, initialization/download deadlines, late replies, independent retry, worker failure, completion cancellation, metadata-only disk size checks, streamed disk writes, storage denial and interrupted migration. These use injected worker/storage fixtures. They are not browser-memory measurements, device tests, model accuracy results or proof that every browser can load 3B.
+
+The version-24 fresh-source failure record stays unchanged. Actual browser retry evidence will be added separately after testing the published runtime.
+
+The first deployed worker constructor used a file-scheme URL produced by the framework build. Its exact failure report is preserved as `v25-worker-path-failure.json`; the bundler worker-factory import corrects that path. A real version-26 cancellation released the controls and retained all nine saved facts. Its subsequent legacy-cache preparation stalled browser inspection and required reload. The revised path leaves that cache untouched and starts from dedicated local files. Loading-stage checkpoints can now survive a reload for diagnosis. Actual extraction is still pending at this implementation checkpoint.
+
+## Concurrent-tab guard and continuation observations
+
+An origin-wide browser lock now permits one active on-device runtime at a time, including its model download. A second tab receives a recoverable message before it downloads or allocates another model. File removal uses the same lock so it cannot invalidate a running model in another tab. Unavailable lock support leaves prepared forms and reviewed manual proposals available. Worker termination releases the runtime lock. A failed removal also returns the UI to AI-off state so controls remain usable. Four injected checks cover competing tabs, blocked removal, release after a failed storage action, and unavailable/denied lock access. These checks are not a completed live two-tab browser test.
+
+An additional version-28 UI attempt preserved a Q4 weight-loading interruption and a successful 1B control load in 4,617 ms in `v28-continuation-load-report.json`. The interrupted report's elapsed time is its last progress checkpoint, not a measured duration of the failure. The 1B extraction button remained disabled as designed.
+
+In a version-29 continuation, the compact IQ3_M 3B model visibly reached ready on CPU. The actual Propose questions control was then used with the unchanged PDF-extracted source. The last observed progress was question one of ten; subsequent DOM inspection, screenshot capture and reconnect/reload attempts timed out. No completed raw extraction receipt or score was captured for that attempt, and its final model outcome and the cause of inspection failure are unestablished. Exact indexed source lines and all ten request messages match the original frozen expectations despite PDF whitespace differences. See `v29-continuation-ui-observations.json`; it is explicitly a UI-observation record, not a fabricated inference receipt. The original manual-workflow and earlier model evidence remain separate and unchanged.

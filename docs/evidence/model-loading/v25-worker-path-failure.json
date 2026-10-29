@@ -1,0 +1,15 @@
+{
+  "scope": "On-device development checks, not a user study",
+  "loads": [
+    {
+      "at": "2026-10-29T05:18:17.319Z",
+      "model": "Meta Llama 3.2 3B Instruct",
+      "revision": "eb72f2a08dd2b9edd07ffacfe5aa56938b7939b0",
+      "outcome": "error",
+      "elapsedMs": 1,
+      "events": [],
+      "error": "Failed to construct 'Worker': Script at 'file:///_next/static/local-meta-worker-DqKzRkf7.js' cannot be accessed from origin 'https://unbound-access-paperwork-by-voice.savorydove14.chatgpt.site'."
+    }
+  ],
+  "receipts": []
+}

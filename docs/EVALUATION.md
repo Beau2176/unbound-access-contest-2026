@@ -1,6 +1,12 @@
 # Current evaluation - October 28, 2026 (America/Denver)
 
-122 automated checks passed. TypeScript passes. These deterministic model/speech fixtures are engineering checks, not model-quality or phone tests. Real browser/model work is separate below.
+132 automated checks passed. TypeScript passes. These deterministic model/speech fixtures are engineering checks, not model-quality or phone tests. Real browser/model work is separate below.
+
+## Model-loading reliability implementation
+
+Model loading and inference now run in an app-owned worker. Cancellation and bounded deadlines can terminate the runtime without awaiting initialization, and stale replies cannot revive it. The preferred origin-private file cache streams downloads to a dedicated local directory and gets sizes from file metadata, avoiding the old whole-model reads during enumeration. One request slot and disabled optional warm-up reduce initialization work; model identity and extraction/answer contracts remain unchanged. The larger model uses a 1,024-token context and batches of thirty-two to reduce startup allocation; the smaller model retains its prior context size. Extraction time budgets scale with source rows, and each completion remains bounded.
+
+Ten deterministic checks cover ignored cancellation, idle/absolute deadlines, retry isolation, worker failures, completion cancellation and file-cache write/error cases. These are injected engineering checks, not a new successful model run or browser-memory measurement. Loading reports are separate from raw model receipts. The original new-source failure remains preserved below. See [loading implementation and its limits](evidence/model-loading/README.md). The actual retry is recorded separately after publishing.
 
 ## Fresh source PDF: manual workflow passed, live extraction blocked
 

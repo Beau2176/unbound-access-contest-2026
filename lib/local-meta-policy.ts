@@ -19,6 +19,12 @@ export const LOCAL_META_MODELS = {
     sha256: "c55a83bfb6396799337853ca69918a0b9bbb2917621078c34570bc17d20fd7a1",
     url: "https://huggingface.co/hugging-quants/Llama-3.2-3B-Instruct-Q4_K_M-GGUF/resolve/eb72f2a08dd2b9edd07ffacfe5aa56938b7939b0/llama-3.2-3b-instruct-q4_k_m.gguf",
   },
+  compact: {
+    name: "Meta Llama 3.2 3B Instruct (IQ3_M)", family: "3B", quantization: "IQ3_M", downloadLabel: "1.60 GB",
+    revision: "b0a3958968ddb3ff6466ed3148b3afcd75d434af", bytes: 1599668768,
+    sha256: "deac83b571f3982a12377181fdfd7780bf4ce8cbfbdcac179e4bf2ad47b1b228",
+    url: "https://huggingface.co/bartowski/Llama-3.2-3B-Instruct-GGUF/resolve/b0a3958968ddb3ff6466ed3148b3afcd75d434af/Llama-3.2-3B-Instruct-IQ3_M.gguf",
+  },
 } as const;
 export type LocalModelKey = keyof typeof LOCAL_META_MODELS;
 export function assertLocalModelMetadata(key: LocalModelKey, metadata: Record<string,string>) {

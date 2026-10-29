@@ -1,0 +1,106 @@
+{
+  "scope": "On-device development checks, not a user study",
+  "receipts": [
+    {
+      "at": "2026-10-29T00:19:18.234Z",
+      "model": "Meta Llama 3.2 1B Instruct",
+      "revision": "7d1f70022fcab2038000074bd0342e03e1d8b755",
+      "task": "answer",
+      "input": {
+        "field": {
+          "id": "people",
+          "label": "How many people are in your household?",
+          "kind": "number"
+        },
+        "utterance": "There are three of us in our household."
+      },
+      "raw": "{\"value\":\"3\",\"question\":\"\"}",
+      "elapsedMs": 34014,
+      "tokens": {
+        "prompt": 153,
+        "completion": 10
+      },
+      "accepted": true
+    },
+    {
+      "at": "2026-10-29T00:19:52.250Z",
+      "model": "Meta Llama 3.2 1B Instruct",
+      "revision": "7d1f70022fcab2038000074bd0342e03e1d8b755",
+      "task": "answer",
+      "input": {
+        "field": {
+          "id": "amount",
+          "label": "Amount paid",
+          "kind": "money"
+        },
+        "utterance": "zero dollars"
+      },
+      "raw": "{\"value\":\"0\",\"question\":\"\"}",
+      "elapsedMs": 7664,
+      "tokens": {
+        "prompt": 140,
+        "completion": 10
+      },
+      "accepted": true
+    },
+    {
+      "at": "2026-10-29T00:19:59.916Z",
+      "model": "Meta Llama 3.2 1B Instruct",
+      "revision": "7d1f70022fcab2038000074bd0342e03e1d8b755",
+      "task": "answer",
+      "input": {
+        "field": {
+          "id": "support",
+          "label": "Do you need access support?",
+          "kind": "yesno"
+        },
+        "utterance": "No, I do not need access support."
+      },
+      "raw": "{\"value\":\"No\",\"question\":\"\"}",
+      "elapsedMs": 10198,
+      "tokens": {
+        "prompt": 152,
+        "completion": 10
+      },
+      "accepted": true
+    },
+    {
+      "at": "2026-10-29T00:20:10.115Z",
+      "model": "Meta Llama 3.2 1B Instruct",
+      "revision": "7d1f70022fcab2038000074bd0342e03e1d8b755",
+      "task": "answer",
+      "input": {
+        "field": {
+          "id": "companions",
+          "label": "How many companions will attend?",
+          "kind": "number"
+        },
+        "utterance": "I am not sure how many people will come."
+      },
+      "raw": "{\"value\":\"3\",\"question\":\"\"}",
+      "elapsedMs": 10636,
+      "tokens": {
+        "prompt": 153,
+        "completion": 10
+      },
+      "accepted": true
+    },
+    {
+      "at": "2026-10-29T00:21:53.582Z",
+      "model": "Meta Llama 3.2 1B Instruct",
+      "revision": "7d1f70022fcab2038000074bd0342e03e1d8b755",
+      "task": "extract",
+      "input": {
+        "source": "Fictional seed exchange registration\nFull name (required)\nEmail address (optional)\nHow many seed packets? (required)\nWould you like a reminder? Yes or No (optional)"
+      },
+      "raw": "{\"title\":\"Fictional seed exchange registration\",\"questions\":[\n  [\"line_1\", \"text\", true, \"\"],\n  [\"line_2\", \"text\", true, \"\"],\n  [\"line_3\", \"text\", true, \"\"],\n  [\"line_4\", \"text\", true, \"\"],\n  [\"line_5\", \"text\", true, \"\"]\n],\"warnings\":[\n  \"Fictional\",\n  \"required\",\n  \"email\",\n  \"unknown\"\n]}",
+      "elapsedMs": 86497,
+      "tokens": {
+        "prompt": 256,
+        "completion": 105
+      },
+      "accepted": false,
+      "error": "An AI required-field flag does not match the source. Review the form and try again."
+    }
+  ]
+}

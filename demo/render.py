@@ -18,57 +18,34 @@ def lines(text,width,f):
   else:line=test
  if line:out.append(line)
  return out
-# Exact source-derived graphic. It does not represent a new model call.
+# Source-derived evidence graphics. These are summaries of preserved receipts, not UI.
 card=Image.new('RGB',(1348,926),'#f3f6ef');d=ImageDraw.Draw(card)
-d.text((65,60),'META MUSE GLIMMER 30B',font=font(36),fill=BG)
-d.text((65,130),'Captured public-playground result',font=font(28),fill=BG)
-d.rounded_rectangle((65,220,1278,730),radius=22,fill='white')
-receipt=[('9','proposed source questions'),('7','empty fact keys — rejected'),('1','unsupported legal-name qualifier'),('8','documented edits in reviewed derivative')]
-for i,(num,label) in enumerate(receipt):
- y=250+i*110;d.text((95,y),num,font=font(62),fill='#176e58');d.text((210,y+15),label,font=font(29),fill=BG)
-d.text((65,800),'Original output preserved. No unchanged-model pass claimed.',font=font(24),fill=BG)
+d.text((65,55),'REAL META INFERENCE',font=font(36),fill=BG)
+d.text((65,115),'Llama 3.2 1B Instruct · browser CPU',font=font(29),fill=BG)
+rows=[('CLEAR INPUT','three people → 3; zero dollars → 0; No → No'),('MODEL FAILURE','uncertain count → guessed 3'),('CURRENT GUARD','rejects unsupported / uncertain values'),('EXTRACTION FAILURE','required flags failed source validation')]
+for i,(title,body) in enumerate(rows):
+ y=230+i*135;d.text((65,y),title,font=font(26),fill='#176e58');d.text((65,y+48),body,font=font(29),fill=BG)
+d.text((65,830),'Source-derived summary · unchanged run receipts in repository',font=font(23),fill=BG)
 card.save(ASSETS/'meta-receipt.png')
 card=Image.new('RGB',(1348,926),'#f3f6ef');d=ImageDraw.Draw(card)
 d.text((70,65),'EVIDENCE AND LIMITS',font=font(38),fill=BG)
-notes=['79 automated checks passed','1 tester reported phone sound, microphone,','and opening the saved PDF worked.','No timed usability study.','Automatic Meta API: not configured.','Fictional data only. No form submissions.']
-for i,t in enumerate(notes):d.text((70,180+i*105),t,font=font(32),fill=BG)
+notes=['86 automated checks passed','Actual typed form → downloaded two-page PDF','One basic phone check reported','Full phone dictation / timed usability: unverified','Hosted AI: not configured; CPU inference: slow','Fictional data only · nothing submitted']
+for i,t in enumerate(notes):d.text((70,180+i*105),t,font=font(29),fill=BG)
 card.save(ASSETS/'evidence-card.png')
-# A clearly labelled local output from the same PDF exporter, not a claimed browser download.
-pdf=Image.open(ASSETS/'pdf-1.png').convert('RGB')
-# Preserve all page content; fit without stretching.
-canvas=Image.new('RGB',(1348,926),'#dce4df');pdf.thumbnail((800,870));canvas.paste(pdf,((1348-pdf.width)//2,28));canvas.save(ASSETS/'pdf-output.png')
+# Both pages are renders of the actual browser-downloaded PDF, not a fixture.
+canvas=Image.new('RGB',(1348,926),'#dce4df');d=ImageDraw.Draw(canvas)
+d.text((40,18),'ACTUAL BROWSER DOWNLOAD · TWO-PAGE REVIEWED RECORD',font=font(25),fill=BG)
+for i in (1,2):
+ pdf=Image.open(ASSETS/f'pdf-{i}.png').convert('RGB');pdf.thumbnail((625,830));canvas.paste(pdf,(25+(i-1)*670+(625-pdf.width)//2,70))
+canvas.save(ASSETS/'pdf-output.png')
 # Each phrase is synthesized independently at native speed, then measured.
 # Captions follow the measured whole-phrase interval; no word-level timing is fabricated.
-cues=[
-('hero','Paperwork can mean small text, repeated facts, and too much typing.'),
-('hero','Unbound Access guides one question at a time, with spoken or typed answers.'),
-('answer-review','This edited walkthrough uses actual app screens and fictional typed answers, with synthetic narration.'),
-('choice','For a new form, choose the clearly labelled, reviewed Meta workshop example.'),
-('meta-receipt','Meta Muse Glimmer returned nine questions in the public playground. The original proposal failed validation.'),
-('meta-receipt','Seven fact keys were empty, and one help sentence added an unsupported legal name requirement.'),
-('source-review','The saved example documents those eight corrections. It is not an unchanged model output.'),
-('source-review','The app checks source quotes, pages, constraints, and shared facts before asking for your approval.'),
-('source-review','Loading this captured example makes no new model call. You approve the questions before starting.'),
-('answer-review','Type or speak an answer. Check the proposed value before confirming it.'),
-('number-limit','The source allows zero to four companions. Five is rejected, while zero is accepted.'),
-('conditional','Answering yes to communication support reveals the required follow up question.'),
-('linked-correction','Now change the home address from forty to forty one Practice Street.'),
-('linked-correction','Before saving, the app shows both linked home questions and their previous values.'),
-('review-top','After confirmation, both home answers match. The separate venue address stays unchanged.'),
-('review','Review every answer and check the review box. Incomplete answers produce a labelled draft.'),
-('pdf-ready','The reviewed answer record is ready, with persistent Save PDF and Open PDF links.'),
-('pdf-output','This page was generated by the same app PDF exporter, using these nine fictional answers.'),
-('pdf-output','It is a readable answer record. It does not fill or submit the original agency form.'),
-('evidence-card','Seventy nine automated checks passed. One tester reported working phone sound, microphone, and saved PDF opening.'),
-('evidence-card','That was a basic device check, not a timed usability study or a complete dictated journey.'),
-('evidence-card','The automatic Meta API has no key configured. Live server inference and answer mapping remain untested.'),
-('hero','Try the app and inspect the complete source package. You control every confirmed answer.'),
-]
+cues=[('hero', 'Small print, repeated facts, and too much typing can make paperwork exhausting. Unbound Access takes one question at a time.'), ('hero', 'Large controls and read aloud support spoken or typed answers. The person reviews every change and keeps control of the record.'), ('answer-review', 'This edited walkthrough uses actual app screens, fictional typed data, and generic synthetic narration. It is not continuous voice capture.'), ('answer-review', 'An answer is only a proposal. Cancel leaves saved answers unchanged. Confirm moves to the next question.'), ('number-limit', 'The prepared form says household size must be one through twelve. Thirteen is rejected before it can be saved.'), ('number-limit', 'Two is accepted. Zero dollars is also a valid income answer, rather than being mistaken for a missing value.'), ('conditional', 'Answer Yes to access support and the required follow up appears. Here the fictional request is questions read aloud.'), ('linked-correction', 'Now correct the home address from forty to forty one Practice Street. The app shows both linked fields and their previous values.'), ('linked-correction', 'Confirmation updates both home answers together. The separate landlord address stays ninety Venue Lane. Shared facts do not cross different people.'), ('pdf-ready', 'Review the source linked answers, acknowledge the review, and download the PDF. Persistent Save and Open links allow another attempt.'), ('pdf-output', 'These are both pages of the actual browser downloaded file. The corrected addresses and zero income survived export and were checked.'), ('pdf-output', 'This is a readable answer record, not a filled original agency form. Nothing is signed or submitted.'), ('meta-receipt', 'Built with Llama. Optional Meta Llama three point two, one billion parameters, runs genuine inference inside the browser through w llama.'), ('meta-receipt', 'The revised development run correctly interpreted three clear answers: three people, zero dollars, and No. Its unchanged raw outputs are preserved.'), ('meta-receipt', 'It also guessed three when the input was uncertain. The current source guard rejects that guess. This is not a model success.'), ('meta-receipt', 'Question extraction failed required flag validation. General extraction remains experimental and unreliable. Prepared forms and direct controls remain available.'), ('evidence-card', 'The optional model download is about eight hundred eight megabytes, with explicit consent and removal controls. CPU inference is slow.'), ('evidence-card', 'No API key, card, or paid fallback is needed. Local model tasks stay in the browser; browser speech may use a remote service.'), ('evidence-card', 'Eighty six automated checks passed. The complete typed browser journey and downloaded PDF were verified separately from model quality.'), ('evidence-card', 'One tester reported phone audio, microphone, and sample PDF opening. Full phone dictation, timed usability, and GPU offload remain unverified.'), ('hero', 'Try the working form, inspect real inference receipts, and read the public source. Every confirmed answer remains yours to review.')]
 caption_events=[];timeline=[]; elapsed=0;source_manifest=[]
 for i,(asset,text) in enumerate(cues):
  asset_path=ASSETS/(asset+'.png' if asset in ['meta-receipt','evidence-card','pdf-output'] else 'unbound-demo-'+asset+'.png')
  if not asset_path.exists():raise FileNotFoundError(asset_path)
- original=Image.open(asset_path).convert('RGB');source_manifest.append({'asset_id':asset,'path':str(asset_path.relative_to(ROOT)),'width':original.width,'height':original.height,'role':'actual app screenshot' if asset.startswith(('hero','answer','choice','source','number','conditional','linked','review','pdf-ready')) else 'source-derived editorial graphic / app-exporter PDF'})
+ original=Image.open(asset_path).convert('RGB');source_manifest.append({'asset_id':asset,'path':str(asset_path.relative_to(ROOT)),'width':original.width,'height':original.height,'role':'actual app screenshot' if asset.startswith(('hero','answer','choice','source','number','conditional','linked','review','pdf-ready')) else 'source-derived receipt summary / actual browser-download PDF'})
  text_path=WORK/f'{i:02}.txt';text_path.write_text(text)
  wav=WORK/f'{i:02}.wav'
  run(['ffmpeg','-nostdin','-y','-v','error','-f','lavfi','-i',f'flite=textfile={text_path}:voice=slt','-ar','48000','-ac','1',str(wav)])
@@ -92,7 +69,14 @@ for i,(asset,text) in enumerate(cues):
  timeline.append({'asset_id':asset,'source_in':0,'source_out':audio_seconds,'sequence_start':elapsed,'sequence_end':elapsed+duration,'speech_end':elapsed+audio_seconds,'audio_owner':f'work/{i:02}.wav','still_image':str(asset_path.relative_to(ROOT)),'frames':frames,'playback_rate':1.0})
  elapsed+=duration
  print(json.dumps({'scene':i+1,'seconds':round(duration,2),'total':round(elapsed,2)}),flush=True)
-if elapsed>180:raise ValueError(f'Demo too long: {elapsed}')
+if elapsed>179:raise ValueError(f'Demo too long: {elapsed}')
+# Keep the final actual app screen readable through the end of the three-minute slot.
+pad_frames=max(0,round((179-elapsed)*FPS))
+if pad_frames:
+ last=WORK/f'{len(cues)-1:02}.mp4'; extended=WORK/'extended.mp4'
+ run(['ffmpeg','-nostdin','-y','-v','error','-i',str(last),'-vf',f'tpad=stop_mode=clone:stop_duration={pad_frames/FPS}','-af',f'apad=pad_dur={pad_frames/FPS}','-c:v','libx264','-preset','veryfast','-crf','21','-pix_fmt','yuv420p','-c:a','aac','-b:a','128k','-ar','48000','-ac','2','-video_track_timescale','25000',str(extended)])
+ extended.replace(last);timeline[-1]['sequence_end']+=pad_frames/FPS;timeline[-1]['frames']+=pad_frames;elapsed+=pad_frames/FPS
+
 concat=WORK/'concat.txt';concat.write_text(''.join(f"file '{i:02}.mp4'\n" for i in range(len(cues))))
 out=ROOT.parent/'public/artifacts/unbound-access-demo.mp4'
 run(['ffmpeg','-nostdin','-y','-v','error','-f','concat','-safe','0','-i',str(concat),'-map','0:v:0','-map','0:a:0','-c','copy','-movflags','+faststart',str(out)])

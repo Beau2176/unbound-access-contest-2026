@@ -1,12 +1,7 @@
-# Three-minute demo plan
+# Current edited demo
 
-Record actual behavior after a usable genuine Meta proposal is captured. The three basic phone checks were reported passed by Boyd. Practice questions and authored fixtures must not be presented as live AI. A manual public-playground round trip can be demonstrated honestly; it is not the automatic server API connection.
+Target: at most three minutes. Show the actual typed browser journey and genuine model evidence separately. Keep generic synthetic narration and visible captions. No voice-recognition performance, timed usability or unchanged-model success may be inferred from the edit.
 
-- 0:00-0:20: The barrier: small text, typing effort, repeated personal facts. Show the fictional source form.
-- 0:20-1:10: Show Copy Meta prompt, NVIDIA's actual Muse Glimmer response, then paste its JSON and approve source-linked questions. Identify provider/model and show the manual transfer. Use a clearly marked cut over a long queue/wait; do not imply instant generation. Use automatic extraction only after that separate API connection is genuinely tested.
-- 1:10-1:45: Correct the applicant's address. Show old/new values and both linked fields before confirmation. Verify the unrelated landlord address stays unchanged.
-- 1:45-2:15: A required omission and an ambiguous correction resolved by a spoken question label or option number. Preserve earlier answers during a genuine recoverable service failure if feasible.
-- 2:15-2:40: Spoken review, explicit "confirm review", "download PDF", and the actual downloaded PDF with matching values.
-- 2:40-3:00: Measured outcomes and sample size, event-created work, AI-assistance and upstream components, scope limits.
+Scenes: problem/one-question UI; unconfirmed answer; source-bound numeric rejection; Yes conditional; both-home correction; source-linked final review; actual browser-downloaded PDF; actual local Meta outputs and uncertainty/extraction failures; guards, optional download/privacy and evidence limits; public app/source links.
 
-No fabricated metrics, staged model responses presented as live, agency submissions or real personal records. A recorded public-model development attempt is not an API quality benchmark. Keep the video and repository accessible to judges. The current guide specifies Impact 30%, Meta tooling 25%, technical execution 20%, demo 25%; deadline November 4, 2026, 7 p.m. America/Denver. Aim to finish November 3.
+Use demo/render.py and its measured native-speed phrase timing. Evidence cards are explicitly source-derived summaries, never fabricated UI. Use the actual downloaded two-page PDF under docs/evidence/local-meta; no reconstruction is called a download. Inspect rendered frames, probe metadata and fully decode the final MP4. Record whether independent audible review occurred.

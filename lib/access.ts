@@ -1,6 +1,6 @@
 export type FieldKind = "text" | "longtext" | "number" | "money" | "yesno" | "email" | "date";
 export type Field = { id: string; label: string; kind: FieldKind; required: boolean; sourceQuote: string; sourcePage: number; factKey: string; help: string; requiredWhen?: { fieldId: string; equals: string }; min?: number; max?: number };
-export type FormDefinition = { id: string; title: string; sourceText: string; fields: Field[]; fictional: boolean; linksVerified: boolean; origin: "prepared" | "meta" | "manual"; warnings: string[] };
+export type FormDefinition = { id: string; title: string; sourceText: string; fields: Field[]; fictional: boolean; linksVerified: boolean; origin: "prepared" | "meta" | "manual" | "local"; warnings: string[] };
 export type Answer = { value: string; confirmed: boolean; method: "typed" | "voice" | "meta"; at: string };
 export type Change = { fieldId: string; before: string; after: string };
 export type Proposal = { revision: number; changes: Change[]; method: Answer["method"]; transcript: string };
@@ -134,7 +134,7 @@ const bounded = (value: unknown, min: number, max: number): value is string => t
 const timestamp = (value: unknown) => typeof value === "string" && Number.isFinite(Date.parse(value));
 export function validFormDefinition(value: unknown): value is FormDefinition {
   if (!record(value) || !bounded(value.id, 1, 100) || !bounded(value.title, 1, 160) || !bounded(value.sourceText, 1, 16000)
-    || value.fictional !== true || typeof value.linksVerified !== "boolean" || !["prepared", "meta", "manual"].includes(String(value.origin))
+    || value.fictional !== true || typeof value.linksVerified !== "boolean" || !["prepared", "meta", "manual", "local"].includes(String(value.origin))
     || !Array.isArray(value.warnings) || value.warnings.length > 12 || value.warnings.some(w => !bounded(w, 0, 500))
     || !Array.isArray(value.fields) || !value.fields.length || value.fields.length > 24) return false;
   const fields = value.fields;

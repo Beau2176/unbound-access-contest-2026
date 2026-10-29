@@ -9,7 +9,7 @@ manifest=[]
 with zipfile.ZipFile(out,'w',zipfile.ZIP_DEFLATED,compresslevel=9) as z:
  for name in sorted(set(files)):
   p=root/name
-  if not p.is_file() or name.startswith(excluded) or (p.name.startswith('.env') and p.name!='.env.example'):continue
+  if not p.is_file() or (name.startswith(excluded) and name!='public/artifacts/LLAMA-3.2-LICENSE.txt') or (p.name.startswith('.env') and p.name!='.env.example'):continue
   data=p.read_bytes()
   if re.search(rb'(?:sk-[A-Za-z0-9_-]{20,}|nvapi-[A-Za-z0-9_-]{20,}|gh[pousr]_[A-Za-z0-9]{20,})',data):raise ValueError('Credential-like content in '+name)
   if name=='.openai/hosting.json':

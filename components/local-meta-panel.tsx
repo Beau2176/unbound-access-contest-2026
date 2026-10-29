@@ -1,0 +1,25 @@
+"use client";
+import { useState } from "react";
+import { useLocalMeta } from "../hooks/use-local-meta";
+import { loadLocalMeta, cancelLocalMeta, unloadLocalMeta } from "../lib/local-meta-client";
+export default function LocalMetaPanel({ onBusy }: { onBusy?: (busy: boolean) => void }) {
+  const state = useLocalMeta(), [consent, setConsent] = useState(false), [error, setError] = useState(""), [preferGpu,setPreferGpu] = useState(true);
+  const working = ["downloading", "loading", "running"].includes(state.phase);
+  async function load() { setError(""); onBusy?.(true); try { await loadLocalMeta(consent, preferGpu); } catch (e) { setError((e as Error).message); } finally { onBusy?.(false); } }
+  return <section className="local-meta-panel" aria-label="Optional on-device Meta AI">
+    <h3>Experimental AI, on this device</h3>
+    <p>Meta Llama 3.2 proposes questions and interprets fictional answers in your browser. Your form text is processed on this device. Browser voice may still use its own online speech service.</p>
+    <p><b>First download: 808 MB, plus the AI runtime.</b> Use Wi-Fi if you have limited mobile data. It needs free storage and memory, can be slow on phones, and may not work on every device. No API account or payment is required. Practice forms work without downloading it.</p>
+    {!["ready", "running"].includes(state.phase) && <label className="consent"><input type="checkbox" checked={consent} disabled={working} onChange={e => setConsent(e.target.checked)} /><span>I want the optional model download from Hugging Face. Its files can remain cached in this browser until I remove them.</span></label>}
+    {!["ready","running"].includes(state.phase)&&<label className="consent"><input type="checkbox" checked={preferGpu} disabled={working} onChange={e=>setPreferGpu(e.target.checked)}/><span>Use device graphics for AI acceleration when available. If loading fails, turn this off to try the slower CPU path.</span></label>}
+    <p role="status">{state.message}</p>
+    {working && (state.phase==="running" ? <progress aria-label="AI is working"/> : <progress aria-label="Model download" value={state.progress} max={100} />)}
+    {error && <p role="alert">{error}</p>}
+    <div className="proposal-actions">
+      {!["ready", "running"].includes(state.phase) && <button className="primary" disabled={!consent || working} onClick={() => void load()}>Download and load Meta model</button>}
+      {working && <button className="secondary" onClick={cancelLocalMeta}>Cancel AI task</button>}
+      {state.phase === "ready" && <><button className="secondary" onClick={() => void unloadLocalMeta()}>Turn off on-device AI</button><button className="text-button" onClick={() => void unloadLocalMeta(true)}>Remove downloaded model</button></>}
+    </div>
+    <p className="microcopy"><a href="/privacy">Data &amp; privacy</a> · Built with Llama · <a href="/artifacts/LLAMA-3.2-LICENSE.txt" target="_blank" rel="noopener">Model license</a> · <a href="/local-meta">Try a live AI check and inspect its receipt</a></p>
+  </section>;
+}

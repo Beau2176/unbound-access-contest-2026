@@ -13,4 +13,7 @@ The project starts with the supplied Sites Vinext starter. Its runtime, authenti
 - PDF.js 5.6.205: Apache-2.0. License copied to public/licenses/pdfjs.txt; the worker is vendored at public/pdf.worker.min.mjs for same-origin loading.
 - DejaVu Sans font: Bitstream Vera/DejaVu terms in public/fonts/LICENSE.txt.
 
-No Meta weights are distributed. Hosted model/provider use has separate terms. No stock imagery, real applications, personal records, testimonials or outside voices are included.
+- wllama and wllama-compat 3.8.1: MIT; WebAssembly runtime assets are copied from the pinned npm packages during build. llama.cpp and bundled dependencies retain their upstream notices.
+- Optional Meta Llama 3.2 1B Instruct: downloaded directly from the pinned hugging-quants GGUF redistribution only after opt-in. Built with Llama. The model uses the Llama 3.2 Community License, not the project's MIT license; see public/artifacts/LLAMA-3.2-LICENSE.txt and the upstream model card/acceptable-use policy. No model weights are committed or included in the source download.
+
+Hosted model/provider use has separate terms. No stock imagery, real applications, personal records, testimonials or outside voices are included. Demo narration is the generic offline FFmpeg/libflite slt voice; it does not impersonate a real person.

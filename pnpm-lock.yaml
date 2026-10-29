@@ -20,6 +20,12 @@ importers:
       '@shadcn/react':
         specifier: ^0.3.0
         version: 0.3.0(@types/react@19.2.14)(react@19.2.6)
+      '@wllama/wllama':
+        specifier: 3.8.1
+        version: 3.8.1
+      '@wllama/wllama-compat':
+        specifier: 3.8.1
+        version: 3.8.1
       class-variance-authority:
         specifier: 0.7.1
         version: 0.7.1
@@ -2694,6 +2700,12 @@ packages:
 
   '@webassemblyjs/wast-printer@1.14.1':
     resolution: {integrity: sha512-kPSSXE6De1XOR820C90RIo2ogvZG+c3KiHzqUoO/F34Y2shGzesfqv7o57xrxovZJH/MetF5UjroJ/R/3isoiw==}
+
+  '@wllama/wllama-compat@3.8.1':
+    resolution: {integrity: sha512-IvmjrJ+JzDbt3w1FQq1yAmnFEiLGCceowK2Q80zW+k9ChFkPBM1ByX/9xm2xVxyd8MHC50VpuDo6SDE83k9kIQ==}
+
+  '@wllama/wllama@3.8.1':
+    resolution: {integrity: sha512-Pl7BEJhPU8OHnV/yhn3DFZYhLLOdSHh+4TND79WCftHnlUAdQPAsyc/CfIOY+4mVxvf5VW3Xw3Uf7BBfotS1gw==}
 
   '@xtuc/ieee754@1.2.0':
     resolution: {integrity: sha512-DX8nKgqcGwsc0eJSqYt5lwP4DH5FlHnmuWWBRy7X0NcaGR0ZtuyeESgMwTYVEtxmsNGY+qit4QYT/MIYTOTPeA==}
@@ -7053,6 +7065,10 @@ snapshots:
     dependencies:
       '@webassemblyjs/ast': 1.14.1
       '@xtuc/long': 4.2.2
+
+  '@wllama/wllama-compat@3.8.1': {}
+
+  '@wllama/wllama@3.8.1': {}
 
   '@xtuc/ieee754@1.2.0': {}
 

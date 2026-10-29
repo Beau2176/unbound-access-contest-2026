@@ -1,0 +1,105 @@
+{
+  "scope": "On-device development checks, not a user study",
+  "receipts": [
+    {
+      "at": "2026-10-29T00:09:37.928Z",
+      "model": "Meta Llama 3.2 1B Instruct",
+      "revision": "7d1f70022fcab2038000074bd0342e03e1d8b755",
+      "task": "answer",
+      "input": {
+        "field": {
+          "id": "people",
+          "label": "How many people are in your household?",
+          "kind": "number"
+        },
+        "utterance": "There are three of us in our household."
+      },
+      "raw": "{\"fieldId\":\"people\",\"value\":\"3\",\"needsClarification\":false,\"question\":\"How many people are in your household?\"}",
+      "elapsedMs": 41467,
+      "tokens": {
+        "prompt": 158,
+        "completion": 28
+      },
+      "accepted": true
+    },
+    {
+      "at": "2026-10-29T00:10:19.397Z",
+      "model": "Meta Llama 3.2 1B Instruct",
+      "revision": "7d1f70022fcab2038000074bd0342e03e1d8b755",
+      "task": "answer",
+      "input": {
+        "field": {
+          "id": "amount",
+          "label": "Amount paid",
+          "kind": "money"
+        },
+        "utterance": "zero dollars"
+      },
+      "raw": "{\"fieldId\":\"amount\",\"value\":\"\",\"needsClarification\":false,\"question\":\"How much was paid?\"}",
+      "elapsedMs": 11772,
+      "tokens": {
+        "prompt": 145,
+        "completion": 23
+      },
+      "accepted": true
+    },
+    {
+      "at": "2026-10-29T00:10:31.169Z",
+      "model": "Meta Llama 3.2 1B Instruct",
+      "revision": "7d1f70022fcab2038000074bd0342e03e1d8b755",
+      "task": "answer",
+      "input": {
+        "field": {
+          "id": "support",
+          "label": "Do you need access support?",
+          "kind": "yesno"
+        },
+        "utterance": "No, I do not need access support."
+      },
+      "raw": "{\"fieldId\":\"support\",\"value\":\"\", \"needsClarification\":false,\"question\":\"Do you need access support?\"}",
+      "elapsedMs": 15130,
+      "tokens": {
+        "prompt": 157,
+        "completion": 26
+      },
+      "accepted": true
+    },
+    {
+      "at": "2026-10-29T00:10:46.299Z",
+      "model": "Meta Llama 3.2 1B Instruct",
+      "revision": "7d1f70022fcab2038000074bd0342e03e1d8b755",
+      "task": "answer",
+      "input": {
+        "field": {
+          "id": "companions",
+          "label": "How many companions will attend?",
+          "kind": "number"
+        },
+        "utterance": "I am not sure how many people will come."
+      },
+      "raw": "{\"fieldId\":\"companions\",\"value\":\"\",\"needsClarification\":false,\"question\":\"How many people will come?\"}",
+      "elapsedMs": 15195,
+      "tokens": {
+        "prompt": 158,
+        "completion": 25
+      },
+      "accepted": true
+    },
+    {
+      "at": "2026-10-29T00:12:58.674Z",
+      "model": "Meta Llama 3.2 1B Instruct",
+      "revision": "7d1f70022fcab2038000074bd0342e03e1d8b755",
+      "task": "extract",
+      "input": {
+        "source": "Fictional seed exchange registration\nFull name (required)\nEmail address (optional)\nHow many seed packets? (required)\nWould you like a reminder? Yes or No (optional)"
+      },
+      "raw": "{\"title\":\"Fictional seed exchange registration\",\"questions\":[{\"sourceId\":\"line_1\",\"label\":\"Fictional seed exchange registration\",\"kind\":\"text\",\"required\":true,\"help\":\"Fictional seed exchange registration\",\"shareWith\":\"\"}],\"warnings\":[]}",
+      "elapsedMs": 70745,
+      "tokens": {
+        "prompt": 262,
+        "completion": 55
+      },
+      "accepted": true
+    }
+  ]
+}

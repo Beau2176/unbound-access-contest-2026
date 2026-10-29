@@ -50,3 +50,5 @@ yarn-error.log*
 # Reproducible video intermediates and generated source archive
 demo/work/
 public/artifacts/unbound-access-source.zip
+# Generated from the pinned wllama packages by prepare-local-meta-assets.mjs.
+/public/wasm/

@@ -1,3 +1,11 @@
+# Current update - October 28, 2026
+
+86 automated checks passed, including on-device contract/grounding regression cases. Typecheck and production packaging are checked separately. Genuine local Meta model runs and a full typed browser/PDF journey are documented in [local evidence](evidence/local-meta/README.md). The revised raw model handled three clear answers, guessed the uncertain answer and failed source-question extraction. Do not count structural acceptance or a source-guard rejection as model correctness. General extraction remains experimental. No completed phone dictation, timed usability or GPU-offload claim is made.
+
+Original event entry was confirmed submitted earlier October 28. Below is the preserved earlier evaluation history; its 79-test and unconfigured-local-model descriptions refer to that earlier state.
+
+---
+
 # Evaluation record - October 28, 2026
 
 This is engineering verification of a fictional-data prototype, not a user study or evidence of clinical benefit. The baseline release had 29 tests; this revision has 79 passing tests. Automated speech and provider-response tests use injected stubs. Separate user-reported phone checks and a public model development attempt are described below.

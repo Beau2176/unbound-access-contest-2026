@@ -1,3 +1,13 @@
+# Current zero-dollar route - October 28, 2026
+
+A genuine optional on-device route is implemented: Meta Llama 3.2 1B Instruct Q4_K_M, pinned 808 MB download, wllama 3.8.1, explicit opt-in/removal and no API key. It ran in the public HTTPS browser. See [actual receipts and limitations](evidence/local-meta/README.md). The revised run got three clear answers right but guessed an uncertain number; a source guard rejects that class of guess. Extraction failed. This is experimental and slow on CPU.
+
+Hosted inference is still unconfigured. Prior automatic approval review blocked NVIDIA queued-request/key/clipboard actions; do not revisit or bypass those controls. Do not use paid credits, a payment method or a paid fallback. Llama is distinct from Muse Glimmer/Spark and does not establish qualification for the guide's named Muse-only bonus.
+
+The following findings preserve earlier hosted-route research, not authorization to resume blocked account actions.
+
+---
+
 # Free Meta access findings - October 28, 2026
 
 Budget: zero dollars out of pocket. No payment method, subscription, top-up, paid inference request, partner claim or new agreement was entered during this work.

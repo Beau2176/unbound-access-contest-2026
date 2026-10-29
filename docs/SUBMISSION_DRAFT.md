@@ -1,6 +1,6 @@
-# Existing entry - saved update verified
+# Final existing-entry content - October 29, 2026
 
-Original entry confirmed submitted October 28, 2026. These five revised narrative answers were saved to that same entry and verified after a fresh page load. All five matched the prepared text; Update Project was disabled with no unsaved changes. Track, theme, sole human participant and the previously checked promotion permission remained unchanged. No duplicate or new agreement was submitted. The partner-feedback field is a single-line input, so its paragraphs were joined with a space.
+The original entry was submitted October 28 and the same entry was independently observed signed in today. These are the final narrative answers and updated existing demo URL. Portal save verification is recorded in the resume checkpoint. No duplicate entry, new participant or changed agreement is intended.
 
 ## Team Name
 
@@ -10,20 +10,20 @@ UNBOUND Access - Paperwork by Voice
 
 Indie Developer Track
 
-## Problem statement / theme
+## Theme
 
 Build for Your World
 
 ## Project Description
 
-UNBOUND Access helps people who find typing or dense forms difficult work through fictional paperwork one question at a time. Large controls and read-aloud support spoken or typed answers. Every answer needs confirmation. Shared facts can be corrected together while another person's details remain separate. Source-linked review and a readable PDF answer record keep the person in control. Nothing is signed or submitted automatically.
+UNBOUND Access helps people who find typing or dense forms difficult work through fictional paperwork one question at a time. Large controls and read-aloud support spoken or typed answers. Every answer needs confirmation. Shared facts can be corrected together while another person's details remain separate. Source-linked review produces a readable PDF answer record. Nothing is signed or submitted automatically.
 
-The event-built workflow includes two prepared forms, speech commands, required/conditional validation, correction history, in-tab recovery and PDF export. Optional Meta Llama 3.2 3B runs inside the browser to propose source-question types. A real typed browser run approved an eight-question Meta proposal, used Meta to interpret zero dollars as 0, corrected both linked home addresses without changing the workshop address, and downloaded a reviewed one-page PDF. Its exact values and rendered layout were checked. There are 91 passing automated checks.
+The working app includes two practice forms, PDF text import, optional on-device Meta Llama 3.2, a clearly labelled source-wording alternative, validation, correction history and reload recovery. The default smaller model now passes three authored form checks: ten of ten, nine of nine and nine of nine final question types. There are 152 passing engineering checks. Earlier actual main-app Meta-to-PDF and basic phone checks are preserved; a complete hands-free phone session and timed usability study are not claimed.
 
 Product: https://unbound-access-paperwork-by-voice.savorydove14.chatgpt.site
-Judge walkthrough/evidence: https://unbound-access-paperwork-by-voice.savorydove14.chatgpt.site/contest
+Judge walkthrough and raw evidence: https://unbound-access-paperwork-by-voice.savorydove14.chatgpt.site/contest
 
-Only human participant: Boyd Koehler, UNBOUND FORGEWORKS LLC; product direction and acceptance testing. Implementation was assisted by an OpenAI coding assistant. Reused starter/dependencies and licenses are disclosed. This is separate from the commercial UNBOUND AI Founders Beta.
+Only human participant: Boyd Koehler, UNBOUND FORGEWORKS LLC; product direction and acceptance testing. Implementation was assisted by an OpenAI coding assistant. Reused code, dependencies and model licences are disclosed. This is separate from the commercial UNBOUND AI Founders Beta.
 
 ## Public GitHub Repository
 
@@ -31,41 +31,32 @@ https://github.com/Beau2176/unbound-access-contest-2026
 
 ## 3-Minute Demo Video
 
-https://unbound-access-paperwork-by-voice.savorydove14.chatgpt.site/artifacts/unbound-access-demo.mp4
+https://unbound-access-paperwork-by-voice.savorydove14.chatgpt.site/artifacts/unbound-access-demo-v2.mp4
 
-The video is 179.026 seconds, edited actual app screens and an actual browser-downloaded PDF with generic offline synthetic narration. It is not continuous voice capture and predates the new 3B result; the judge page and raw receipts supply that update.
+## Describe your use of Meta products
 
-## Describe your use of Meta products to build the submitted project
+Built with Llama. Pinned Meta Llama 3.2 1B Instruct Q4_K_M runs real inference in the browser through wllama, after an optional 808 MB download. There is no API key, card or paid fallback. Each source question receives a live type-classification call; numeric candidates receive an independent count-or-dollars model decision. Exact source labels, pages, required flags and repeated-label links come from application code and are excluded from model scoring.
 
-Built with Llama. Optional Meta Llama 3.2 3B Instruct GGUF Q4_K_M runs real inference through wllama in the browser, with a separately consented 2.02 GB download and no API key or paid fallback. One bounded call proposes each question's type. Exact labels, pages, required flags and narrowly matched repeated labels are derived by application code; source/type checks and explicit approval precede form replacement.
+Under the final v9 contract, the unchanged repair-visit case matched ten of ten final types in 25.052 seconds after twelve calls. The previously failing garden case matched nine of nine in 42.153 seconds after eleven calls. A new library form, frozen before its first live call, matched nine of nine in 20.096 seconds after eleven calls. Every raw response is preserved and independently scored. These are authored development cases, not a general accuracy benchmark or phone-performance study.
 
-On one authored eight-question development form, 3B matched all eight expected types in 162,825 ms on CPU. A separate 3B request interpreted zero dollars as 0 in 95,032 ms, then waited for confirmation. Under the same per-question contract, 1B matched two of eight and was rejected. Exact prompts, every unchanged response, scoring and the completed browser PDF are preserved. These are development cases, not a held-out benchmark or phone-speed claim.
+Earlier failures remain public, including two-of-ten and eight-of-nine runs. Compact 3B IQ3_M previously completed the original case but took about seven minutes; it remains optional. Original full-Q4 loading interruptions are unresolved. A prior Muse Glimmer playground attempt and its separate eight-edit reviewed derivative are also preserved. Loading that example makes no new AI call; hosted inference remains unconfigured.
 
-A prior Muse Glimmer 30B playground proposal and a separate eight-edit reviewed derivative are also preserved. Loading that captured example makes no new call; arbitrary manual imports retain unverified provider provenance. Hosted NVIDIA/OpenRouter inference remains unconfigured.
+## Why are Meta's models important?
 
-## Why are Meta's models important to your solution?
+Meta translates varying source wording into proposed question types and can interpret a person's natural answer as a proposed value. The person reviews the source-linked proposal, confirms answers and controls corrections. Deterministic validation, shared-fact propagation and final review remain separate from model generation.
 
-Meta proposes a new form's question types and interprets a person's natural answer as a proposed value. In the verified browser path, 3B distinguished text, email, date, money and description fields before the person approved the source-linked questions. The model's proposals remain separate from deterministic validation, shared-fact propagation and explicit confirmation.
+Local inference makes the demonstrated path available without an API account or payment method and keeps form text in the browser. Model downloads, memory requirements and CPU latency remain real constraints. Prepared forms and clearly labelled source-wording review provide useful paths when model access or a proposal fails. General extraction and a complete phone dictation study remain unverified.
 
-Local inference avoids an API-account/payment requirement for the demonstrated path. Its large download and slow CPU processing are real constraints. General extraction, full phone dictation and measured usability remain unverified. Prepared forms and direct controls remain usable without AI.
+## Feedback on Meta products
 
-## Provide feedback from your experience using Meta products
+Structured JSON is not semantic correctness. Earlier smaller-model runs misclassified fields, including an optional email. We preserved those failures, clarified the general email-format instruction, and retained fail-closed source checks. The final smaller-model contract passed all expected final types on three authored forms; two were repeated development cases and one was newly frozen before its first live call. This does not establish arbitrary-form reliability.
 
-Structured JSON is not semantic correctness. The 1B model's revised per-question run matched two of eight question types; the larger 3B checkpoint matched eight of eight on the same authored source and contract. Earlier 1B answer checks handled three clear values but guessed an uncertain count; input grounding rejects that unsupported value. Source metadata is derived deterministically, not credited to the model. Preserving failures and exact corrections/guards makes the results reviewable.
+Numeric-unit verification uses additional real model calls, not expected-answer repairs. Exact requests, responses, elapsed times and independent scores are public. Earlier uncertain-answer guesses were rejected by input grounding. Compact 3B provides a working but slow optional path; its approximately seven-minute CPU run and the unresolved original-Q4 loader limit are disclosed. No GPU, full-phone or continuous hands-free success is claimed.
 
-The 3B result demonstrates a working bounded path, not general accuracy. On this CPU browser it needed 162.8 seconds for the eight-question extraction and 95 seconds for the first separate answer prompt. Device memory, download size and latency remain barriers. We do not claim a GPU result, full phone voice study or arbitrary-form reliability.
+## Feedback on partner technologies
 
-## Provide feedback from your experience using partner technologies
+NVIDIA's public Muse Glimmer playground enabled an earlier no-card attempt; its nine-question response needed seven identifier corrections and one wording correction before separate review. No unchanged Muse success is claimed. Hosted developer-key setup remains unfinished; Baseten, Modal and Fireworks were not used. wllama enabled the later real browser-local Llama runs. Pinned weights, explicit download consent, a removable cache, bounded requests, cancellation and exact-call receipts made the local path reviewable. No paid service or new account was activated.
 
-NVIDIA's public Muse Glimmer playground enabled the earlier no-card development attempt. Its original nine-question response required seven identifier fixes and one wording correction before separate source review; no unchanged Muse success is claimed. Developer Program/server key setup remains unfinished. Baseten, Modal and Fireworks were not used.
+## Demo scope
 
-wllama enabled the later real browser-local Meta runs. Pinned weights, explicit size consent, a dedicated removable cache, bounded requests and exact-call receipt exports helped make the local path reviewable. No paid service or new account was activated.
-
-## Remaining limits and evidence links
-
-- One tester earlier reported basic phone audio, microphone and opening a saved sample PDF. A complete phone dictation session and timed usability comparison remain unverified.
-- Fictional English text forms only. No OCR, signatures, payments, eligibility decisions or agency integrations. Detected unsupported conditions and numeric ranges are rejected in local extraction; prepared forms cover those features.
-- Browser speech may use a remote provider; local model text processing does not imply fully offline speech.
-- Source ZIP: https://unbound-access-paperwork-by-voice.savorydove14.chatgpt.site/artifacts/unbound-access-source.zip
-- Real inference controls: https://unbound-access-paperwork-by-voice.savorydove14.chatgpt.site/local-meta
-- Existing entry only; no organizer eligibility ruling or named Muse-only bonus is claimed.
+The existing updated 2:50 video is an edited walkthrough with offline synthetic narration, earlier Meta results and a labelled saved-schema replay. It is not a continuous live voice capture and predates the final v9 runs. The judge page and exact receipts provide the new results. All data in the public demonstration and model tests is fictional.

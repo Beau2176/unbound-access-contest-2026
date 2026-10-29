@@ -67,6 +67,7 @@ export const SOURCE_TYPE_PROMPT = `Choose the answer format for one form field. 
 Use money, NOT number, for dollars, currency, a payment or a budget.
 Use longtext, NOT text, when asked to describe or explain something.
 Use number for a count of items or people. Use text for a name or street address.
+Use email, NOT text, for email or e-mail, whether the field is required or optional.
 Examples:
 Attendee full name -> {"kind":"text"}
 Delivery street address -> {"kind":"text"}

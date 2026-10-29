@@ -1,0 +1,16 @@
+{
+  "scope": "New fictional development case, not a held-out benchmark or a phone study.",
+  "frozen_before_first_live_call": true,
+  "source": "Fictional library room request\nOrganizer name (required)\nEmail for booking updates (optional)\nHow many visitors? (required)\nDeposit in dollars (required)\nNeed step-free access? Yes or No (required)\nMeeting date YYYY-MM-DD (required)\nDescribe the planned activity (required)\nMailing address (required)\nRepeat mailing address (required)",
+  "expected_kinds": [
+    "text",
+    "email",
+    "number",
+    "money",
+    "yesno",
+    "date",
+    "longtext",
+    "text",
+    "text"
+  ]
+}

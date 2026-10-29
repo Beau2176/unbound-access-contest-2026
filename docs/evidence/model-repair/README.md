@@ -1,5 +1,23 @@
 # Smaller-model accuracy and larger-model workaround
 
+## Final focused check - October 29, 2026
+
+The final `source-line-types-v9-explicit-email` contract adds a general email-format instruction. The source fixtures and expected types were not changed to make a pass. On the published version-45 HTTPS app, the default 1B model passed all final types in three authored cases:
+
+| Case | Final types | Actual calls | Inference time |
+|---|---:|---:|---:|
+| Original repair visit | 10 / 10 | 12 | 25.052 seconds |
+| Previously failing garden | 9 / 9 | 11 | 42.153 seconds |
+| New library form, frozen before its first live call | 9 / 9 | 11 | 20.096 seconds |
+
+Exact receipts, independent scores and the original full export are in `docs/evidence/model-repair/v45-*`. Only the library case was new in this pass; none is a held-out benchmark or phone study. Source labels, pages, required flags and repeated-label links remain application-derived and excluded from model credit. Every numeric candidate still receives its own actual count-or-dollars decision. All earlier failures and the v8 garden rejection remain preserved. The model was turned off after the three runs. No unchanged loading loop, additional phone test or paid inference was used.
+
+All 152 engineering checks and TypeScript passed before publication. The previously verified actual main-app Meta-to-PDF workflow and phone observations remain separate evidence; these new diagnostics do not repeat or replace them. The existing 2:50 edited demo preserves earlier results and a labelled saved-schema replay; it predates these final v9 results.
+
+---
+
+## Earlier development record (preserved)
+
 October 29, 2026 (America/Denver). These are authored development cases, not a held-out accuracy benchmark or phone study. Source PDFs and original expectations were not changed. The first-stage model requests in v8 exactly match those of v5; only independent numeric-unit verification was added.
 
 ## Measured smaller-model results

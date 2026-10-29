@@ -29,7 +29,7 @@ if not calls:
 expected_by_id = {row["id"]: row["kind"] for row in expected["expected_rows"]}
 by_id = {}
 unit_by_id = {}
-staged = receipt.get("contract") in ("source-line-types-v7-numeric-stages", "source-line-types-v8-numeric-verification")
+staged = receipt.get("contract") in ("source-line-types-v7-numeric-stages", "source-line-types-v8-numeric-verification", "source-line-types-v9-explicit-email")
 unknown_stages = []
 duplicates = []
 for call in calls:

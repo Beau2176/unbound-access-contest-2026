@@ -1,0 +1,33 @@
+{
+  "scope": "Three authored development cases; only the library source was newly frozen before its first live call. Not an arbitrary-form benchmark or a phone-performance study.",
+  "contract": "source-line-types-v9-explicit-email",
+  "results": [
+    {
+      "case": "garden",
+      "matched": 9,
+      "questions": 9,
+      "calls": 11,
+      "elapsed_ms": 42153,
+      "accepted": true,
+      "score_valid": true
+    },
+    {
+      "case": "repair",
+      "matched": 10,
+      "questions": 10,
+      "calls": 12,
+      "elapsed_ms": 25052,
+      "accepted": true,
+      "score_valid": true
+    },
+    {
+      "case": "library",
+      "matched": 9,
+      "questions": 9,
+      "calls": 11,
+      "elapsed_ms": 20096,
+      "accepted": true,
+      "score_valid": true
+    }
+  ]
+}

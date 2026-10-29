@@ -93,3 +93,12 @@ test("a failing browser speech cancellation cannot trap the pause or dispose con
  assert.doesNotThrow(()=>h.speech.stop());assert.equal(h.state().guided,false);assert.equal(h.state().speaking,false);
  assert.doesNotThrow(()=>h.speech.dispose());h.tick();assert.equal(h.recognitions.length,0);
 });
+test("previewing a changed reading voice pauses guided input and never starts the microphone afterward", () => {
+  const h = harness(); h.speech.startGuide("Question"); h.finish(); h.tick();
+  assert.equal(h.recognitions.length, 1);
+  const lateResult = h.recognitions[0].onresult!;
+  h.speech.stop(); h.speech.say("Voice preview");
+  lateResult({results:[[{transcript:"preview audio"}]]}); h.finish(); h.tick();
+  assert.deepEqual(h.transcripts, []);
+  assert.equal(h.recognitions.length, 1); assert.equal(h.state().guided, false);
+});

@@ -6,6 +6,7 @@ import type {Field,FormDefinition,Proposal,Session} from "../lib/access";
 import {communityForm} from "../lib/forms";
 import {prepareReviewDownload,downloadSource,pdfFailure} from "../lib/pdf";
 import {useSpeech} from "../hooks/use-speech";
+import ReadingVoiceSettings from "./reading-voice-settings";
 import AccessDialogs from "./access-dialogs";
 import {useLocalMeta} from "../hooks/use-local-meta";
 import {runLocalMeta,clearLocalMetaReceipts,cancelLocalMeta} from "../lib/local-meta-client";
@@ -95,6 +96,7 @@ export default function AccessApp(){
             </div>}
           </div>}
           <div className="voice-bar"><div className={`voice-status ${voice.listening?"is-listening":""}`}><span className="voice-bars"><i/><i/><i/><i/><i/></span><div><b>{voice.listening?"I’m listening":voice.speaking?"Reading aloud":voice.guided?"Voice session active":"Your pace. Your words."}</b><small>{voice.guided?"Say “stop” to pause. Your answers stay here.":"Start a guided session, or use the controls above."}</small></div></div><button className={voice.guided||voice.speaking||voice.listening?"pause-button":"voice-start"} disabled={busy||(!voice.available&&!voice.canRead)} onClick={()=>voice.guided||voice.speaking||voice.listening?voice.stop():voice.startGuide(review?reviewText(session):active.label+". "+questionHelp(active))}>{voice.guided||voice.speaking||voice.listening?<><Pause size={17}/> Pause</>:<><Mic size={17}/> Start by voice</>}</button></div>
+          <ReadingVoiceSettings voice={voice} disabled={busy}/>
         </section>
       </div>
       <div className="session-message" role="status" aria-live="polite">{message||(session.form.origin==="local"?"These questions were proposed on this device by Meta Llama. You review and confirm each answer.":session.form.origin==="manual"?"Questions were imported manually. Their model and provider are unverified. You confirm every answer.":configured?"Hosted AI is configured. Every proposed answer still needs your confirmation.":"Practice questions are prepared in advance. Hosted AI is not configured. Optional on-device Meta is available under Try a different form.")}</div>

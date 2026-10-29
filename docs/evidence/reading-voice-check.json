@@ -1,0 +1,49 @@
+{
+  "scope": "Reading voice selection and controls; no subjective phone-quality pass",
+  "reported_by_tester": "First test was perfect; read-aloud voice sounded poor",
+  "previous_behavior": {
+    "selection": "first en-US voice",
+    "rate": 0.86
+  },
+  "current_behavior": {
+    "selection": "named English natural/neural/enhanced/premium, then Google English; explicit user override",
+    "default_rate": 1,
+    "rates": [
+      0.8,
+      0.9,
+      1,
+      1.1
+    ],
+    "late_voices": "voiceschanged listener and playback-time query",
+    "persistence": "versioned localStorage containing only voice identifier and rate",
+    "preview": "stops guided input and does not resume the microphone"
+  },
+  "automated_checks": {
+    "total": 115,
+    "new": 8,
+    "status": "passed",
+    "model_and_voice_quality": "not measured by deterministic fixtures"
+  },
+  "actual_browser_ui": {
+    "confirmed_fictional_answer": "preserved while changing speed and after reload",
+    "slower_speed": "restored after reload",
+    "phone_check_preferences": "same settings used",
+    "english_voice_options": 0,
+    "preview_audio": "recoverable read-aloud error; not successful audio playback",
+    "preview_after_error": "guided input remains paused"
+  },
+  "not_verified": [
+    "subjective natural sound",
+    "actual voice choices on tester phone",
+    "new phone playback",
+    "fully hands-free completion",
+    "actual phone viewport"
+  ],
+  "cost": "No paid generation, new service enrollment, API key or model download",
+  "private_phone_screenshot_and_values": "excluded",
+  "sources": [
+    "https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis/getVoices",
+    "https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis/voiceschanged_event",
+    "https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/localService"
+  ]
+}

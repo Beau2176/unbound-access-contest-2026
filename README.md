@@ -15,6 +15,7 @@ A real typed browser journey approved the 3B-proposed form, confirmed seven dist
 ## Working features
 
 - Two original fictional prepared forms, large controls, browser read-aloud and speech input, with typed alternatives.
+- Read-aloud defaults to normal speed and favors voices named Natural, Neural, Enhanced or Premium, then Google English when offered. Reading voice & speed provides a voice picker, four speeds and a microphone-free preview shared by questions, reviews and the phone check. Choices are remembered separately from answers; availability and subjective sound quality depend on the device.
 - Every proposed answer or correction requires confirmation. Ambiguous correction targets ask for clarification. Applicant and another person's addresses remain separate.
 - Required and conditional questions, numeric/date/email checks, contradiction detection, stale-change protection, source quotes/pages and answer history.
 - Email dictation converts explicit spoken separators such as “alex at example dot com” and “alex A-T example dot com” to alex@example.com for confirmation. It also handles phone keyboard dictation. Email conversion uses application rules without a model request; ambiguous addresses still need correction.
@@ -46,7 +47,7 @@ pnpm build
 pnpm dev
 ```
 
-The build copies WASM assets from pinned npm packages. In the managed environment use `sites-preview start <checkout>`; actual inference requires HTTPS. There are **107 passing automated checks**, using deterministic fixtures/stubs for model and speech behavior. Real inference evidence is recorded separately. TypeScript and production packaging are checked separately.
+The build copies WASM assets from pinned npm packages. In the managed environment use `sites-preview start <checkout>`; actual inference requires HTTPS. There are **115 passing automated checks**, using deterministic fixtures/stubs for model and speech behavior. Real inference evidence is recorded separately. TypeScript and production packaging are checked separately.
 
 ## Data, boundaries and remaining work
 
@@ -55,6 +56,8 @@ Fictional data only. Answers/history use sessionStorage in this tab. Receipts re
 Text PDFs: up to 5 MB, 10 pages and 16,000 characters. Experimental local AI: short sources up to 4,000 characters and 30 nonempty lines, one question per line. Detected conditions/numeric limits and explicit source/type conflicts are rejected. Use prepared forms or a fully reviewed manual proposal for those features. Human review remains essential. No OCR, signatures, payments, eligibility decisions, agency integrations or automatic submissions.
 
 One tester earlier reported basic Android audio, microphone and opening a saved sample PDF. The tester subsequently reported completing the phone review; screenshots showed confirmed answers, linked-address consistency, final acknowledgement and prepared PDF links. Email dictation required a manual @ correction. That reported defect now has deterministic regression coverage and browser UI checks with fictional transcripts; a phone retest of the fix remains pending. This does not establish a fully hands-free session, timed usability improvement, GPU performance or arbitrary-form generalization. Personal screenshots and their values are excluded from public materials.
+
+The tester subsequently reported that the first test was perfect but criticized the read-aloud voice. The voice-selection update replaces the previous first-US-voice selection and forced 0.86 speed with the controls above. Eight new deterministic checks and browser UI checks cover selection rules, saved preferences, preview isolation and retained answers. This browser exposed no English voice choices and playback returned a recoverable error; no new natural-sounding phone playback is claimed. A brief phone listening retest remains pending. See [reading-voice checks](docs/evidence/reading-voice-check.json).
 
 A later phone screenshot showed PDF generation failing to fetch the dynamically imported PDF engine. The engine now loads with the app instead of waiting until export; recoverable errors use plain-language guidance and a guarded reload keeps confirmed answers in the same tab. The tester subsequently reported a successful phone download retry. No new agent-captured phone file or separate reopening verification is claimed. See [PDF recovery check](docs/evidence/pdf-download-recovery-check.json).
 

@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { ArrowLeft, Check, Download, Mic, Pause, Volume2 } from "lucide-react";
 import { useSpeech } from "../hooks/use-speech";
+import ReadingVoiceSettings from "./reading-voice-settings";
 import { heardPhoneTestPhrase, phoneCheckSession } from "../lib/phone-check";
 import { prepareReviewDownload } from "../lib/pdf";
 type Result = "Not checked" | "Passed" | "Needs attention";
@@ -22,6 +23,7 @@ export default function PhoneCheck() {
     <main className="workspace phone-check"><p className="eyebrow">THREE SMALL CHECKS</p><h1>Try it on your phone.</h1><p className="lead">Check sound, say two words, and save one sample PDF. Your current paperwork answers stay untouched.</p><p className="microcopy">Use Chrome on your phone for this check. Microphone audio may be processed by your browser's speech service. The test uses fictional words and answers; no AI model is called.</p>
       <section className="phone-check-card" aria-labelledby="audio-heading"><span className="sample-tag">1 of 3 · {audio}</span><h2 id="audio-heading">Hear the words.</h2><p>Turn up your media volume. Tap Play, then confirm whether you heard “Your phone can read this question aloud.”</p>
         <div className="proposal-actions"><button className="primary" disabled={!voice.canRead || busy} onClick={() => { setPlayed(true); setAudio("Not checked"); voice.say("Your phone can read this question aloud."); }}><Volume2 size={19}/> Play test words</button><button className="secondary" disabled={!played} onClick={() => { voice.stop(); setAudio("Passed"); }}><Check size={19}/> I heard it</button><button className="text-button" disabled={!played} onClick={() => { voice.stop(); setAudio("Needs attention"); }}>I could not hear it</button></div>{!voice.canRead && <p>Read-aloud is unavailable in this browser.</p>}
+        <ReadingVoiceSettings voice={voice} disabled={busy} expanded/>
       </section>
       <section className="phone-check-card" aria-labelledby="mic-heading"><span className="sample-tag">2 of 3 · {microphone}</span><h2 id="mic-heading">Say “blue bicycle.”</h2><p>Tap Test microphone, allow microphone access if your phone asks, then say <b>blue bicycle</b>. The words it recognizes appear here.</p>
         <button className="primary" disabled={!voice.available || voice.speaking || busy} onClick={() => { voice.stop(); setHeard(""); setMicrophone("Not checked"); voice.listen(); }}><Mic size={19}/> {voice.listening ? "Listening…" : "Test microphone"}</button>

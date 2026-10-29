@@ -1,6 +1,14 @@
 # Current evaluation - October 28, 2026 (America/Denver)
 
-107 automated checks passed. TypeScript passes. These deterministic model/speech fixtures are engineering checks, not model-quality or phone tests. Real browser/model work is separate below.
+115 automated checks passed. TypeScript passes. These deterministic model/speech fixtures are engineering checks, not model-quality or phone tests. Real browser/model work is separate below.
+
+## Reading voice update
+
+The tester reported that the first test was perfect but the read-aloud voice sounded poor. The old hook selected the first en-US voice and set rate to 0.86. The new automatic selection favors English voices whose names identify Natural/Neural/Enhanced/Premium qualities and Google English voices, deprioritizing names of older basic engines. This is a name heuristic, not an audio-quality measurement. Normal speed is now 1.0. Available voices update on voiceschanged and are queried again at playback. An explicit selection overrides automatic ranking; a removed voice falls back safely.
+
+A shared Reading voice & speed control appears in questions/reviews and expanded on the phone check. Voice identifiers and one of four bounded rates are stored separately from form answers; denied storage keeps an in-memory choice. Changing preferences and previewing stop guided input. A preview never automatically starts the microphone. Online browser voices may send the text being read to the browser provider; privacy disclosures were updated. No new service, paid generation, API key or model download was added.
+
+Eight new deterministic checks cover first-voice replacement, ranking variants, explicit selection/removal, late lists, English filtering, saved settings, storage failures and preview microphone isolation. In the actual preview UI, changing speed preserved a fictional confirmed answer; reload restored both the answer and the chosen slower speed. The phone-check page used the same preferences. This cloud browser offered no English voice choices; preview playback returned a recoverable read-aloud error and remained paused. It could not establish audible quality or actual phone voice availability. See evidence/reading-voice-check.json. A phone listening retest is pending; earlier phone PDF success does not need repetition.
 
 ## Updated competition video
 

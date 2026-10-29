@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { callFreeMeta, ModelError } from "./meta.ts";
 import { callFreeNvidia } from "./nvidia.ts";
+import { getAnswerClarification } from "./answer-clarification.ts";
 
 const schema = z.object({
   task: z.enum(["extract", "answer"]), text: z.string().min(1).max(16000),
@@ -34,6 +35,10 @@ export async function handleAssist(request: Request, options: { authenticated: b
   try {
     const body = schema.parse(await readBody(request));
     if (body.task === "answer" && !body.field) return json({ error: "Choose a question first.", preservedAnswers: true }, 400);
+    if (body.task === "answer") {
+      const clarification = getAnswerClarification(body.field!, body.text);
+      if (clarification) return json({ data: clarification, model: "Application clarification (no AI call)", provider: "Application rules", reportedCost: 0 });
+    }
     if (options.provider === "unavailable") throw new ModelError("Live Meta AI has no valid provider configured. Your answers are preserved.");
     const call = options.provider === "nvidia" ? callFreeNvidia : callFreeMeta;
     return json(await call({ key: options.key, fetcher: options.fetcher, ...body }));

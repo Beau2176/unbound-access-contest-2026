@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { validFormDefinition } from "./access.ts";
+import { getAnswerClarification } from "./answer-clarification.ts";
 export const FREE_META_MODEL = "meta-llama/llama-3.3-70b-instruct:free";
 export type MetaField = { id: string; label: string; kind: string };
 export function metaSystemPrompt(task: "extract" | "answer") {
@@ -10,6 +11,7 @@ export function parseMetaContent(content: string | undefined, task: "extract" | 
   let parsed: unknown;
   try { parsed = JSON.parse(content.replace(/^```(?:json)?\s*|\s*```$/g, "")); } catch { throw new ModelError("The model response was not valid JSON. Your current answers are unchanged.", 422); }
   const data = task === "extract" ? validateExtraction(parsed, text) : z.object({ fieldId: z.literal(field!.id), value: z.string().max(3000), needsClarification: z.boolean(), question: z.string().max(500) }).strict().parse(parsed);
+  if (task === "answer" && "value" in data && data.value && getAnswerClarification(field!, text)) throw new ModelError("Your words indicate uncertainty, so the AI's proposed value was rejected. Your saved answers are unchanged.", 422);
   return data;
 }
 const ALLOWED = new Set([FREE_META_MODEL]);

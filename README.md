@@ -17,6 +17,7 @@ A real typed browser journey approved the 3B-proposed form, confirmed seven dist
 - Two original fictional prepared forms, large controls, browser read-aloud and speech input, with typed alternatives.
 - Read-aloud defaults to normal speed and favors voices named Natural, Neural, Enhanced or Premium, then Google English when offered. Reading voice & speed provides a voice picker, four speeds and a microphone-free preview shared by questions, reviews and the phone check. Choices are remembered separately from answers; availability and subjective sound quality depend on the device.
 - Every proposed answer or correction requires confirmation. Ambiguous correction targets ask for clarification. Applicant and another person's addresses remain separate.
+- Detected uncertain answers such as “I am not sure” now ask a field-specific clarification before any optional AI request. Saved answers stay unchanged, and the person can give a definite answer or skip. Standalone unknown answers are caught for text fields without discarding descriptive text such as “I do not know how to apply and need help.” Raw Meta diagnostics still expose model failures separately.
 - Required and conditional questions, numeric/date/email checks, contradiction detection, stale-change protection, source quotes/pages and answer history.
 - Email dictation converts explicit spoken separators such as “alex at example dot com” and “alex A-T example dot com” to alex@example.com for confirmation. It also handles phone keyboard dictation. Email conversion uses application rules without a model request; ambiguous addresses still need correction.
 - In-tab recovery, explicit clear session, final review and reviewed/incomplete PDF records with persistent Save/Open links. PDFs are answer records, not filled agency originals.
@@ -47,7 +48,7 @@ pnpm build
 pnpm dev
 ```
 
-The build copies WASM assets from pinned npm packages. In the managed environment use `sites-preview start <checkout>`; actual inference requires HTTPS. There are **115 passing automated checks**, using deterministic fixtures/stubs for model and speech behavior. Real inference evidence is recorded separately. TypeScript and production packaging are checked separately.
+The build copies WASM assets from pinned npm packages. In the managed environment use `sites-preview start <checkout>`; actual inference requires HTTPS. There are **122 passing automated checks**, using deterministic fixtures/stubs for model and speech behavior. Real inference evidence is recorded separately. TypeScript and production packaging are checked separately.
 
 ## Data, boundaries and remaining work
 

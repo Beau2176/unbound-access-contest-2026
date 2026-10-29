@@ -1,3 +1,5 @@
+import { getAnswerClarification } from "./answer-clarification.ts";
+
 export type FieldKind = "text" | "longtext" | "number" | "money" | "yesno" | "email" | "date";
 export type Field = { id: string; label: string; kind: FieldKind; required: boolean; sourceQuote: string; sourcePage: number; factKey: string; help: string; requiredWhen?: { fieldId: string; equals: string }; min?: number; max?: number };
 export type FormDefinition = { id: string; title: string; sourceText: string; fields: Field[]; fictional: boolean; linksVerified: boolean; origin: "prepared" | "meta" | "manual" | "local"; warnings: string[] };
@@ -76,6 +78,8 @@ export function valueError(field: Field, value: string): string | null {
 export function proposeAnswer(session: Session, fieldId: string, input: string, method: Answer["method"] = "typed"): Proposal {
   const field = session.form.fields.find(f => f.id === fieldId);
   if (!field) throw new Error("That question is not in this form.");
+  const clarification = getAnswerClarification(field, input);
+  if (clarification) throw new Error(clarification.question);
   const value = normalizeValue(field, input);
   const targets = session.form.linksVerified ? session.form.fields.filter(f => f.factKey === field.factKey) : [field];
   for (const target of targets) { const error = valueError(target, value); if (error) throw new Error(error); }

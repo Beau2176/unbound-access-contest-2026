@@ -1,6 +1,14 @@
 # Current evaluation - October 28, 2026 (America/Denver)
 
-115 automated checks passed. TypeScript passes. These deterministic model/speech fixtures are engineering checks, not model-quality or phone tests. Real browser/model work is separate below.
+122 automated checks passed. TypeScript passes. These deterministic model/speech fixtures are engineering checks, not model-quality or phone tests. Real browser/model work is separate below.
+
+## Clarification before AI
+
+Detected uncertainty now produces a field-specific question in the paperwork app before optional local or hosted inference. It creates no answer proposal and leaves confirmed answers and linked facts unchanged. A visible box beside the input, its accessible description and the existing status announcement carry the question; guided voice reads it and can listen for the next answer. The person can answer clearly or skip for now. Core proposal creation also rejects detected uncertain non-answers. The authenticated hosted handler can return the same explicitly application-labelled clarification without a provider request, including when a provider is unavailable; authentication, origin, consent and schema checks still run first.
+
+Seven new regression checks cover uncertain typed/spoken inputs, linked correction preservation, clear values including zero and No, free-text descriptions and spoken email separators, provider-call avoidance, retained request restrictions and rejection of raw model guesses. Four of these checks failed against the prior implementation and now pass. All 122 automated checks and TypeScript pass. Visible preview controls rejected an unknown name, confirmed a count of three, asked for clarification on an uncertain correction and showed the saved three intact in review. A later “four people” answer produced an unconfirmed 3-to-4 proposal; cancelling and skipping left the existing answer in place.
+
+This is an application reliability improvement, not a newly successful Meta model answer. The raw four-case Meta diagnostic deliberately still calls the model for the uncertain example and retains the response guard and unchanged receipts. No new inference, phone audio test, timed usability study or broad uncertainty benchmark was performed. The phrase detector is bounded, may miss phrasing or request clarification conservatively, and does not establish general semantic correctness. See evidence/answer-clarification-check.json.
 
 ## Reading voice update
 

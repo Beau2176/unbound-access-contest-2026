@@ -1,6 +1,7 @@
 import { z } from "zod";
 import type { Field, FormDefinition } from "./access.ts";
 import { ModelError, parseMetaContent, validateExtraction } from "./meta.ts";
+import { getAnswerClarification } from "./answer-clarification.ts";
 
 export const LOCAL_META = {
   name: "Meta Llama 3.2 1B Instruct",
@@ -158,7 +159,7 @@ export function parseLocalAnswer(output: string, field: LocalField, utterance: s
   localAnswerRequest(field, utterance);
   const raw = z.object({ value: z.string().max(3000), question: z.string().max(500) }).strict().parse(JSON.parse(output));
   if ((!raw.value.trim() && !raw.question.trim()) || (raw.value && raw.question)) throw new ModelError("The AI did not give a usable answer or clarification. Your answer is unchanged.", 422);
-  if (raw.value && ["number","money","yesno","date"].includes(field.kind) && /\b(?:not sure|unsure|uncertain|don['’]?t know|do not know|can['’]?t remember|cannot remember|maybe|approximately|about)\b/i.test(utterance)) throw new ModelError("Your words indicate uncertainty, so the AI's proposed value was rejected. What answer should this question use? Your saved answers are unchanged.", 422);
+  if (raw.value && getAnswerClarification(field, utterance)) throw new ModelError("Your words indicate uncertainty, so the AI's proposed value was rejected. What answer should this question use? Your saved answers are unchanged.", 422);
   if (raw.value && (field.kind === "number" || field.kind === "money")) {
     const words: Record<string,string> = {zero:"0",one:"1",two:"2",three:"3",four:"4",five:"5",six:"6",seven:"7",eight:"8",nine:"9",ten:"10",eleven:"11",twelve:"12",couple:"2",pair:"2"};
     const numericEvidence: string[] = utterance.toLowerCase().replace(/[$,]/g, "").match(/\b\d+(?:\.\d+)?\b/g) ?? [];

@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-28",
+  "timezone": "America/Denver",
+  "scope": "Application clarification and answer preservation; not improved raw model accuracy or a phone usability study.",
+  "change": {
+    "pre_inference": "Shared phrase check runs before optional local/hosted AI in the paperwork app.",
+    "ui": "Field-specific clarification is visible beside the answer box, linked by aria-describedby and announced by the existing status region; guided voice uses its existing read/listen path.",
+    "state": "No answer proposal, confirmation, linked-answer change or audit entry is created by detected uncertainty.",
+    "server": "Authentication, same origin, fictional-data consent and schema validation precede the application-labelled no-AI clarification.",
+    "post_inference": "Raw local and hosted model guesses are still rejected for detected uncertain input.",
+    "diagnostic": "The raw four-case model check still performs inference for the uncertainty example. No change to model, prompt, pinned revision, raw request or historical receipt."
+  },
+  "automated": {
+    "new_checks": 7,
+    "new_checks_failed_before_fix": 4,
+    "total_passed": 122,
+    "failures": 0,
+    "typecheck": "passed"
+  },
+  "browser_ui": [
+    "An unknown full-name answer produced clarification with zero confirmed answers and no save proposal.",
+    "three people produced an unconfirmed value of 3, which was explicitly confirmed.",
+    "I am not sure how many people will come. produced a clarification; review still showed the confirmed value 3.",
+    "I think three produced a visible clarification beside the answer input and no save proposal.",
+    "four people then produced an unconfirmed 3-to-4 proposal; cancellation and skipping returned to the next question without changing the saved count."
+  ],
+  "react_review": [
+    "Synchronous check before optional inference/network I/O.",
+    "No new effect or event subscription.",
+    "Clarification clears on a new attempt, navigation or new form.",
+    "Input has an accessible description; status announcements are retained."
+  ],
+  "limits": [
+    "Bounded English phrase detection, not exhaustive semantic uncertainty recognition.",
+    "Free-text descriptions discussing uncertainty remain usable.",
+    "No fresh model inference or model-speed measurement in this pass.",
+    "No new phone microphone/read-aloud or complete hands-free session was tested.",
+    "Historical model mistakes remain disclosed; application clarification is not scored as model success."
+  ],
+  "cost_usd": 0
+}

@@ -1,6 +1,18 @@
-# Current evaluation - October 29, 2026
+# Current evaluation - October 28, 2026 (America/Denver)
 
-98 automated checks passed. TypeScript passes. These deterministic model/speech fixtures are engineering checks, not model-quality or phone tests. Real browser/model work is separate below.
+107 automated checks passed. TypeScript passes. These deterministic model/speech fixtures are engineering checks, not model-quality or phone tests. Real browser/model work is separate below.
+
+## Session, condition and voice reliability pass
+
+Two failures were reproduced in the previous implementation: sixty near-limit text corrections produced a 370,358-character session that could not restore, and a Yes-to-No correction in an imported form did not flag its answered follow-up. Three injected browser speech failures also escaped the controller: microphone creation, utterance creation and cancellation. Six new tests were observed failing before those fixes; all now pass.
+
+Current answers are retained while correction history is bounded to the latest hundred entries and 120,000 serialized characters. An offset preserves the total revision. The same sixty-correction reproduction now occupies 123,048 characters, retains nineteen recent history entries and restores its exact current answers. Legacy sessions below the new one-million-character input limit can migrate from the former size/count limits. This does not provide recovery after tab closure, cleared browser storage or a storage quota failure.
+
+Conditional conflicts now use the actual imported condition IDs. A conflicting detail is preserved for explicit correction and prevents reviewed-PDF status. Cyclic and unreachable conditions are rejected before import/recovery. The question-list review explains conditional requirements. Speech-constructor failures pause with recovery guidance; a failed browser cancellation cannot prevent local teardown. Leaving the tab pauses voice mode and does not automatically restart it. Speech failures are deterministic injected checks, not actual phone failures or a new microphone study.
+
+Visible browser controls rejected a cyclic manual proposal while retaining a pre-existing fictional answer. The corrected proposal showed its conditional requirement and was approved as a manually labelled form. Sixty long detail corrections were entered and confirmed through the actual UI; after reload the manual form, fictional name and final 2,972-character detail were intact. Changing the parent to No disabled review acknowledgement while preserving the detail and offering only draft status. Explicitly clearing that detail removed the conflict and allowed PDF preparation. Keyboard Shift-Tab wrapped within the proposal dialog. No model call or paid service was used; the arbitrary JSON is an authored fixture, not new model evidence.
+
+Nine new automated checks cover these regressions and legacy migration, including actual reviewed-versus-draft PDF output. All 107 checks pass. See evidence/reliability-hardening-check.json. No new downloaded browser bytes or measured usability result is claimed.
 
 ## PDF download recovery
 
@@ -8,7 +20,7 @@ A later private Android screenshot showed a dynamic-module fetch error at PDF ge
 
 Two new automated checks cover actionable errors without leaking asset URLs and a genuine reviewed PDF with the optional contact email unanswered. Existing real-export and failed-font retry checks still pass. Visible preview controls completed the required fictional answers, produced the reviewed PDF Save/Open links with optional fields blank and restored the confirmed answers on reload. The browser's download event and persistent-link capture both timed out; no newly downloaded bytes or actual phone retest are claimed. A typed “alex A-T example dot com” transcript still proposed alex@example.com for confirmation.
 
-The private phone image and its values are excluded from public source and evidence. This does not upgrade the earlier phone report to a complete saved-file or hands-free pass.
+After the focused same-tab refresh and download instructions, the tester reported that the repaired PDF worked on the phone. This is a tester-reported phone download pass; no new agent-captured phone file or separate reopening confirmation was supplied. The private phone image and its values remain excluded from public source and evidence. Fully hands-free completion remains unverified.
 
 ## Reported phone review and email dictation correction
 

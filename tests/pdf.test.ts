@@ -49,3 +49,16 @@ test("a reviewed record can be exported with an unanswered optional email",async
  assert.equal(result.complete,true);assert.equal(result.fileName,"UNBOUND_Access_Reviewed.pdf");assert.equal(await result.blob.slice(0,5).text(),"%PDF-");
  assert.equal(JSON.stringify(session),before);assert.equal(session.answers.email,undefined);
 });
+test("a conflicting imported follow-up cannot be labelled reviewed or silently erased",async t=>{
+ const form=structuredClone(communityForm);form.origin="manual";
+ for(const field of form.fields){if(field.id==="support")field.id="needs_help";if(field.id==="support_details"){field.id="help_details";field.requiredWhen!.fieldId="needs_help";}}
+ let session=createSession(form);
+ for(const [id,value] of Object.entries({full_name:"Morgan Example",home_address:"101 Practice Street",household_size:"2",monthly_income:"0",request:"Fictional practice",needs_help:"Yes",help_details:"Large print"}))session=applyProposal(session,proposeAnswer(session,id,value));
+ const font=new Uint8Array(await readFile(new URL("../public/fonts/DejaVuSans.ttf",import.meta.url)));
+ t.mock.method(globalThis,"fetch",async()=>new Response(font));
+ assert.equal((await prepareReviewDownload(session,true)).complete,true);
+ session=applyProposal(session,proposeAnswer(session,"needs_help","No"));
+ const result=await prepareReviewDownload(session,true);
+ assert.equal(result.complete,false);assert.equal(result.fileName,"UNBOUND_Access_Incomplete_Draft.pdf");
+ assert.equal(session.answers.help_details.value,"Large print");assert.equal(await result.blob.slice(0,5).text(),"%PDF-");
+});

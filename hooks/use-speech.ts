@@ -23,7 +23,9 @@ export function useSpeech(onTranscript: (text: string) => void, onMessage: (text
       cancelTimer: timer => window.clearTimeout(timer as number),
     }, text => handler.current(text), text => message.current(text), setState);
     controller.current = speech;
-    return () => { speech.dispose(); controller.current = null; };
+    const pauseWhenHidden=()=>{if(document.hidden)speech.stop();};
+    document.addEventListener("visibilitychange",pauseWhenHidden);
+    return () => { document.removeEventListener("visibilitychange",pauseWhenHidden);speech.dispose(); controller.current = null; };
   }, []);
   return { ...state, listen: () => controller.current?.listen(), say: (text: string) => controller.current?.say(text),
     stop: () => controller.current?.stop(), startGuide: (text: string) => controller.current?.startGuide(text),

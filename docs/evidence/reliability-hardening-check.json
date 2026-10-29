@@ -1,0 +1,34 @@
+{
+  "checked_at": "2026-10-29",
+  "timezone": "UTC",
+  "scope": "Fictional-data reliability regression checks; no model inference or new phone test.",
+  "automated": {"passed": 107, "failed": 0, "new_checks": 9, "new_checks_observed_failing_before_fix": 6, "typecheck": "passed"},
+  "reproduced_history_case": {
+    "long_corrections": 60,
+    "before": {"serialized_characters": 370358, "restored": false},
+    "after": {"serialized_characters": 123048, "retained_audit_entries": 19, "audit_offset": 41, "revision": 60, "restored": true},
+    "retention": "Current answers are preserved. Recent history is capped at 100 entries and 120000 serialized characters; total revision is retained."
+  },
+  "visible_browser_checks": {
+    "cyclic_manual_import_rejected": true,
+    "prior_fictional_answer_retained_after_rejection": true,
+    "conditional_requirement_shown_during_schema_review": true,
+    "shift_tab_wrapped_within_review_dialog": true,
+    "manual_form_label_restored_after_reload": true,
+    "long_detail_corrections_confirmed_through_ui": 60,
+    "final_restored_detail_length": 2972,
+    "final_restored_detail_marker": "Stress correction 60",
+    "yes_to_no_conflict_kept_details": true,
+    "conflict_disabled_review_acknowledgement": true,
+    "explicitly_clearing_details_resolved_conflict": true,
+    "fictional_name_retained_after_resolution": true
+  },
+  "speech_checks": {
+    "injected_microphone_constructor_failure_pauses_without_retry_loop": true,
+    "injected_utterance_constructor_failure_releases_speaking": true,
+    "injected_cancellation_failure_does_not_block_local_teardown": true,
+    "background_tab_pause": "Implemented through visibilitychange; actual phone background behavior was not measured."
+  },
+  "phone_pdf_followup": "The tester reported the v18 download retry worked. No new file bytes, separate reopening, or email conversion pass was supplied.",
+  "limits": ["No device-wide or exhaustive reliability guarantee", "No new continuous voice or measured usability test", "No recovery guarantee after tab closure or cleared/unavailable storage", "Legacy recovery input is limited to 1000000 characters", "No new captured browser download bytes"]
+}

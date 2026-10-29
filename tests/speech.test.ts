@@ -3,18 +3,19 @@ import assert from "node:assert/strict";
 import { SpeechController } from "../lib/speech-controller.ts";
 import type { Recognition, SpeechState, Utterance } from "../lib/speech-controller.ts";
 
-function harness(options: { microphone?: boolean; audio?: boolean; startFails?: boolean } = {}) {
+function harness(options: { microphone?: boolean; audio?: boolean; startFails?: boolean; recognitionFails?: boolean; utteranceFails?: boolean; cancelFails?: boolean } = {}) {
   const recognitions: Recognition[] = [], utterances: (Utterance & { text: string })[] = [], messages: string[] = [], transcripts: string[] = [];
   const timers = new Map<number, () => void>(); let nextTimer = 0;
   let state: SpeechState = { available: false, canRead: false, listening: false, speaking: false, guided: false };
   const speech = new SpeechController({
     createRecognition: options.microphone === false ? undefined : () => {
+      if(options.recognitionFails)throw new Error("Speech constructor unavailable");
       const recognition: Recognition = { lang: "", continuous: false, interimResults: false, onresult: null, onerror: null, onend: null,
         start() { if (options.startFails) throw new Error("Unavailable"); }, abort() {} };
       recognitions.push(recognition); return recognition;
     },
-    createUtterance: options.audio === false ? undefined : text => { const u = { text, onend: null, onerror: null }; utterances.push(u); return u; },
-    speak: options.audio === false ? undefined : () => {}, cancelSpeech() {},
+    createUtterance: options.audio === false ? undefined : text => { if(options.utteranceFails)throw new Error("Audio constructor unavailable");const u = { text, onend: null, onerror: null }; utterances.push(u); return u; },
+    speak: options.audio === false ? undefined : () => {}, cancelSpeech() {if(options.cancelFails)throw new Error("Speech cancellation unavailable");},
     schedule(callback) { const id = ++nextTimer; timers.set(id, callback); return id; },
     cancelTimer(id) { timers.delete(id as number); },
   }, text => transcripts.push(text), text => messages.push(text), value => { state = value; });
@@ -76,4 +77,19 @@ test("a microphone start exception produces a recoverable message", () => {
 test("unmounting prevents delayed browser callbacks restarting the microphone", () => {
   const h = harness(); h.speech.startGuide("Question"); const late = h.utterances[0].onend!; h.speech.dispose(); late(); h.tick();
   h.speech.listen(); assert.equal(h.recognitions.length, 0);
+});
+test("a microphone constructor failure pauses safely without throwing or retrying",()=>{
+ const h=harness({recognitionFails:true});h.speech.startGuide("Question");h.finish();
+ assert.doesNotThrow(()=>h.tick());assert.equal(h.state().listening,false);assert.equal(h.state().guided,false);
+ assert.match(h.messages.at(-1)!,/preserved/);h.tick();assert.equal(h.recognitions.length,0);
+});
+test("an audio constructor failure releases speaking and leaves an explicit manual recovery",()=>{
+ const h=harness({utteranceFails:true});assert.doesNotThrow(()=>h.speech.startGuide("Question"));
+ assert.equal(h.state().speaking,false);assert.equal(h.state().guided,false);assert.match(h.messages.at(-1)!,/shown on screen/);
+ h.tick();assert.equal(h.recognitions.length,0);assert.doesNotThrow(()=>h.speech.listen());assert.equal(h.state().listening,true);
+});
+test("a failing browser speech cancellation cannot trap the pause or dispose controls",()=>{
+ const h=harness({cancelFails:true});assert.doesNotThrow(()=>h.speech.startGuide("Question"));
+ assert.doesNotThrow(()=>h.speech.stop());assert.equal(h.state().guided,false);assert.equal(h.state().speaking,false);
+ assert.doesNotThrow(()=>h.speech.dispose());h.tick();assert.equal(h.recognitions.length,0);
 });

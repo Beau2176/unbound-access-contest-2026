@@ -8,7 +8,15 @@
     "PDF failures show actionable text without internal asset URLs.",
     "Reload recovery writes the current confirmed session before reload and refuses to reload if storage fails."
   ],
-  "automated": {"passed": 98, "failed": 0, "typecheck": "passed", "new_cases": ["module-error guidance and URL isolation", "actual reviewed PDF with optional email unanswered"]},
+  "automated": {
+    "passed": 98,
+    "failed": 0,
+    "typecheck": "passed",
+    "new_cases": [
+      "module-error guidance and URL isolation",
+      "actual reviewed PDF with optional email unanswered"
+    ]
+  },
   "preview_ui": {
     "inputs": "Fictional values only, entered and confirmed through visible controls.",
     "optional_email_left_blank": true,
@@ -20,5 +28,16 @@
     "proposed_email": "alex@example.com",
     "new_download_capture": "Both automatic-download event and Save PDF capture timed out; no newly downloaded bytes claimed."
   },
-  "limits": ["No actual phone retest", "No actual microphone recognition in this check", "No new completed saved-file claim", "No timed usability or hands-free result"]
+  "limits": [
+    "No new agent-captured phone file",
+    "No actual microphone recognition in this check",
+    "No separate new saved-file reopening confirmation",
+    "No timed usability or hands-free result"
+  ],
+  "phone_followup": {
+    "result": "Passed by tester report",
+    "scope": "Focused phone PDF download retry after refresh",
+    "separate_saved_file_reopening": "Unconfirmed",
+    "email_conversion_retest": "Unconfirmed"
+  }
 }

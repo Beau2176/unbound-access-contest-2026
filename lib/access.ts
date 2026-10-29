@@ -5,11 +5,24 @@ export type Answer = { value: string; confirmed: boolean; method: "typed" | "voi
 export type Change = { fieldId: string; before: string; after: string };
 export type Proposal = { revision: number; changes: Change[]; method: Answer["method"]; transcript: string };
 export type Audit = { at: string; changes: Change[]; method: Answer["method"] };
-export type Session = { version: 1; form: FormDefinition; answers: Record<string, Answer>; revision: number; audit: Audit[]; startedAt: string; interactions: number };
+export type Session = { version: 1; form: FormDefinition; answers: Record<string, Answer>; revision: number; audit: Audit[]; auditOffset?: number; startedAt: string; interactions: number };
 export type Issue = { fieldId: string; message: string };
 
 export function createSession(form: FormDefinition): Session {
   return { version: 1, form: structuredClone(form), answers: {}, revision: 0, audit: [], startedAt: new Date().toISOString(), interactions: 0 };
+}
+// Bound only correction history, never the person's current answers. The offset
+// preserves the total revision when old entries are removed, including legacy
+// sessions that had not yet reached the former restoration limits.
+function retainRecentHistory(session: Session): Session {
+  let start=session.audit.length,size=2;
+  while(start>0&&session.audit.length-start<100){
+    const cost=JSON.stringify(session.audit[start-1]).length+1;
+    if(size+cost>120000)break;
+    size+=cost;start--;
+  }
+  if(start){session.auditOffset=(session.auditOffset??0)+start;session.audit=session.audit.slice(start);}
+  return session;
 }
 export function groups(form: FormDefinition): Field[][] {
   const result = new Map<string, Field[]>();
@@ -69,6 +82,7 @@ export function proposeAnswer(session: Session, fieldId: string, input: string, 
   return { revision: session.revision, changes: targets.map(f => ({ fieldId: f.id, before: session.answers[f.id]?.value ?? "", after: value })), method, transcript: input };
 }
 export function applyProposal(session: Session, proposal: Proposal): Session {
+  if (!Number.isSafeInteger(session.revision) || session.revision >= Number.MAX_SAFE_INTEGER) throw new Error("This session cannot record another correction. Your confirmed answers are unchanged; download your record before starting a new session.");
   if (session.revision !== proposal.revision) throw new Error("An answer changed while this correction was open. Review it again.");
   if (!proposal.changes.length || new Set(proposal.changes.map(c => c.fieldId)).size !== proposal.changes.length) throw new Error("This answer change is invalid.");
   const fields = proposal.changes.map(c => session.form.fields.find(f => f.id === c.fieldId));
@@ -87,7 +101,7 @@ export function applyProposal(session: Session, proposal: Proposal): Session {
   for (const c of proposal.changes) next.answers[c.fieldId] = { value: c.after, confirmed: true, method: proposal.method, at };
   next.revision++; next.interactions++;
   next.audit.push({ at, changes: structuredClone(proposal.changes), method: proposal.method });
-  return next;
+  return retainRecentHistory(next);
 }
 export function issues(session: Session): Issue[] {
   const result: Issue[] = [];
@@ -95,13 +109,15 @@ export function issues(session: Session): Issue[] {
     const answer = session.answers[f.id];
     if (isRequired(f, session) && (!answer?.confirmed || !answer.value.trim())) result.push({ fieldId: f.id, message: `${f.label} still needs an answer.` });
     if (answer?.value) { const error = valueError(f, answer.value); if (error) result.push({ fieldId: f.id, message: `${f.label}: ${error}` }); }
+    if (f.requiredWhen && answer?.value.trim() && session.answers[f.requiredWhen.fieldId]?.value !== f.requiredWhen.equals) {
+      const parent=session.form.fields.find(field=>field.id===f.requiredWhen!.fieldId)!;
+      result.push({fieldId:parent.id,message:`${parent.label}: the follow-up “${f.label}” is filled in, but applies when the answer is ${f.requiredWhen.equals}. Review these answers.`});
+    }
   }
   for (const group of groups(session.form)) {
     const values = new Set(group.map(f => session.answers[f.id]?.value).filter(Boolean));
     if (values.size > 1) result.push({ fieldId: group[0].id, message: `Linked answers disagree: ${group.map(f => f.label).join(" / ")}.` });
   }
-  const support = session.answers.support?.value;
-  if (support === "No" && session.answers.support_details?.value) result.push({ fieldId: "support", message: "You chose No for access support, but support details are filled in. Review these answers." });
   return result;
 }
 export function exportRows(session: Session) {
@@ -164,21 +180,32 @@ export function validFormDefinition(value: unknown): value is FormDefinition {
     if (field.requiredWhen !== undefined && (!record(field.requiredWhen) || !bounded(field.requiredWhen.equals, 1, 3000)
       || !fields.some(f => f.id === field.requiredWhen.fieldId) || field.requiredWhen.fieldId === field.id)) return false;
     if (value.linksVerified && fields.some(f => f.factKey === field.factKey && f.kind !== field.kind)) return false;
+    if(field.requiredWhen){
+      const parent=fields.find(f=>f.id===field.requiredWhen!.fieldId)!;
+      if(valueError(parent,field.requiredWhen.equals)||normalizeValue(parent,field.requiredWhen.equals)!==field.requiredWhen.equals)return false;
+    }
+    const seen=new Set([field.id]);let current=field;
+    while(current.requiredWhen){
+      const parent=fields.find(f=>f.id===current.requiredWhen!.fieldId);
+      if(!parent||seen.has(parent.id))return false;
+      seen.add(parent.id);current=parent;
+    }
   }
   return true;
 }
 export function restoreSession(raw: string | null): Session | null {
-  if (!raw || raw.length > 300000) return null;
+  if (!raw || raw.length > 1000000) return null;
   try {
     const s = JSON.parse(raw) as Session;
-    if (s?.version !== 1 || !validFormDefinition(s.form) || !record(s.answers) || !Number.isInteger(s.revision) || s.revision < 0
-      || !Array.isArray(s.audit) || s.audit.length > 1000 || s.audit.length !== s.revision || !timestamp(s.startedAt)
-      || !Number.isInteger(s.interactions) || s.interactions < 0) return null;
+    if (s?.version !== 1 || !validFormDefinition(s.form) || !record(s.answers) || !Number.isSafeInteger(s.revision) || s.revision < 0
+      || (s.auditOffset !== undefined && (!Number.isSafeInteger(s.auditOffset) || s.auditOffset < 0 || s.auditOffset > s.revision))
+      || !Array.isArray(s.audit) || s.audit.length > 10000 || s.audit.length !== s.revision-(s.auditOffset??0) || !timestamp(s.startedAt)
+      || !Number.isSafeInteger(s.interactions) || s.interactions < 0) return null;
     for (const [id,a] of Object.entries(s.answers)) if (!record(a) || !s.form.fields.some(f => f.id === id) || !bounded(a.value, 0, 3000)
       || a.confirmed !== true || !["typed", "voice", "meta"].includes(String(a.method)) || !timestamp(a.at)) return null;
     for (const entry of s.audit) if (!record(entry) || !timestamp(entry.at) || !["typed", "voice", "meta"].includes(String(entry.method))
       || !Array.isArray(entry.changes) || !entry.changes.length || entry.changes.length > 24
       || entry.changes.some(c => !record(c) || !s.form.fields.some(f => f.id === c.fieldId) || !bounded(c.before, 0, 3000) || !bounded(c.after, 0, 3000))) return null;
-    return s;
+    return retainRecentHistory(s);
   } catch { return null; }
 }

@@ -38,6 +38,7 @@ export class SpeechController {
     this.emit();
   }
   private emit() { this.changed({ ...this.state }); }
+  private cancelSpeech() { try { this.runtime.cancelSpeech?.(); } catch { /* Local pause and teardown must still finish. */ } }
   private cancelTimer() { if (this.timer !== undefined) this.runtime.cancelTimer(this.timer); this.timer = undefined; }
   private abortRecognition() {
     const previous = this.recognition; this.recognition = null;
@@ -52,7 +53,10 @@ export class SpeechController {
   listen() {
     if (this.disposed || !this.runtime.createRecognition || this.recognition || this.state.speaking || this.busy) return;
     this.cancelTimer();
-    const recognition = this.runtime.createRecognition(); this.recognition = recognition;
+    let recognition: Recognition;
+    try { recognition = this.runtime.createRecognition(); }
+    catch { this.stop();this.message("Voice input is not ready. Try Listen again, or use the answer box. Your answers are preserved.");return; }
+    this.recognition = recognition;
     recognition.lang = "en-US"; recognition.continuous = false; recognition.interimResults = false;
     recognition.onresult = event => {
       if (this.recognition !== recognition || this.disposed) return;
@@ -86,13 +90,15 @@ export class SpeechController {
     if (this.disposed) return;
     this.cancelTimer(); this.abortRecognition();
     const revision = ++this.speechRevision;
-    this.runtime.cancelSpeech?.();
+    this.cancelSpeech();
     if (!this.state.canRead || !this.runtime.createUtterance || !this.runtime.speak) {
       this.state.speaking = false; this.emit();
       this.message("Read-aloud is unavailable here. The same text is shown on screen."); this.queueListen(); return;
     }
     this.state.speaking = true; this.emit();
-    const utterance = this.runtime.createUtterance(text);
+    let utterance: Utterance;
+    try { utterance = this.runtime.createUtterance(text); }
+    catch { this.stop();this.message("Read-aloud could not start. The same text is shown on screen. Your answers are preserved; use Listen or the answer box when ready.");return; }
     const finished = () => {
       if (this.disposed || revision !== this.speechRevision) return;
       this.state.speaking = false; this.emit(); this.queueListen();
@@ -117,7 +123,7 @@ export class SpeechController {
   stop() {
     this.cancelTimer(); ++this.speechRevision;
     this.state.guided = false; this.state.speaking = false;
-    this.abortRecognition(); this.runtime.cancelSpeech?.(); this.emit();
+    this.abortRecognition(); this.cancelSpeech(); this.emit();
   }
   dispose() { this.stop(); this.disposed = true; }
 }

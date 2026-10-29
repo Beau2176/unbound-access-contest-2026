@@ -2,23 +2,18 @@ import type { Wllama } from "@wllama/wllama/esm/index.js";
 import { LOCAL_META_MODELS } from "../lib/local-meta-policy";
 import { selectModelStorage } from "../lib/local-model-storage";
 import { traceModelFileReads } from "../lib/model-file-reads";
-import { acquireModelLease } from "../lib/local-model-lease";
-import type { ModelLease } from "../lib/local-model-lease";
 import type { RuntimeCommand, RuntimeReply, CompletionResult } from "../lib/local-model-runtime";
 
 const scope = globalThis as unknown as { onmessage: ((event: MessageEvent<RuntimeCommand>) => void) | null; postMessage(message: RuntimeReply): void; crossOriginIsolated: boolean; location: Location };
 let engine: Wllama | null = null;
-let lease: ModelLease | null = null;
 scope.onmessage = async event => {
   const command = event.data;
   try {
     if (command.task === "load") {
-      if (engine || lease) throw new Error("A model is already active.");
+      if (engine) throw new Error("A model is already active.");
       if (command.origin !== scope.location.origin || !Object.hasOwn(LOCAL_META_MODELS,command.modelKey)) throw new Error("The local model request could not be checked.");
       const model = LOCAL_META_MODELS[command.modelKey];
       const progress = (stage:"checking"|"downloading"|"loading", value?:number, detail?:string) => scope.postMessage({id:command.id,task:"progress",progress:{stage,progress:value,detail}});
-      progress("checking",undefined,"origin-model-lock");
-      lease = await acquireModelLease(navigator.locks);
       progress("checking",undefined,"runtime-import");
       const {Wllama,CacheManager} = await import("@wllama/wllama/esm/index.js");
       progress("checking",undefined,"storage-open");
@@ -36,6 +31,12 @@ scope.onmessage = async event => {
       const gpu = (navigator as Navigator & {gpu?:{requestAdapter():Promise<unknown>}}).gpu;
       let useGpu = false;
       try { useGpu = command.preferGpu && !!(await gpu?.requestAdapter()); } catch { /* CPU remains available. */ }
+      // The native memory64 / JSPI 3B path stalled after its weight reads in
+      // the recorded browser attempt. CPU 3B uses the packaged wasm32 runtime;
+      // model bytes, prompts and response validation remain unchanged.
+      if (command.modelKey !== "small" && !useGpu) next.getWorkerResources = () => ({
+        wasmPath:`${command.origin}/wasm/compat/wllama.wasm`,jsPath:`${command.origin}/wasm/compat/wllama.js`,compat:true,noWebGPU:true,
+      });
       progress("checking",undefined,"model-index");
       const file = await next.modelManager.getModelOrDownload({url:model.url},{progressCallback:({loaded,total})=>progress("downloading",Math.min(100,Math.round(100*loaded/(total||model.bytes))))});
       progress("checking",undefined,"model-open");
@@ -59,8 +60,7 @@ scope.onmessage = async event => {
       scope.postMessage({id:command.id,task:"complete",result:result as CompletionResult});
     }
   } catch(error) {
-    // LocalModelRuntime terminates a failed load's worker. The browser then
-    // releases its lock together with the runtime, avoiding an allocation race.
+    // The page owns the lease and releases it when this request fails.
     scope.postMessage({id:command.id,task:"error",message:error instanceof Error?error.message:"On-device AI could not continue. Your confirmed answers are unchanged."});
   }
 };

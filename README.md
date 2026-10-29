@@ -28,18 +28,19 @@ A real typed browser journey approved the 3B-proposed form, confirmed seven dist
 
 ## Model choices and costs
 
-Built with Llama. Both optional models use GGUF Q4_K_M and wllama 3.8.1 from pinned hugging-quants revisions. No weights are committed or included in the source ZIP.
+Built with Llama. Optional models use pinned GGUF artifacts and wllama 3.8.1. No weights are committed or included in the source ZIP.
 
-- 1B: 808 MB; retained for answer experiments. Earlier clear answer checks succeeded, but uncertain input produced a guess which the source guard rejects. Its source-question classification was unreliable, so the UI does not use it for question proposals.
+- 1B Q4_K_M: 808 MB; retained for answer experiments. Earlier clear answer checks succeeded, but uncertain input produced a guess which the source guard rejects. Question proposals require explicit experimental opt-in because its classification is unreliable. The unchanged fresh repair-visit source completed ten actual model calls in 67,668 ms, matched only two expected types and was rejected without replacing the form.
 - 3B: 2.02 GB, separately selected and consented. Used for the successful eight-question case above. It needs more device memory and CPU inference is slow. A successful browser development case does not establish that it works on every phone or arbitrary form.
+- 3B IQ3_M: 1.60 GB, a separately selected compact artifact from a pinned bartowski revision. It is a different quantization, with no claim of equal quality. The CPU compatibility runtime has reached ready in this browser; completed inference is evaluated separately.
 
-The import flow initially selects 3B and clearly shows its download size. Changing size resets consent. Model files use a dedicated browser cache; removal clears this app's model files, including after turning AI off. Prepared forms work without model downloads. Device graphics can be requested, but GPU offload has not been verified.
+The import flow initially selects 3B and clearly shows its download size. Changing size resets consent. Preferred model storage streams to origin-private files and checks their metadata. Cancellation, bounded worker tasks, recoverable loading reports and an origin-wide active-model guard improve recovery. Removal clears this app's model files, including after turning AI off; another active tab prevents removal. Prepared forms work without model downloads. Device graphics can be requested, but GPU offload has not been verified. See [actual loading and retry evidence](docs/evidence/model-loading/README.md) for remaining failures.
 
 Hosted NVIDIA/OpenRouter adapters remain optional, server-only and unconfigured. The old OpenRouter free route is absent. No paid fallback exists. Do not revisit blocked NVIDIA key/clipboard controls or paste credentials into chat/source.
 
 ## Run and verify
 
-A new two-page source PDF was also checked through the actual manual-import, answer, correction, reload and reviewed-PDF workflow. That workflow passed with ten source rows and nine distinct facts. Fresh live 3B extraction was blocked at model loading before inference; it is not an accuracy pass. The source and expectations were saved before the attempts, and no prepared template or model contract was changed for this case. See [the fresh-source result and limitations](docs/evidence/fresh-repair-visit/README.md).
+A new two-page source PDF passed the actual manual-import, answer, correction, reload and reviewed-PDF workflow with ten source rows and nine distinct facts. Retrying its unchanged extracted text with 1B completed ten model calls but matched only two expected types; the app rejected it. Compact 3B loaded on the compatibility runtime but returned no response before its three-minute limit. Original Q4 initialization remained blocked in a fresh-page check. This source has no successful automatic extraction result. The original expectations and raw failures remain preserved. See [fresh-source manual evidence](docs/evidence/fresh-repair-visit/README.md) and [loading repairs and actual retry results](docs/evidence/model-loading/README.md).
 
 Node 24 recommended, pnpm pinned in packageManager:
 
@@ -51,7 +52,7 @@ pnpm build
 pnpm dev
 ```
 
-The build copies WASM assets from pinned npm packages. In the managed environment use `sites-preview start <checkout>`; actual inference requires HTTPS. There are **132 passing automated checks**, using deterministic fixtures/stubs for model and speech behavior. Real inference evidence is recorded separately. TypeScript and production packaging are checked separately.
+The build copies WASM assets from pinned npm packages. In the managed environment use `sites-preview start <checkout>`; actual inference requires HTTPS. There are **144 passing automated checks**, using deterministic fixtures/stubs for model and speech behavior. Real inference evidence is recorded separately. TypeScript and production packaging are checked separately.
 
 ## Data, boundaries and remaining work
 

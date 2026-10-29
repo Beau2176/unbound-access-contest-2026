@@ -1,6 +1,11 @@
 "use client";
 import { LocalModelRuntime } from "./local-model-runtime";
 import type { ModelLoaded, ModelProgress } from "./local-model-runtime";
+import { boundLoadEvents, recoverLoadReports } from "./model-loading-report";
+import type { LocalLoadReport } from "./model-loading-report";
+import { acquireModelLease } from "./local-model-lease";
+import type { ModelLease } from "./local-model-lease";
+export type { LocalLoadReport } from "./model-loading-report";
 import { removeModelDownloads } from "./local-model-storage";
 import ModelWorker from "../workers/local-meta-worker?worker";
 import { LOCAL_META_MODELS, assertLocalModelMetadata, localAnswerRequest, localExtractionRequest, parseLocalAnswer, executeLocalExtraction } from "./local-meta-policy";
@@ -9,15 +14,12 @@ import type { FormDefinition } from "./access";
 
 type LocalCall = { sourceId: string; raw: string; elapsedMs: number; tokens?: { prompt: number; completion: number } };
 export type LocalReceipt = { at: string; model: string; revision: string; quantization?: string; contract: string; task: "extract" | "answer"; input: unknown; request: unknown; raw: string; rawFormat?: string; calls?: LocalCall[]; assembledFields?: unknown; elapsedMs: number; tokens?: { prompt: number; completion: number }; accepted: boolean; error?: string };
-export type LocalLoadReport = { at: string; model: string; revision: string; quantization?: string; outcome: "ready" | "cancelled" | "error" | "interrupted"; elapsedMs: number; events: ({elapsedMs:number}&ModelProgress)[]; storage?: string; params?: ModelLoaded["params"]; error?: string };
 type LocalState = { loads: LocalLoadReport[]; phase: "idle" | "downloading" | "loading" | "ready" | "running" | "error"; progress: number; message: string; receipts: LocalReceipt[]; modelKey?: LocalModelKey; temporaryStorage?: boolean; backend?: "WebGPU" | "CPU / WebAssembly" };
 const initial: LocalState = { phase: "idle", progress: 0, message: "On-device AI is off. Practice forms are ready to use.", receipts: [], loads: [] };
 const LOAD_REPORT_KEY = "unbound-meta-loads-v1";
 function recoveredLoadReports(): LocalLoadReport[] {
   if (typeof window === "undefined") return [];
-  try { const value = JSON.parse(sessionStorage.getItem(LOAD_REPORT_KEY) ?? "[]");
-    return Array.isArray(value) ? value.slice(-8).filter((item: LocalLoadReport) => typeof item?.at === "string" && typeof item.model === "string" && typeof item.revision === "string" && Array.isArray(item.events) && item.events.length <= 160 && ["ready","cancelled","error","interrupted"].includes(item.outcome)) : [];
-  } catch { return []; }
+  try { return recoverLoadReports(sessionStorage.getItem(LOAD_REPORT_KEY)); } catch { return []; }
 }
 let state: LocalState = {...initial,loads:recoveredLoadReports()}, engine: LocalModelRuntime | null = null, controller: AbortController | null = null;
 const listeners = new Set<() => void>();
@@ -52,8 +54,9 @@ export async function loadLocalMeta(consent: boolean, preferGpu = true, modelKey
   const taskController = new AbortController(), signal = taskController.signal;
   controller = taskController;
   const started = performance.now(), at = new Date().toISOString();
-  const events: LocalLoadReport["events"] = [{stage:"checking",detail:"worker-start",elapsedMs:0}];
+  let events: LocalLoadReport["events"] = [{stage:"checking",detail:"worker-start",elapsedMs:0}];
   let runtime: LocalModelRuntime | null = null;
+  let lease: ModelLease | undefined;
   let loaded: ModelLoaded | undefined;
   const record = (outcome: LocalLoadReport["outcome"], error?: string) => {
     const report: LocalLoadReport = {at,model:model.name,revision:model.revision,quantization:model.quantization,outcome,elapsedMs:Math.round(performance.now()-started),events,...(loaded?{storage:loaded.storage,params:loaded.params}:{}),...(error?{error}:{})};
@@ -67,13 +70,17 @@ export async function loadLocalMeta(consent: boolean, preferGpu = true, modelKey
   }
   checkpoint();
   try {
-    try { runtime = new LocalModelRuntime(new ModelWorker()); }
+    events.push({stage:"checking",detail:"origin-model-lock",elapsedMs:Math.round(performance.now()-started)}); checkpoint();
+    lease = await acquireModelLease(navigator.locks);
+    if (signal.aborted) throw new Error("Model loading cancelled. Your form is unchanged.");
+    try { runtime = new LocalModelRuntime(new ModelWorker(),undefined,()=>lease?.release()); }
     catch { throw new Error("The on-device AI worker could not start. Reload this page to try again. Your confirmed answers are unchanged."); }
     engine = runtime;
     loaded = await runtime.load({modelKey,preferGpu,origin:location.origin},signal,progress => {
       if (controller !== taskController || signal.aborted) return;
       const last = events.at(-1);
       if (last?.stage !== progress.stage || last?.progress !== progress.progress || last?.detail !== progress.detail) events.push({...progress,elapsedMs:Math.round(performance.now()-started)});
+      events = boundLoadEvents(events);
       checkpoint();
       const value = progress.progress ?? 0;
       update({phase:progress.stage==="loading"?"loading":"downloading",progress:value,message:progress.stage==="loading"?"Loading the model into memory… You can cancel and continue without AI.":progress.stage==="checking"?"Checking saved model files… Your form stays available after cancellation.":`Downloading the model: ${value}%. Your answers stay here.`});
@@ -84,6 +91,7 @@ export async function loadLocalMeta(consent: boolean, preferGpu = true, modelKey
     update({phase:"ready",progress:100,temporaryStorage:loaded.temporaryStorage,backend:loaded.backend,message:`${model.name} is ready on this device. AI requests stay in this browser. Acceleration requested: ${loaded.backend}.`+(loaded.temporaryStorage?" Model storage is temporary here; closing or unloading will require a new download.":"")});
   } catch(error) {
     runtime?.destroy();
+    lease?.release();
     const message = signal.aborted ? "Model loading cancelled. Your form is unchanged." : error instanceof Error ? error.message : "On-device AI could not start. Your confirmed answers are unchanged.";
     record(signal.aborted?"cancelled":"error",message);
     if (engine === runtime) engine = null;

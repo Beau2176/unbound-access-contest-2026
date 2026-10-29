@@ -19,6 +19,8 @@ if not receipts:
     raise SystemExit("No live extraction receipt exists; no extraction score can be produced.")
 receipt = receipts[-1]
 calls = receipt.get("calls", [])
+if not calls:
+    raise SystemExit("No completed model responses exist; no extraction accuracy score can be produced.")
 expected_by_id = {row["id"]: row["kind"] for row in expected["expected_rows"]}
 by_id = {}
 duplicates = []

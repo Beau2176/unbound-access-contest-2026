@@ -12,7 +12,7 @@ October 28, 2026 (America/Denver). The unchanged version-24 source PDF and expec
 
 ## Implementation checks
 
-Ten deterministic regression checks exercise cancellation of an uncooperative runtime, initialization/download deadlines, late replies, independent retry, worker failure, completion cancellation, metadata-only disk size checks, streamed disk writes, storage denial and interrupted migration. These use injected worker/storage fixtures. They are not browser-memory measurements, device tests, model accuracy results or proof that every browser can load 3B.
+Ten deterministic regression checks exercise cancellation of an uncooperative runtime, initialization/download deadlines, late replies, independent retry, worker failure, completion cancellation, metadata-only disk size checks, streamed disk writes, storage denial and interrupted zero-byte downloads. These use injected worker/storage fixtures. They are not browser-memory measurements, device tests, model accuracy results or proof that every browser can load 3B.
 
 The version-24 fresh-source failure record stays unchanged. Actual browser retry evidence will be added separately after testing the published runtime.
 
@@ -25,3 +25,43 @@ An origin-wide browser lock now permits one active on-device runtime at a time, 
 An additional version-28 UI attempt preserved a Q4 weight-loading interruption and a successful 1B control load in 4,617 ms in `v28-continuation-load-report.json`. The interrupted report's elapsed time is its last progress checkpoint, not a measured duration of the failure. The 1B extraction button remained disabled as designed.
 
 In a version-29 continuation, the compact IQ3_M 3B model visibly reached ready on CPU. The actual Propose questions control was then used with the unchanged PDF-extracted source. The last observed progress was question one of ten; subsequent DOM inspection, screenshot capture and reconnect/reload attempts timed out. No completed raw extraction receipt or score was captured for that attempt, and its final model outcome and the cause of inspection failure are unestablished. Exact indexed source lines and all ten request messages match the original frozen expectations despite PDF whitespace differences. See `v29-continuation-ui-observations.json`; it is explicitly a UI-observation record, not a fabricated inference receipt. The original manual-workflow and earlier model evidence remain separate and unchanged.
+
+## File-read diagnostics and CPU compatibility retry
+
+The instrumented version-30 IQ3_M CPU attempt was interrupted when browser inspection and the attempted UI cancellation timed out. Reload restored the page. Its recovered report records successful model-file reads followed by a final read request at 4,058 ms. This elapsed time is the last checkpoint, not the duration of the interruption. The root cause is unestablished; no new extraction was requested in that attempt. `v30-recovered-file-reads.json` preserves the downloaded report.
+
+Long diagnostics formerly exceeded the recovery filter's 160-event limit and disappeared from the visible export controls after reload. Recovery now retains the first twenty and newest 140 events, and can recover older longer reports within a bounded input size. Three regression checks cover preserved initial/failure stages, round-trip recovery and malformed data. Two additional range-tracing checks verify the original slice bytes and unchanged file-read rejection. All 144 engineering checks pass. The version-30 report was actually recovered and downloaded through the version-31 UI.
+
+Version 32 selects the packaged wasm32 compatibility runtime for CPU 3B; native/WebGPU selection and the 1B path retain their existing behavior. The model bytes, source-line-types-v3 messages, schemas, sampling and frozen expectations remain unchanged. This is a runtime-path change, not an unchanged-runtime performance comparison. The actual UI showed the compact IQ3_M model ready on CPU, after which the unchanged source PDF was sent for ten-row live extraction. Its result will be recorded separately; readiness alone is not an extraction result.
+
+The version-32 actual compact compatibility load completed in 12,772 ms. Its first source-type completion then timed out at 90,001 ms with zero completed responses. Controls visibly recovered and the actual combined loading/failed-inference receipt was downloaded as `v32-compact-compat-timeout.json`; its extracted source matches the original byte for byte. No score is produced for absent responses. The separately requested standalone loading download did not synchronize into the workspace; its browser path is retained in the private task log, and the successful load is instead preserved in the actual combined export.
+
+The original successful Q4 run's first source response took 77,716 ms; later rows took roughly eleven to thirteen seconds. A new regression checks the cold-completion timeout boundary. The first completion now has a three-minute ceiling; successful later completions keep ninety seconds. The whole extraction remains bounded independently. This changes only the time allowance, not the prompts, source, model response or frozen expectations.
+
+## Completed smaller-model source retry
+
+The actual version-32 CPU 1B model loaded in 3,551 ms. With the explicit experimental source opt-in checked, the unchanged extracted source completed all ten calls in 67,668 ms. Only two of ten question types matched the expectations saved before the original test. Validation rejected the proposal for a source/type conflict on Participant name; the original prepared form stayed in place. The raw export is `v32-small-source-raw.json`, independently scored by `scripts/score-fresh-source-retry.py` into `v32-small-source-score.json`. No model response, source line or expected type was edited. This is a failed development case, not a successful extraction or a general accuracy benchmark.
+
+## Actual cross-tab protection check
+
+With version 33's compact CPU model active in the first tab, a second tab's load was refused before model preparation with a recoverable message. Its attempted model-file removal was also refused, and controls remained usable. The first tab's active model was preserved. Actual downloaded diagnostics and UI states are `v33-competing-tab-load.json` and `v33-tab-guard-ui.json`. This check covers these two tabs in this browser, not all devices or browser failure modes.
+
+Another version-33 Q4 attempt was refused by the origin model lock while the compact runtime was active in the source-retry tab. Its actual report is retained as `v33-q4-lock-denied.json`; no extraction was made. This is consistent with the active-model guard and does not establish a stale-lock defect. The latest implementation owns the lease in the page and explicitly releases it on timeout, cancellation and worker failure before attempting worker termination. Two injected regressions check release even when termination throws and exact single release after cancellation/error. This teardown path is an engineering check, not proof of every browser's worker cleanup or memory release behavior.
+
+## Compact cold-start retry
+
+The version-33 compact IQ3_M model loaded in 9,659 ms. The actual Propose questions control sent the identical original extracted source under source-line-types-v3. Its first completion reached the new 180,001 ms timeout with zero returned responses. The app stopped the runtime, restored the controls and preserved the current form. `v33-compact-source-timeout.json` is the actual downloaded loading/inference export, and `v33-compact-source-ui.json` records the visible recovered state. No accuracy score or successful new-source 3B extraction is claimed for an attempt without returned responses.
+
+## Final recorded limits of this pass
+
+A separate version-33 compact source retry also timed out at 180,001 ms with zero completed responses (`v33-compact-source-timeout.json`). Version 34's original Q4 model acquired the page-owned lease and entered the wasm32 compatibility path, but browser DOM inspection again timed out during weight loading. Reload recovered the page. The actual downloaded interrupted report is `v34-q4-compat-interrupted.json`; its last checkpoint was 5,400 ms, which is not a measured interruption duration. No extraction was requested for that Q4 attempt. The source PDF and frozen expectations are unchanged. `continuation-results.json` relates these observations without assigning accuracy to absent responses.
+
+The reliability repair is partial: bounded runtime requests, diagnostics, explicit lock release and guarded recovery are implemented, and compact 3B loading has a measured success. Reliable fresh-source 3B extraction remains blocked by slow or interrupted runtime behavior in this browser. Its cause has not been established. Further retries of these unchanged stalled paths are not evidence of improvement. Earlier completed phone and PDF checks do not need repeating.
+
+## Final original-Q4 checks and outcome
+
+After the compact timeout, an attempted Q4 worker failed before model-file access at 797 ms. The combined raw export is `v33-q4-compatibility-worker-failure.json`; it contains the earlier compact inference failure and no Q4 inference. Its exact cause was not established. The worker-error message now recommends reloading before trying again, which also refreshes deployed worker assets.
+
+A fresh version-34 page then retried the original Q4 model on CPU compatibility. Browser inspection timed out during loading. Reload restored the prepared form and usable controls. The recovered export is `v34-q4-recovered-interruption.json`; its last recorded file-read checkpoint is 5,664 ms, not a measurement of the full interruption. No extraction was requested for this attempt. A separately preserved version-34 continuation attempt is in `v34-q4-compat-interrupted.json`. These are separate failed observations and neither establishes their underlying cause.
+
+Recovery and diagnostics are improved, and the actual smaller-model source retry is captured and scored. Reliable 3B inference on this source remains blocked in this browser. No new schema was approved or new AI-derived PDF produced. Earlier manual-PDF and successful historical model evidence are preserved separately. No phone, voice, GPU, arbitrary-form accuracy or full reliability claim follows. Zero dollars spent.

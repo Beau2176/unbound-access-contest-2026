@@ -72,6 +72,37 @@ test("cancelling an in-progress completion terminates the runtime and preserves 
   const controller=new AbortController(),second=runtime.complete(completion,controller.signal),rejected=assert.rejects(second,/cancelled/);
   controller.abort();await rejected;assert.equal(worker.terminated,1);assert.equal(original.choices[0].message.content,'{"kind":"text"}');
 });
+test("cold inference has a bounded three-minute budget; later completions retain the shorter deadline",async()=>{
+  const worker=new FakeWorker(),clock=new Clock(),runtime=new LocalModelRuntime(worker,clock);
+  const loading=runtime.load(loadArgs,new AbortController().signal,()=>{});worker.emit({id:1,task:"loaded",result:loaded});await loading;
+  const first=runtime.complete(completion,new AbortController().signal);void first.catch(()=>{});
+  clock.advance(90001);assert.equal(worker.terminated,0,"a cold prompt must not be killed at the old ninety-second boundary");
+  clock.advance(89998);worker.emit({id:2,task:"complete",result:{choices:[{message:{content:'{"kind":"text"}'},finish_reason:"stop"}]}});await first;
+  const later=runtime.complete(completion,new AbortController().signal),rejected=assert.rejects(later,/too long/);
+  clock.advance(90001);await rejected;assert.equal(worker.terminated,1);
+  const otherWorker=new FakeWorker(),otherClock=new Clock(),other=new LocalModelRuntime(otherWorker,otherClock);
+  const nextLoad=other.load(loadArgs,new AbortController().signal,()=>{});otherWorker.emit({id:1,task:"loaded",result:loaded});await nextLoad;
+  const neverCompletes=other.complete(completion,new AbortController().signal),bounded=assert.rejects(neverCompletes,/too long/);
+  otherClock.advance(180001);await bounded;assert.equal(otherWorker.terminated,1);
+});
+test("timeout releases the page-owned model lease without waiting for an uncooperative worker",async()=>{
+  const worker=new FakeWorker(),clock=new Clock();let releases=0;
+  worker.terminate=()=>{worker.terminated++;throw new Error("Worker teardown failed");};
+  const runtime=new LocalModelRuntime(worker,clock,()=>{releases++;});
+  const loading=runtime.load(loadArgs,new AbortController().signal,()=>{});worker.emit({id:1,task:"loaded",result:loaded});await loading;
+  const completionPending=runtime.complete(completion,new AbortController().signal),rejected=assert.rejects(completionPending,/too long/);
+  clock.advance(180001);await rejected;assert.equal(releases,1);assert.equal(worker.terminated,1);assert.equal(clock.jobs.size,0);
+  runtime.destroy();assert.equal(releases,1);
+});
+test("cancellation and worker errors release their page-owned model lease exactly once",async()=>{
+  for(const mode of ["cancel","error"]){
+    const worker=new FakeWorker(),clock=new Clock(),controller=new AbortController();let releases=0;
+    const runtime=new LocalModelRuntime(worker,clock,()=>{releases++;});
+    const pending=runtime.load(loadArgs,controller.signal,()=>{}),rejected=assert.rejects(pending,/cancelled|could not continue/);
+    if(mode==="cancel")controller.abort();else worker.onerror?.({} as ErrorEvent);
+    await rejected;assert.equal(releases,1);runtime.destroy();assert.equal(releases,1);
+  }
+});
 
 function directoryFixture() {
   const files=new Map<string,Blob>();let contentReads=0;

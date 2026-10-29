@@ -1,0 +1,70 @@
+{
+  "scope": "On-device development checks, not a user study",
+  "loads": [
+    {
+      "at": "2026-10-29T05:46:35.463Z",
+      "model": "Meta Llama 3.2 3B Instruct (IQ3_M)",
+      "revision": "b0a3958968ddb3ff6466ed3148b3afcd75d434af",
+      "quantization": "IQ3_M",
+      "outcome": "interrupted",
+      "elapsedMs": 386,
+      "events": [
+        {
+          "stage": "checking",
+          "detail": "worker-start",
+          "elapsedMs": 0
+        },
+        {
+          "stage": "checking",
+          "detail": "runtime-import",
+          "elapsedMs": 97
+        },
+        {
+          "stage": "checking",
+          "detail": "storage-open",
+          "elapsedMs": 99
+        },
+        {
+          "stage": "checking",
+          "detail": "model-index",
+          "elapsedMs": 101
+        },
+        {
+          "stage": "downloading",
+          "progress": 100,
+          "elapsedMs": 120
+        },
+        {
+          "stage": "checking",
+          "detail": "model-open",
+          "elapsedMs": 122
+        },
+        {
+          "stage": "checking",
+          "detail": "model-header-read",
+          "elapsedMs": 123
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "runtime-native",
+          "elapsedMs": 124
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "runtime-start",
+          "elapsedMs": 373
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "weights-load",
+          "elapsedMs": 386
+        }
+      ],
+      "error": "The page was reloaded before a completed load was recorded."
+    }
+  ],
+  "receipts": []
+}

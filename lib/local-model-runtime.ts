@@ -19,13 +19,15 @@ export class LocalModelRuntime {
   private pending: Pending | null = null;
   private sequence = 0;
   private ready = false;
+  private hasCompleted = false;
   private closed = false;
   private worker: ModelWorker;
   private timers: Clock;
-  constructor(worker: ModelWorker, timers: Clock = clock) {
-    this.worker = worker; this.timers = timers;
+  private releaseLease: () => void;
+  constructor(worker: ModelWorker, timers: Clock = clock, releaseLease: () => void = () => {}) {
+    this.worker = worker; this.timers = timers; this.releaseLease = releaseLease;
     worker.onmessage = event => this.receive(event.data);
-    worker.onerror = () => this.destroy("The on-device AI worker could not continue. Your confirmed answers are unchanged. Try loading it again.");
+    worker.onerror = () => this.destroy("The on-device AI worker could not continue. Your confirmed answers are unchanged. Reload this page before loading it again.");
   }
   isModelLoaded() { return this.ready && !this.closed; }
   load(options: { modelKey: "small" | "large" | "compact"; preferGpu: boolean; origin: string }, signal: AbortSignal, progress: (value: ModelProgress) => void) {
@@ -33,17 +35,19 @@ export class LocalModelRuntime {
   }
   complete(input: CompletionInput, signal: AbortSignal) {
     if (!this.isModelLoaded()) return Promise.reject(new Error("Load the optional on-device Meta model first."));
-    return this.request<CompletionResult>({ task: "complete", input }, signal);
+    return this.request<CompletionResult>({ task: "complete", input }, signal, undefined, this.hasCompleted ? 90000 : 180000);
   }
   destroy(reason = "On-device AI stopped. Your confirmed answers are unchanged.") {
     if (this.closed) return;
     this.closed = true; this.ready = false;
     this.worker.onmessage = null; this.worker.onerror = null;
-    this.worker.terminate();
+    // Release from the page, without awaiting a busy worker's termination.
+    try { this.releaseLease(); } catch { /* Teardown must still settle the request. */ }
+    try { this.worker.terminate(); } catch { /* Teardown must still settle the request. */ }
     const job = this.pending; this.pending = null;
     if (job) { job.cleanup(); job.reject(new Error(reason)); }
   }
-  private request<T>(command: Omit<Extract<RuntimeCommand, {task:"load"}>, "id"> | Omit<Extract<RuntimeCommand, {task:"complete"}>, "id">, signal: AbortSignal, progress?: (value: ModelProgress) => void): Promise<T> {
+  private request<T>(command: Omit<Extract<RuntimeCommand, {task:"load"}>, "id"> | Omit<Extract<RuntimeCommand, {task:"complete"}>, "id">, signal: AbortSignal, progress?: (value: ModelProgress) => void, completionDeadline = 90000): Promise<T> {
     if (this.closed || signal.aborted) return Promise.reject(new Error("AI task cancelled. Your confirmed answers are unchanged."));
     if (this.pending) return Promise.reject(new Error("Wait for the current AI task or cancel it first."));
     return new Promise<T>((resolve, reject) => {
@@ -59,7 +63,7 @@ export class LocalModelRuntime {
       const cleanup = () => { cancelIdle(); cancelTotal(); signal.removeEventListener("abort", abort); };
       this.pending = { id, task: command.task, resolve: value => resolve(value as T), reject, cleanup, progress, resetIdle };
       signal.addEventListener("abort", abort, { once: true });
-      cancelTotal = this.timers.set(() => this.destroy(command.task === "load" ? "The model did not finish loading within ten minutes. It has been stopped. Your confirmed answers are unchanged." : "This AI answer took too long. It has been stopped. Your confirmed answers are unchanged."), command.task === "load" ? 600000 : 90000);
+      cancelTotal = this.timers.set(() => this.destroy(command.task === "load" ? "The model did not finish loading within ten minutes. It has been stopped. Your confirmed answers are unchanged." : "This AI answer took too long. It has been stopped. Your confirmed answers are unchanged."), command.task === "load" ? 600000 : completionDeadline);
       if (command.task === "load") resetIdle("checking");
       try { this.worker.postMessage({ ...command, id } as RuntimeCommand); }
       catch { this.destroy("The on-device AI worker could not start. Your confirmed answers are unchanged."); }
@@ -76,6 +80,7 @@ export class LocalModelRuntime {
     if ((reply.task === "loaded" && job.task === "load") || (reply.task === "complete" && job.task === "complete")) {
       this.pending = null; job.cleanup();
       if (reply.task === "loaded") this.ready = true;
+      if (reply.task === "complete") this.hasCompleted = true;
       job.resolve(reply.result);
     }
   }

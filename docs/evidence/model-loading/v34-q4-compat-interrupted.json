@@ -1,0 +1,969 @@
+{
+  "scope": "On-device development checks, not a user study",
+  "loads": [
+    {
+      "at": "2026-10-29T06:03:51.934Z",
+      "model": "Meta Llama 3.2 3B Instruct",
+      "revision": "eb72f2a08dd2b9edd07ffacfe5aa56938b7939b0",
+      "quantization": "Q4_K_M",
+      "outcome": "interrupted",
+      "elapsedMs": 5400,
+      "events": [
+        {
+          "stage": "checking",
+          "detail": "worker-start",
+          "elapsedMs": 0
+        },
+        {
+          "stage": "checking",
+          "detail": "origin-model-lock",
+          "elapsedMs": 0
+        },
+        {
+          "stage": "checking",
+          "detail": "runtime-import",
+          "elapsedMs": 305
+        },
+        {
+          "stage": "checking",
+          "detail": "storage-open",
+          "elapsedMs": 307
+        },
+        {
+          "stage": "checking",
+          "detail": "model-index",
+          "elapsedMs": 311
+        },
+        {
+          "stage": "downloading",
+          "progress": 100,
+          "elapsedMs": 320
+        },
+        {
+          "stage": "checking",
+          "detail": "model-open",
+          "elapsedMs": 322
+        },
+        {
+          "stage": "checking",
+          "detail": "model-header-read",
+          "elapsedMs": 324
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "runtime-compatibility",
+          "elapsedMs": 325
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "runtime-start",
+          "elapsedMs": 770
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "weights-load",
+          "elapsedMs": 777
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=7834464 bytes=323205120 completed=10 total=8519696",
+          "elapsedMs": 2262
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=387097440 bytes=5308416 completed=13 total=332785680",
+          "elapsedMs": 2646
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=380019552 bytes=1769472 completed=14 total=338094096",
+          "elapsedMs": 2656
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=392405856 bytes=2580480 completed=15 total=339863568",
+          "elapsedMs": 2662
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=381789024 bytes=5308416 completed=16 total=342444048",
+          "elapsedMs": 2668
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=351695712 bytes=14155776 completed=19 total=349849616",
+          "elapsedMs": 2681
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=331051872 bytes=20643840 completed=20 total=364005392",
+          "elapsedMs": 2699
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=365851488 bytes=14155776 completed=21 total=384649232",
+          "elapsedMs": 2728
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=451044192 bytes=5308416 completed=23 total=399853584",
+          "elapsedMs": 2757
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1318576992 bytes=5308416 completed=62 total=658180112",
+          "elapsedMs": 3261
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1288483680 bytes=14155776 completed=64 total=664537104",
+          "elapsedMs": 3274
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1274327904 bytes=14155776 completed=65 total=678692880",
+          "elapsedMs": 3298
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1302639456 bytes=14155776 completed=66 total=692848656",
+          "elapsedMs": 3318
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1380533088 bytes=5308416 completed=68 total=708053008",
+          "elapsedMs": 3341
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1373455200 bytes=1769472 completed=69 total=713361424",
+          "elapsedMs": 3353
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1385841504 bytes=2580480 completed=70 total=715130896",
+          "elapsedMs": 3360
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1375224672 bytes=5308416 completed=71 total=717711376",
+          "elapsedMs": 3367
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1345131360 bytes=14155776 completed=73 total=724068368",
+          "elapsedMs": 3378
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1330975584 bytes=14155776 completed=74 total=738224144",
+          "elapsedMs": 3397
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1359287136 bytes=14155776 completed=75 total=752379920",
+          "elapsedMs": 3419
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1444479840 bytes=5308416 completed=77 total=767584272",
+          "elapsedMs": 3450
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1437401952 bytes=1769472 completed=78 total=772892688",
+          "elapsedMs": 3462
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1449788256 bytes=1769472 completed=79 total=774662160",
+          "elapsedMs": 3469
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1439171424 bytes=5308416 completed=80 total=776431632",
+          "elapsedMs": 3474
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1409078112 bytes=14155776 completed=82 total=782788624",
+          "elapsedMs": 3488
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1388434272 bytes=20643840 completed=83 total=796944400",
+          "elapsedMs": 3518
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1423233888 bytes=14155776 completed=84 total=817588240",
+          "elapsedMs": 3551
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1501127520 bytes=5308416 completed=86 total=832792592",
+          "elapsedMs": 3575
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1494049632 bytes=1769472 completed=87 total=838101008",
+          "elapsedMs": 3584
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1506435936 bytes=1769472 completed=88 total=839870480",
+          "elapsedMs": 3589
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1495819104 bytes=5308416 completed=89 total=841639952",
+          "elapsedMs": 3594
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1465725792 bytes=14155776 completed=91 total=847996944",
+          "elapsedMs": 3606
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1451570016 bytes=14155776 completed=92 total=862152720",
+          "elapsedMs": 3638
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1479881568 bytes=14155776 completed=93 total=876308496",
+          "elapsedMs": 3659
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1557775200 bytes=5308416 completed=95 total=891512848",
+          "elapsedMs": 3694
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1550697312 bytes=1769472 completed=96 total=896821264",
+          "elapsedMs": 3710
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1563083616 bytes=2580480 completed=97 total=898590736",
+          "elapsedMs": 3716
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1552466784 bytes=5308416 completed=98 total=901171216",
+          "elapsedMs": 3721
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1522373472 bytes=14155776 completed=100 total=907528208",
+          "elapsedMs": 3730
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1508217696 bytes=14155776 completed=101 total=921683984",
+          "elapsedMs": 3753
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1536529248 bytes=14155776 completed=102 total=935839760",
+          "elapsedMs": 3771
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=514990944 bytes=5308416 completed=104 total=951044112",
+          "elapsedMs": 3794
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=507913056 bytes=1769472 completed=105 total=956352528",
+          "elapsedMs": 3804
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=520299360 bytes=2580480 completed=106 total=958122000",
+          "elapsedMs": 3810
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=509682528 bytes=5308416 completed=107 total=960702480",
+          "elapsedMs": 3816
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=479589216 bytes=14155776 completed=109 total=967059472",
+          "elapsedMs": 3826
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=458945376 bytes=20643840 completed=110 total=981215248",
+          "elapsedMs": 3843
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=493744992 bytes=14155776 completed=111 total=1001859088",
+          "elapsedMs": 3869
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=572449632 bytes=5308416 completed=113 total=1017063440",
+          "elapsedMs": 3887
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=565371744 bytes=1769472 completed=114 total=1022371856",
+          "elapsedMs": 3895
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=577758048 bytes=1769472 completed=115 total=1024141328",
+          "elapsedMs": 3899
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=567141216 bytes=5308416 completed=116 total=1025910800",
+          "elapsedMs": 3903
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=537047904 bytes=14155776 completed=118 total=1032267792",
+          "elapsedMs": 3911
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=522892128 bytes=14155776 completed=119 total=1046423568",
+          "elapsedMs": 3946
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=551203680 bytes=14155776 completed=120 total=1060579344",
+          "elapsedMs": 3961
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=629097312 bytes=5308416 completed=122 total=1075783696",
+          "elapsedMs": 3981
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=622019424 bytes=1769472 completed=123 total=1081092112",
+          "elapsedMs": 3990
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=634405728 bytes=1769472 completed=124 total=1082861584",
+          "elapsedMs": 3994
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=623788896 bytes=5308416 completed=125 total=1084631056",
+          "elapsedMs": 3998
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=593695584 bytes=14155776 completed=127 total=1090988048",
+          "elapsedMs": 4006
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=579539808 bytes=14155776 completed=128 total=1105143824",
+          "elapsedMs": 4024
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=607851360 bytes=14155776 completed=129 total=1119299600",
+          "elapsedMs": 4039
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=692233056 bytes=5308416 completed=131 total=1134503952",
+          "elapsedMs": 4058
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=685155168 bytes=1769472 completed=132 total=1139812368",
+          "elapsedMs": 4071
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=697541472 bytes=2580480 completed=133 total=1141581840",
+          "elapsedMs": 4077
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=686924640 bytes=5308416 completed=134 total=1144162320",
+          "elapsedMs": 4083
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=656831328 bytes=14155776 completed=136 total=1150519312",
+          "elapsedMs": 4092
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=636187488 bytes=20643840 completed=137 total=1164675088",
+          "elapsedMs": 4110
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=670987104 bytes=14155776 completed=138 total=1185318928",
+          "elapsedMs": 4131
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=749691744 bytes=5308416 completed=140 total=1200523280",
+          "elapsedMs": 4152
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=742613856 bytes=1769472 completed=141 total=1205831696",
+          "elapsedMs": 4160
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=755000160 bytes=1769472 completed=142 total=1207601168",
+          "elapsedMs": 4165
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=744383328 bytes=5308416 completed=143 total=1209370640",
+          "elapsedMs": 4169
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=714290016 bytes=14155776 completed=145 total=1215727632",
+          "elapsedMs": 4178
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=700134240 bytes=14155776 completed=146 total=1229883408",
+          "elapsedMs": 4202
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=728445792 bytes=14155776 completed=147 total=1244039184",
+          "elapsedMs": 4221
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=806339424 bytes=5308416 completed=149 total=1259243536",
+          "elapsedMs": 4245
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=799261536 bytes=1769472 completed=150 total=1264551952",
+          "elapsedMs": 4255
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=811647840 bytes=1769472 completed=151 total=1266321424",
+          "elapsedMs": 4261
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=801031008 bytes=5308416 completed=152 total=1268090896",
+          "elapsedMs": 4266
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=770937696 bytes=14155776 completed=154 total=1274447888",
+          "elapsedMs": 4277
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=756781920 bytes=14155776 completed=155 total=1288603664",
+          "elapsedMs": 4302
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=785093472 bytes=14155776 completed=156 total=1302759440",
+          "elapsedMs": 4326
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=869475168 bytes=5308416 completed=158 total=1317963792",
+          "elapsedMs": 4351
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=862397280 bytes=1769472 completed=159 total=1323272208",
+          "elapsedMs": 4361
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=874783584 bytes=2580480 completed=160 total=1325041680",
+          "elapsedMs": 4366
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=864166752 bytes=5308416 completed=161 total=1327622160",
+          "elapsedMs": 4372
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=834073440 bytes=14155776 completed=163 total=1333979152",
+          "elapsedMs": 4384
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=813429600 bytes=20643840 completed=164 total=1348134928",
+          "elapsedMs": 4410
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=848229216 bytes=14155776 completed=165 total=1368778768",
+          "elapsedMs": 4458
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=926933856 bytes=5308416 completed=167 total=1383983120",
+          "elapsedMs": 4498
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=919855968 bytes=1769472 completed=168 total=1389291536",
+          "elapsedMs": 4513
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=932242272 bytes=1769472 completed=169 total=1391061008",
+          "elapsedMs": 4520
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=921625440 bytes=5308416 completed=170 total=1392830480",
+          "elapsedMs": 4524
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=891532128 bytes=14155776 completed=172 total=1399187472",
+          "elapsedMs": 4538
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=877376352 bytes=14155776 completed=173 total=1413343248",
+          "elapsedMs": 4571
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=905687904 bytes=14155776 completed=174 total=1427499024",
+          "elapsedMs": 4612
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=983581536 bytes=5308416 completed=176 total=1442703376",
+          "elapsedMs": 4635
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=976503648 bytes=1769472 completed=177 total=1448011792",
+          "elapsedMs": 4643
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=988889952 bytes=1769472 completed=178 total=1449781264",
+          "elapsedMs": 4648
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=978273120 bytes=5308416 completed=179 total=1451550736",
+          "elapsedMs": 4652
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=948179808 bytes=14155776 completed=181 total=1457907728",
+          "elapsedMs": 4661
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=934024032 bytes=14155776 completed=182 total=1472063504",
+          "elapsedMs": 4678
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=962335584 bytes=14155776 completed=183 total=1486219280",
+          "elapsedMs": 4696
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1046717280 bytes=5308416 completed=185 total=1501423632",
+          "elapsedMs": 4712
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1039639392 bytes=1769472 completed=186 total=1506732048",
+          "elapsedMs": 4719
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1052025696 bytes=2580480 completed=187 total=1508501520",
+          "elapsedMs": 4723
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1041408864 bytes=5308416 completed=188 total=1511082000",
+          "elapsedMs": 4727
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1011315552 bytes=14155776 completed=190 total=1517438992",
+          "elapsedMs": 4735
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=990671712 bytes=20643840 completed=191 total=1531594768",
+          "elapsedMs": 4750
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1025471328 bytes=14155776 completed=192 total=1552238608",
+          "elapsedMs": 4769
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1146643296 bytes=5308416 completed=194 total=1567442960",
+          "elapsedMs": 4789
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1139565408 bytes=1769472 completed=195 total=1572751376",
+          "elapsedMs": 4798
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1151951712 bytes=1769472 completed=196 total=1574520848",
+          "elapsedMs": 4802
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1141334880 bytes=5308416 completed=197 total=1576290320",
+          "elapsedMs": 4805
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1111253856 bytes=14155776 completed=199 total=1582647312",
+          "elapsedMs": 4816
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1565676384 bytes=20643840 completed=200 total=1596803088",
+          "elapsedMs": 4837
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1125409632 bytes=14155776 completed=201 total=1617446928",
+          "elapsedMs": 4863
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1635902304 bytes=5308416 completed=202 total=1631602704",
+          "elapsedMs": 4886
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1628824416 bytes=1769472 completed=203 total=1636911120",
+          "elapsedMs": 4897
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1641210720 bytes=1769472 completed=204 total=1638680592",
+          "elapsedMs": 4902
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1630593888 bytes=5308416 completed=205 total=1640450064",
+          "elapsedMs": 4906
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1600500576 bytes=14155776 completed=207 total=1646807056",
+          "elapsedMs": 4918
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1586344800 bytes=14155776 completed=208 total=1660962832",
+          "elapsedMs": 4942
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1614656352 bytes=14155776 completed=209 total=1675118608",
+          "elapsedMs": 4965
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1692549984 bytes=5308416 completed=211 total=1690322960",
+          "elapsedMs": 4994
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1685472096 bytes=1769472 completed=212 total=1695631376",
+          "elapsedMs": 5006
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1697858400 bytes=1769472 completed=213 total=1697400848",
+          "elapsedMs": 5012
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1687241568 bytes=5308416 completed=214 total=1699170320",
+          "elapsedMs": 5016
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1657148256 bytes=14155776 completed=216 total=1705527312",
+          "elapsedMs": 5029
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1642992480 bytes=14155776 completed=217 total=1719683088",
+          "elapsedMs": 5056
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1671304032 bytes=14155776 completed=218 total=1733838864",
+          "elapsedMs": 5074
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1755685728 bytes=5308416 completed=220 total=1749043216",
+          "elapsedMs": 5094
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1748607840 bytes=1769472 completed=221 total=1754351632",
+          "elapsedMs": 5103
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1760994144 bytes=2580480 completed=222 total=1756121104",
+          "elapsedMs": 5109
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1750377312 bytes=5308416 completed=223 total=1758701584",
+          "elapsedMs": 5115
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1720284000 bytes=14155776 completed=225 total=1765058576",
+          "elapsedMs": 5127
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1699640160 bytes=20643840 completed=226 total=1779214352",
+          "elapsedMs": 5152
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1734439776 bytes=14155776 completed=227 total=1799858192",
+          "elapsedMs": 5201
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1819632480 bytes=5308416 completed=229 total=1815062544",
+          "elapsedMs": 5228
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1812554592 bytes=1769472 completed=230 total=1820370960",
+          "elapsedMs": 5239
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1824940896 bytes=2580480 completed=231 total=1822140432",
+          "elapsedMs": 5244
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1814324064 bytes=5308416 completed=232 total=1824720912",
+          "elapsedMs": 5250
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1784230752 bytes=14155776 completed=234 total=1831077904",
+          "elapsedMs": 5267
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1763586912 bytes=20643840 completed=235 total=1845233680",
+          "elapsedMs": 5298
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1798386528 bytes=14155776 completed=236 total=1865877520",
+          "elapsedMs": 5339
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1883579232 bytes=5308416 completed=238 total=1881081872",
+          "elapsedMs": 5370
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1876501344 bytes=1769472 completed=239 total=1886390288",
+          "elapsedMs": 5386
+        },
+        {
+          "stage": "loading",
+          "progress": 100,
+          "detail": "file-read-start: offset=1888887648 bytes=2580480 completed=240 total=1888159760",
+          "elapsedMs": 5400
+        }
+      ],
+      "error": "The page was reloaded before a completed load was recorded."
+    }
+  ],
+  "receipts": []
+}

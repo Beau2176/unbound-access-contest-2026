@@ -1,0 +1,62 @@
+{
+  "scope": "Fictional development checks on the existing public Site; not a phone, GPU, hands-free, benchmark or full reliability study.",
+  "source_pdf_sha256": "2d5f61ca0edb379cf940ab6fa93c205bccb765b6fae20537b68e9d96b0a54209",
+  "frozen_expectations_sha256": "3bad6056dab6cdbe04d793efb6627c10740a885df2e6ca1fa948f0c9dc6c60d9",
+  "v30": {
+    "model": "3B IQ3_M",
+    "result": "Browser snapshot and attempted UI cancellation timed out during native loading. Reload restored usable controls. Version 31 recovered an overlong diagnostic and its actual download was preserved.",
+    "raw_report": "v30-recovered-file-reads.json",
+    "duration_measured": false
+  },
+  "v32": {
+    "model": "3B IQ3_M",
+    "runtime": "CPU compatibility wasm32",
+    "load_ready_ms": 12772,
+    "source_identical_to_original": true,
+    "completed_source_responses": 0,
+    "first_completion_timeout_ms": 90001,
+    "raw_report": "v32-compact-compat-timeout.json",
+    "accuracy_score": null
+  },
+  "v33": {
+    "compact_extended_attempt": "The separate recorded compact source run completed no responses before its three-minute limit.",
+    "compact_raw_report": "v33-compact-source-timeout.json",
+    "q4_lock_refusal": "Q4 load refused while another test had an active compact model. This is guard behavior, not evidence of a leaked lock.",
+    "q4_raw_report": "v33-q4-lock-denied.json"
+  },
+  "v34": {
+    "model": "Original 3B Q4_K_M",
+    "revision": "eb72f2a08dd2b9edd07ffacfe5aa56938b7939b0",
+    "runtime": "CPU compatibility wasm32",
+    "page_owned_model_lease": true,
+    "source_pdf_reloaded_in_actual_ui": true,
+    "result": "Model loading began. Subsequent DOM inspection timed out. Reload restored usable controls, then the actual loading report was recovered and downloaded. No extraction was requested.",
+    "raw_report": "v34-q4-compat-interrupted.json",
+    "last_checkpoint_ms": 5400,
+    "interruption_duration_measured": false,
+    "accuracy_score": null
+  },
+  "smaller_model_receipt_verification": {
+    "raw": "v32-small-source-raw.json",
+    "score": "v32-small-source-score.json",
+    "score_recomputed_exactly": true,
+    "completed_calls": 10,
+    "matched_types": 2,
+    "application_accepted": false
+  },
+  "limits": [
+    "No new successful fresh-source 3B extraction or accuracy score.",
+    "No earlier raw response, failure, source PDF or frozen expectation was edited.",
+    "In-memory responses that never arrived are not manufactured.",
+    "The page-owned lease release is checked with injected failures; the Q4 interruption does not prove complete browser-memory recovery.",
+    "No paid model, account, card, agreement or contest-entry/video change."
+  ],
+  "additional_v34_original_q4_attempt": {
+    "source_input": "Identical original PDF-extracted text, pasted into actual import controls",
+    "raw_report": "v34-q4-recovered-interruption.json",
+    "last_checkpoint_ms": 5664,
+    "outcome": "interrupted loading; reload restored controls; no extraction requested",
+    "duration_measured": false
+  },
+  "final_result": "Recovery protections improved and 1B source retry scored 2/10, rejected. Reliable 3B extraction on this unchanged source remains blocked."
+}

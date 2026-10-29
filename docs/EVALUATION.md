@@ -1,14 +1,18 @@
 # Current evaluation - October 28, 2026 (America/Denver)
 
-132 automated checks passed. TypeScript passes. These deterministic model/speech fixtures are engineering checks, not model-quality or phone tests. Real browser/model work is separate below.
+144 automated checks passed. TypeScript passes. These deterministic model/speech fixtures are engineering checks, not model-quality or phone tests. Real browser/model work is separate below.
 
-## Model-loading reliability implementation
+## Model-loading repair and unchanged-source retry
 
-Model loading and inference now run in an app-owned worker. Cancellation and bounded deadlines can terminate the runtime without awaiting initialization, and stale replies cannot revive it. The preferred origin-private file cache streams downloads to a dedicated local directory and gets sizes from file metadata, avoiding the old whole-model reads during enumeration. One request slot and disabled optional warm-up reduce initialization work; model identity and extraction/answer contracts remain unchanged. The larger model uses a 1,024-token context and batches of thirty-two to reduce startup allocation; the smaller model retains its prior context size. Extraction time budgets scale with source rows, and each completion remains bounded.
+Loading and inference run in an app-owned worker with cancellation, stale-reply rejection and bounded deadlines. Preferred storage streams downloads into origin-private files and checks file metadata. CPU 3B uses the packaged compatibility runtime with one slot, a 1,024-token context and batches of thirty-two. The first completion has a three-minute limit; later successful calls have ninety seconds. Loading reports survive refresh and remain separate from raw inference receipts. The original model artifacts remain pinned; a separately selected compact IQ3_M artifact is disclosed as a different quantization. Prompts, response schemas, sampling and frozen expectations were not changed.
 
-Ten deterministic checks cover ignored cancellation, idle/absolute deadlines, retry isolation, worker failures, completion cancellation and file-cache write/error cases. These are injected engineering checks, not a new successful model run or browser-memory measurement. Loading reports are separate from raw model receipts. The original new-source failure remains preserved below. See [loading implementation and its limits](evidence/model-loading/README.md). The actual retry is recorded separately after publishing.
+The original repair-visit source was retried with 1B after explicit experimental opt-in. It loaded in 3,551 ms and completed ten source-type calls in 67,668 ms. Only two of ten matched the original expectations. The source/type validator rejected the proposal without replacing the form. The exact raw export and independently reproduced score are preserved. This is a completed failed extraction case, not an accuracy benchmark.
 
-## Fresh source PDF: manual workflow passed, live extraction blocked
+Compact 3B reached ready in 12,772 ms on the compatibility runtime, then returned no response before its first ninety-second limit. After the cold-start budget change, a separate load took 9,659 ms and its first source response again timed out, at 180,001 ms. Controls recovered and actual raw failure exports were downloaded. A subsequent original-Q4 attempt failed before file access; a fresh version-34 Q4 attempt then stalled browser inspection during initialization. Reload recovered the page and its actual report was downloaded. Its last progress checkpoint of 5,664 ms is not a measurement of the interruption duration. No new-source 3B extraction pass or accuracy score exists. The underlying cause of the Q4 interruption remains unestablished.
+
+An actual second-tab check refused another model load and refused removal of active model files while keeping controls usable. The latest implementation releases its page-owned lease on cancellation, timeout and worker error; injected regressions cover teardown failures. These checks do not prove recovery from an entire-browser failure, memory release on every device or phone/GPU performance. All 144 engineering checks and TypeScript pass. See [raw loading reports, source receipts, scores and limitations](evidence/model-loading/README.md).
+
+## Fresh source PDF: manual workflow passed, initial live extraction blocked
 
 A newly authored two-page Neighborhood Repair Visit PDF, absent from the prepared-form list, was loaded through the actual public app. Ten source rows cover nine distinct facts and all seven answer types. Expected types and planned fictional answers were saved before the first model-load attempt. Both source pages and all question labels survived PDF text extraction.
 

@@ -5,7 +5,7 @@ import {tmpdir} from "node:os";
 import {join} from "node:path";
 import {createSession,applyProposal,proposeAnswer,issues} from "../lib/access.ts";
 import {communityForm} from "../lib/forms.ts";
-import {reviewDocument,prepareReviewDownload} from "../lib/pdf.ts";
+import {reviewDocument,prepareReviewDownload,pdfFailure} from "../lib/pdf.ts";
 test("the real PDF exporter handles long answers, accents, and incomplete review state",async()=>{
  let s=createSession(communityForm);
  const values={full_name:"Zoë Álvarez",home_address:"20 New Example Lane, Sampletown",household_size:"3",monthly_income:"0",landlord_address:"900 Venue Road, Sampletown",request:"I am requesting help with a fictional community project and would like the coordinator to review these details carefully. ".repeat(18),support:"Yes",support_details:"Large print and questions read aloud.",email:"alex@example.invalid"};
@@ -28,4 +28,24 @@ test("a failed PDF font request preserves answers and a retry creates a real dra
  assert.equal(retry.complete,false);assert.equal(retry.fileName,"UNBOUND_Access_Incomplete_Draft.pdf");
  assert.equal(retry.blob.type,"application/pdf");assert.equal(await retry.blob.slice(0,5).text(),"%PDF-");
  assert.equal(JSON.stringify(session),before);assert.equal(requests,2);
+});
+test("PDF load failures give a useful recovery message without exposing asset URLs",()=>{
+ for(const message of ["Failed to fetch dynamically imported module: https://example.invalid/jspdf-old.js","Importing a module script failed.","Loading chunk 42 failed"]){
+  const result=pdfFailure(new TypeError(message));
+  assert.equal(result.reload,true);assert.match(result.message,/Reload this tab/);assert.doesNotMatch(result.message,/https:|jspdf-old/);
+ }
+ const font=pdfFailure(new Error("The PDF font could not load. Your answers are preserved. Check your connection and try the PDF download again."));
+ assert.equal(font.reload,false);assert.match(font.message,/font could not load/);
+ const unknown=pdfFailure(new Error("Internal details https://example.invalid/asset.js"));
+ assert.equal(unknown.reload,false);assert.match(unknown.message,/answers are unchanged/);assert.doesNotMatch(unknown.message,/Internal|https:/);
+});
+test("a reviewed record can be exported with an unanswered optional email",async t=>{
+ let session=createSession(communityForm);
+ for(const [id,value] of Object.entries({full_name:"Morgan Example",home_address:"101 Practice Street",household_size:"2",monthly_income:"0",request:"Fictional practice only",support:"No"}))session=applyProposal(session,proposeAnswer(session,id,value));
+ assert.equal(issues(session).length,0);const before=JSON.stringify(session);
+ const font=new Uint8Array(await readFile(new URL("../public/fonts/DejaVuSans.ttf",import.meta.url)));
+ t.mock.method(globalThis,"fetch",async()=>new Response(font));
+ const result=await prepareReviewDownload(session,true);
+ assert.equal(result.complete,true);assert.equal(result.fileName,"UNBOUND_Access_Reviewed.pdf");assert.equal(await result.blob.slice(0,5).text(),"%PDF-");
+ assert.equal(JSON.stringify(session),before);assert.equal(session.answers.email,undefined);
 });

@@ -4,7 +4,7 @@ import {ArrowLeft,ArrowRight,Check,ClipboardCheck,Download,FileText,HelpCircle,L
 import {applyProposal,createSession,exportRows,findCorrectionTargets,groups,isRequired,issues,parseCommand,proposeAnswer,resolveClarification,restoreSession} from "../lib/access";
 import type {Field,FormDefinition,Proposal,Session} from "../lib/access";
 import {communityForm} from "../lib/forms";
-import {prepareReviewDownload,downloadSource} from "../lib/pdf";
+import {prepareReviewDownload,downloadSource,pdfFailure} from "../lib/pdf";
 import {useSpeech} from "../hooks/use-speech";
 import AccessDialogs from "./access-dialogs";
 import {useLocalMeta} from "../hooks/use-local-meta";
@@ -21,6 +21,7 @@ export default function AccessApp(){
   const [modal,setModal]=useState<"upload"|"clear"|"privacy"|"commands"|null>(null),[switchForm,setSwitchForm]=useState<FormDefinition|null>(null),[schemaReview,setSchemaReview]=useState<FormDefinition|null>(null);
   const [clarify,setClarify]=useState<{fields:Field[];value?:string}|null>(null),[sourceOpen,setSourceOpen]=useState(false);
   const [pdfDownload,setPdfDownload]=useState<{url:string;fileName:string;session:Session;reviewed:boolean}|null>(null);
+  const [pdfNeedsReload,setPdfNeedsReload]=useState(false);
   const [providerLabel,setProviderLabel]=useState("the selected AI provider");
   const heading=useRef<HTMLHeadingElement>(null),handler=useRef<(text:string)=>void>(()=>{});
   const voice=useSpeech(text=>handler.current(text),setMessage);
@@ -63,7 +64,8 @@ export default function AccessApp(){
     if(a.command==="clear_answer"){if(review){voice.say("Say change followed by the question label first, then clear this answer.");return;}setProposal(proposeAnswer(session,activeId,"","voice"));setReviewed(false);const message="Clear this answer and any linked copies? Say confirm to clear it, or cancel to keep it.";setMessage(message);voice.say(message);return;}
     if(review){setMessage("Choose an answer to edit, or say change followed by its label.");return;}setDraft(text);void prepare(text,"voice");
   };
-  async function pdf(){if(!session||busy)return;const spoken=voice.guided;voice.stop();setBusy(true);try{const {blob,fileName,complete}=await prepareReviewDownload(session,reviewed);const url=URL.createObjectURL(blob);setPdfDownload({url,fileName,session,reviewed});const link=document.createElement("a");link.href=url;link.download=fileName;document.body.appendChild(link);link.click();link.remove();const message=`Your ${complete?"reviewed answer record":"incomplete draft"} PDF is ready. The download was started. If it did not save, use Save PDF or Open PDF below the download button. Nothing was submitted.`;setMessage(message);if(spoken)voice.say(message);}catch(e){setMessage((e as Error).message);if(spoken)voice.say((e as Error).message);}finally{setBusy(false);}}
+  function reloadForPdf(){if(!session)return;voice.stop();try{sessionStorage.setItem(STORAGE,JSON.stringify(session));}catch{setPdfNeedsReload(false);setMessage("This browser could not keep your answers for a reload. Keep this tab open and try the download again.");return;}window.location.reload();}
+  async function pdf(){if(!session||busy)return;const spoken=voice.guided;voice.stop();setBusy(true);setPdfNeedsReload(false);try{const {blob,fileName,complete}=await prepareReviewDownload(session,reviewed);const url=URL.createObjectURL(blob);setPdfDownload({url,fileName,session,reviewed});const link=document.createElement("a");link.href=url;link.download=fileName;document.body.appendChild(link);link.click();link.remove();const message=`Your ${complete?"reviewed answer record":"incomplete draft"} PDF is ready. The download was started. If it did not save, use Save PDF or Open PDF below the download button. Nothing was submitted.`;setMessage(message);if(spoken)voice.say(message);}catch(e){const failure=pdfFailure(e);setPdfNeedsReload(failure.reload);setMessage(failure.message);if(spoken)voice.say(failure.message);}finally{setBusy(false);}}
   if(!session)return <main className="loading-screen"><Loader2 className="spin"/><p>Opening your workspace…</p></main>;
   const questions=visible(session),active=session.form.fields.find(f=>f.id===activeId)??questions[0][0],index=questions.findIndex(g=>g.some(f=>f.id===active.id));
   const done=questions.filter(g=>g.every(f=>session.answers[f.id]?.confirmed&&session.answers[f.id].value.trim())).length,checks=issues(session),progress=Math.round(done/questions.length*100);
@@ -96,6 +98,7 @@ export default function AccessApp(){
         </section>
       </div>
       <div className="session-message" role="status" aria-live="polite">{message||(session.form.origin==="local"?"These questions were proposed on this device by Meta Llama. You review and confirm each answer.":session.form.origin==="manual"?"Questions were imported manually. Their model and provider are unverified. You confirm every answer.":configured?"Hosted AI is configured. Every proposed answer still needs your confirmation.":"Practice questions are prepared in advance. Hosted AI is not configured. Optional on-device Meta is available under Try a different form.")}</div>
+      {pdfNeedsReload&&<button className="secondary" disabled={busy} onClick={reloadForPdf}>Reload and keep my answers</button>}
       {sourceOpen&&<section className="source-panel"><div><h2>Original source text</h2><button className="secondary" disabled={busy} onClick={async()=>{setBusy(true);try{await downloadSource(session.form);}catch(e){setMessage((e as Error).message);}finally{setBusy(false);}}}><Download size={16}/> Download practice form PDF</button></div><pre>{session.form.sourceText}</pre></section>}
       {localMeta.phase==="running"&&<button className="secondary" onClick={cancelLocalMeta}>Cancel AI proposal</button>}
       {localReady&&<label className="meta-option"><input type="checkbox" checked={useLocal} disabled={busy} onChange={e=>{setUseLocal(e.target.checked);if(e.target.checked){setUseMeta(false);setMessage("Meta Llama will propose an interpretation of your fictional answers on this device. Review each proposal before confirming.");}}}/> Use on-device Meta to interpret my fictional answers {lastModel&&<small>Last proposal: {lastModel}</small>}</label>}

@@ -1,7 +1,18 @@
 import type { FormDefinition, Session } from "./access.ts";
 import { exportRows, issues } from "./access.ts";
+// Load the PDF engine with the app. A tab kept open across a deployment must
+// not discover an obsolete, lazy-loaded JS chunk only when saving its answers.
+import { jsPDF } from "jspdf";
+
+export function pdfFailure(error: unknown): { message: string; reload: boolean } {
+  const detail = error instanceof Error ? error.message : "";
+  if (/dynamically imported module|Importing a module script failed|Failed to load module script|Loading chunk .+ failed|ChunkLoadError/i.test(detail)) {
+    return { message: "The PDF tools could not load. Reload this tab to get the latest app, then review and download again. Your confirmed answers will be kept in this tab.", reload: true };
+  }
+  if (detail.startsWith("The PDF font could not load.")) return { message: detail, reload: false };
+  return { message: "The PDF could not be created. Your confirmed answers are unchanged. Check your connection and try the download again.", reload: false };
+}
 export async function makeDocument(fontBytes: Uint8Array) {
-  const { jsPDF } = await import("jspdf");
   const doc = new jsPDF({ unit: "mm", format: "a4", compress: true });
   let binary = ""; for (let i = 0; i < fontBytes.length; i += 8192) binary += String.fromCharCode(...fontBytes.subarray(i, i + 8192));
   doc.addFileToVFS("DejaVuSans.ttf", btoa(binary)); doc.addFont("DejaVuSans.ttf", "Access", "normal"); doc.setFont("Access", "normal");

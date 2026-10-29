@@ -1,0 +1,24 @@
+{
+  "checked_at": "2026-10-29",
+  "timezone": "UTC",
+  "trigger": "A private tester screenshot showed the PDF engine dynamic import failing at export time. The image and personal values are excluded.",
+  "diagnosis_limit": "Module fetch failure is observed. A deployment/cache mismatch is plausible but not proven on the tester device.",
+  "implementation": [
+    "PDF engine imports statically with the application instead of first loading at export time.",
+    "PDF failures show actionable text without internal asset URLs.",
+    "Reload recovery writes the current confirmed session before reload and refuses to reload if storage fails."
+  ],
+  "automated": {"passed": 98, "failed": 0, "typecheck": "passed", "new_cases": ["module-error guidance and URL isolation", "actual reviewed PDF with optional email unanswered"]},
+  "preview_ui": {
+    "inputs": "Fictional values only, entered and confirmed through visible controls.",
+    "optional_email_left_blank": true,
+    "review_acknowledgement_enabled": true,
+    "reviewed_pdf_ready_message": true,
+    "save_and_open_pdf_links": true,
+    "confirmed_answers_restored_after_reload": true,
+    "typed_email_transcript": "alex A-T example dot com",
+    "proposed_email": "alex@example.com",
+    "new_download_capture": "Both automatic-download event and Save PDF capture timed out; no newly downloaded bytes claimed."
+  },
+  "limits": ["No actual phone retest", "No actual microphone recognition in this check", "No new completed saved-file claim", "No timed usability or hands-free result"]
+}

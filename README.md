@@ -46,7 +46,7 @@ pnpm build
 pnpm dev
 ```
 
-The build copies WASM assets from pinned npm packages. In the managed environment use `sites-preview start <checkout>`; actual inference requires HTTPS. There are **96 passing automated checks**, using deterministic fixtures/stubs for model and speech behavior. Real inference evidence is recorded separately. TypeScript and production packaging are checked separately.
+The build copies WASM assets from pinned npm packages. In the managed environment use `sites-preview start <checkout>`; actual inference requires HTTPS. There are **98 passing automated checks**, using deterministic fixtures/stubs for model and speech behavior. Real inference evidence is recorded separately. TypeScript and production packaging are checked separately.
 
 ## Data, boundaries and remaining work
 
@@ -55,6 +55,8 @@ Fictional data only. Answers/history use sessionStorage in this tab. Receipts re
 Text PDFs: up to 5 MB, 10 pages and 16,000 characters. Experimental local AI: short sources up to 4,000 characters and 30 nonempty lines, one question per line. Detected conditions/numeric limits and explicit source/type conflicts are rejected. Use prepared forms or a fully reviewed manual proposal for those features. Human review remains essential. No OCR, signatures, payments, eligibility decisions, agency integrations or automatic submissions.
 
 One tester earlier reported basic Android audio, microphone and opening a saved sample PDF. The tester subsequently reported completing the phone review; screenshots showed confirmed answers, linked-address consistency, final acknowledgement and prepared PDF links. Email dictation required a manual @ correction. That reported defect now has deterministic regression coverage and browser UI checks with fictional transcripts; a phone retest of the fix remains pending. This does not establish a fully hands-free session, timed usability improvement, GPU performance or arbitrary-form generalization. Personal screenshots and their values are excluded from public materials.
+
+A later phone screenshot showed PDF generation failing to fetch the dynamically imported PDF engine. The engine now loads with the app instead of waiting until export; recoverable errors use plain-language guidance and a guarded reload keeps confirmed answers in the same tab. The revised UI prepared a reviewed PDF with an optional email left blank, and reload restored confirmed fictional answers. Browser download capture timed out in this check, so a newly saved phone file is not claimed. See [PDF recovery check](docs/evidence/pdf-download-recovery-check.json).
 
 The 2:59 edited demo uses earlier actual app screenshots, a browser-downloaded PDF and generic offline synthetic narration. It predates the new 3B result; the current judge page and preserved receipts provide that update. Source ZIP excludes weights, secrets, dependencies and generated build output. Original code is MIT; Llama/dependencies retain their licenses in THIRD_PARTY_NOTICES.md.
 

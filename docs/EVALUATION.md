@@ -1,6 +1,14 @@
 # Current evaluation - October 29, 2026
 
-96 automated checks passed. TypeScript passes. These deterministic model/speech fixtures are engineering checks, not model-quality or phone tests. Real browser/model work is separate below.
+98 automated checks passed. TypeScript passes. These deterministic model/speech fixtures are engineering checks, not model-quality or phone tests. Real browser/model work is separate below.
+
+## PDF download recovery
+
+A later private Android screenshot showed a dynamic-module fetch error at PDF generation. A missing or unreachable lazy PDF-engine chunk is established by the message; deployment/cache skew is a possible cause, not a confirmed phone-network diagnosis. The PDF engine now imports with the app rather than at export time. PDF errors omit internal asset URLs, and a reload recovery control saves the current confirmed session before reloading, refusing to reload if storage fails. Final-review acknowledgement still resets after reload.
+
+Two new automated checks cover actionable errors without leaking asset URLs and a genuine reviewed PDF with the optional contact email unanswered. Existing real-export and failed-font retry checks still pass. Visible preview controls completed the required fictional answers, produced the reviewed PDF Save/Open links with optional fields blank and restored the confirmed answers on reload. The browser's download event and persistent-link capture both timed out; no newly downloaded bytes or actual phone retest are claimed. A typed “alex A-T example dot com” transcript still proposed alex@example.com for confirmation.
+
+The private phone image and its values are excluded from public source and evidence. This does not upgrade the earlier phone report to a complete saved-file or hands-free pass.
 
 ## Reported phone review and email dictation correction
 

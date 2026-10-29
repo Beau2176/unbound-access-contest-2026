@@ -1,0 +1,106 @@
+{
+  "scope": "Repeated fictional development case, not a held-out accuracy benchmark or phone study.",
+  "model": "Meta Llama 3.2 3B Instruct (IQ3_M)",
+  "revision": "b0a3958968ddb3ff6466ed3148b3afcd75d434af",
+  "quantization": "IQ3_M",
+  "contract": "source-line-types-v8-numeric-verification",
+  "raw_receipt_sha256": "39c24d69c1e86de5b06f93274648e804b547af31c28a42e3d72b2ee767853940",
+  "source_pdf_sha256": "2d5f61ca0edb379cf940ab6fa93c205bccb765b6fae20537b68e9d96b0a54209",
+  "identical_extracted_source": true,
+  "completed_model_calls": 12,
+  "expected_calls": 10,
+  "matched_types": 10,
+  "rows": [
+    {
+      "source_id": "line_2",
+      "expected_kind": "text",
+      "actual_kind": "text",
+      "matched": true,
+      "elapsed_ms": 179218
+    },
+    {
+      "source_id": "line_3",
+      "expected_kind": "email",
+      "actual_kind": "email",
+      "matched": true,
+      "elapsed_ms": 12354
+    },
+    {
+      "source_id": "line_4",
+      "expected_kind": "number",
+      "actual_kind": "number",
+      "numeric_unit_raw": "{\"unit\":\"count\"}",
+      "matched": true,
+      "elapsed_ms": 15488
+    },
+    {
+      "source_id": "line_5",
+      "expected_kind": "money",
+      "actual_kind": "money",
+      "numeric_unit_raw": "{\"unit\":\"dollars\"}",
+      "matched": true,
+      "elapsed_ms": 15983
+    },
+    {
+      "source_id": "line_6",
+      "expected_kind": "yesno",
+      "actual_kind": "yesno",
+      "matched": true,
+      "elapsed_ms": 17945
+    },
+    {
+      "source_id": "line_7",
+      "expected_kind": "date",
+      "actual_kind": "date",
+      "matched": true,
+      "elapsed_ms": 16308
+    },
+    {
+      "source_id": "line_8",
+      "expected_kind": "longtext",
+      "actual_kind": "longtext",
+      "matched": true,
+      "elapsed_ms": 14210
+    },
+    {
+      "source_id": "line_9",
+      "expected_kind": "text",
+      "actual_kind": "text",
+      "matched": true,
+      "elapsed_ms": 13266
+    },
+    {
+      "source_id": "line_10",
+      "expected_kind": "text",
+      "actual_kind": "text",
+      "matched": true,
+      "elapsed_ms": 12629
+    },
+    {
+      "source_id": "line_11",
+      "expected_kind": "text",
+      "actual_kind": "text",
+      "matched": true,
+      "elapsed_ms": 12659
+    }
+  ],
+  "duplicate_source_ids": [],
+  "unknown_source_ids": [],
+  "application_accepted": true,
+  "elapsed_inference_ms": 419606,
+  "all_expected_types": true,
+  "application_error": null,
+  "not_model_outputs": [
+    "title metadata",
+    "source labels",
+    "source pages",
+    "required flags",
+    "repeated-label links"
+  ],
+  "source_questions": 10,
+  "kind_calls": 10,
+  "numeric_unit_calls": 2,
+  "expected_model_calls": 12,
+  "unknown_stages": [],
+  "scoring": "Each final question type is independently reconstructed from its raw kind and, for numeric answers, its separate raw unit decision. No oracle repair or assembledFields scoring."
+}

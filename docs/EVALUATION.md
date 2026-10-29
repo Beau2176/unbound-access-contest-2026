@@ -1,3 +1,21 @@
+# Current model repair evaluation - October 29, 2026 (America/Denver)
+
+This section supersedes the older current-state summaries below. All earlier raw failures remain unchanged.
+
+- 1B v8: ten of ten final types on the unchanged repair-visit source, 37,766 ms, twelve actual model calls (ten kinds plus two numeric units), accepted by source validation.
+- First-stage requests exactly match the earlier v5 requests. Independent unit calls resolve both count and currency decisions. The scorer reconstructs final types directly from raw responses and refuses missing/wrong/duplicate unit calls, forged assembled maps and changed source.
+- Additional garden case: eight of nine final types after eleven calls, 16,246 ms; Preferred email was mislabeled text and rejected. This is a failed additional development case, not hidden or corrected model output.
+- No general accuracy, held-out benchmark, phone performance or GPU result is claimed. Exact source-derived labels, pages, required flags and repeated-label links are excluded from model accuracy.
+- 152 automated engineering checks pass, plus five injected scorer-integrity checks. TypeScript passes. Engineering checks are distinct from model runs.
+- Modern native runtime selection, page isolation and an inline bundled worker enabled four CPU threads. Compact 3B then completed the unchanged source: ten of ten final types, twelve calls, 419,606 ms, accepted. Its native four-thread load took 7,251 ms with batch 256; the first answer took 179,218 ms, near the deadline. The older short-response success and all earlier failures remain separate; Q4 loading still interrupted. The default form path now uses the smaller model, with explicit source-wording review as a separately labeled no-model alternative.
+- PDF import after the worker-handshake repair reproduces the exact original 426-character extracted text. A fresh main-app 1B run independently matched all ten types, then passed actual schema approval, typed answers, count/date rejection, linked correction, refresh and a real reviewed PDF. Both complete rendered pages were visually inspected. Earlier reviewed PDFs, phone checks and source expectations are preserved.
+
+Detailed attempts, limits and reproducible scoring: [model repair evidence](evidence/model-repair/README.md).
+
+---
+
+# Historical evaluation before this repair
+
 # Current evaluation - October 28, 2026 (America/Denver)
 
 144 automated checks passed. TypeScript passes. These deterministic model/speech fixtures are engineering checks, not model-quality or phone tests. Real browser/model work is separate below.

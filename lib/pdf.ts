@@ -40,9 +40,17 @@ export async function downloadSource(form:FormDefinition){const {write,finish}=a
 export async function extractPdfText(file:File){
   if(file.size>5*1024*1024)throw new Error("Use a PDF smaller than 5 MB.");
   const pdfjs=await import("pdfjs-dist");pdfjs.GlobalWorkerOptions.workerSrc="/pdf.worker.min.mjs";
-  const doc=await pdfjs.getDocument({data:await file.arrayBuffer(),isEvalSupported:false,useSystemFonts:true}).promise;
-  try{if(doc.numPages>10)throw new Error("Use a text-based PDF with 10 pages or fewer.");const pages=[];
+  // Static asset headers do not inherit the page's COEP policy on this host.
+  // Start a same-origin module worker from a tiny blob so PDF parsing stays
+  // off the UI thread, then import the unchanged pinned PDF.js worker module.
+  const wrapper=URL.createObjectURL(new Blob([`await import(${JSON.stringify(new URL("/pdf.worker.min.mjs",location.origin).href)});`],{type:"text/javascript"}));
+  pdfjs.GlobalWorkerOptions.workerSrc=wrapper;
+  let doc:import("pdfjs-dist").PDFDocumentProxy|undefined;
+  try{
+    // Let PDF.js own its normal ready handshake and terminate its own worker.
+    doc=await pdfjs.getDocument({data:await file.arrayBuffer(),isEvalSupported:false,useSystemFonts:true}).promise;
+    if(doc.numPages>10)throw new Error("Use a text-based PDF with 10 pages or fewer.");const pages=[];
     for(let p=1;p<=doc.numPages;p++){const content=await(await doc.getPage(p)).getTextContent();pages.push(`[Page ${p}]\n`+content.items.map(i=>"str"in i?i.str+(i.hasEOL?"\n":" "):"").join(""));}
     const text=pages.join("\n\n");if(text.replace(/\[Page \d+\]/g,"").trim().length<30)throw new Error("This PDF has too little selectable text. Scans and handwriting are not supported.");if(text.length>16000)throw new Error("Use a shorter form: up to 16,000 text characters.");return text;
-  }finally{await doc.destroy();}
+  }finally{try{await doc?.destroy();}finally{URL.revokeObjectURL(wrapper);}}
 }

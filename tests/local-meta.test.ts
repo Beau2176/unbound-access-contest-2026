@@ -1,10 +1,31 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { indexLocalSource, localExtractionRequest, executeLocalExtraction, parseLocalExtraction, localAnswerRequest, parseLocalAnswer, LOCAL_META, LOCAL_META_MODELS, assertLocalModelMetadata } from "../lib/local-meta-policy.ts";
+import { indexLocalSource, localExtractionRequest, executeLocalExtraction, parseLocalExtraction, localAnswerRequest, parseLocalAnswer, parseLocalSourceType, parseLocalNumericUnit, LOCAL_META, LOCAL_META_MODELS, assertLocalModelMetadata } from "../lib/local-meta-policy.ts";
 import { createSession, applyProposal, proposeAnswer, restoreSession } from "../lib/access.ts";
 const source = "Fictional move-in practice\n[Page 1]\nApplicant name (required)\nApplicant home address (required)\n[Page 2]\nRepeat the same applicant home address (required)\nLandlord mailing address (required)";
 const questions = { line_1: "skip", line_2: "text", line_3: "text", line_4: "text", line_5: "text" };
 const output = (fields: unknown = questions) => JSON.stringify({ fields });
+test("numeric units require their own valid decision instead of silently repairing a count",()=>{
+  assert.equal(parseLocalSourceType('{"kind":"number"}'),"number");
+  assert.equal(parseLocalSourceType('{"kind":"longtext"}'),"longtext");
+  assert.equal(parseLocalNumericUnit('{"unit":"dollars"}'),"money");
+  assert.equal(parseLocalNumericUnit('{"unit":"count"}'),"number");
+  assert.throws(()=>parseLocalNumericUnit('{"unit":"unsupported"}'));
+  assert.throws(()=>parseLocalNumericUnit('{"unit":"dollars","corrected":true}'));
+});
+test("both a count and a money amount receive independent live numeric-unit calls before assembly",async()=>{
+  const plan=localExtractionRequest("Fictional donation practice\nHow many boxes? (required)\nContribution in dollars (required)");
+  const seen:{id:string;stage:string;request:unknown}[]=[];
+  const result=await executeLocalExtraction(plan,async(request,id,stage)=>{seen.push({id,stage,request});return stage==="kind"?'{"kind":"number"}':JSON.stringify({unit:id==="line_2"?"count":"dollars"});});
+  assert.deepEqual(seen.map(c=>[c.id,c.stage]),[["line_2","kind"],["line_3","kind"],["line_2","numeric-unit"],["line_3","numeric-unit"]]);
+  assert.equal(result.fields.line_2,"number");assert.equal(result.fields.line_3,"money");
+  await assert.rejects(executeLocalExtraction(plan,async(_r,_id,stage)=>stage==="kind"?'{"kind":"number"}':'{"unit":"count"}'),/type conflicts/);
+});
+test("a wrong dollar unit cannot replace an explicit Number of items field",()=>{
+  const source="Fictional collection practice\nNumber of donated books (required)\nQuantity of boxes (required)";
+  assert.throws(()=>parseLocalExtraction(JSON.stringify({fields:{line_1:"skip",line_2:"money",line_3:"number"}}),source),/type conflicts/);
+  assert.throws(()=>parseLocalExtraction(JSON.stringify({fields:{line_1:"skip",line_2:"number",line_3:"money"}}),source),/type conflicts/);
+});
 test("model receipts and loading identities cannot confuse the small and large Meta checkpoints",()=>{
   for(const key of ["small","large","compact"] as const){
     const model=LOCAL_META_MODELS[key];assert.ok(model.url.includes(model.revision));

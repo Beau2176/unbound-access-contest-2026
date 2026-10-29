@@ -45,6 +45,7 @@ export default defineConfig(async ({ command }) => {
 
   return {
     server: {
+      headers: { "Cross-Origin-Opener-Policy": "same-origin", "Cross-Origin-Embedder-Policy": "require-corp" },
       ...(managedLinux
         ? { host: "0.0.0.0", allowedHosts: ["terminal.local"] }
         : {}),

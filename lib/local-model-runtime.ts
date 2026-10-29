@@ -7,19 +7,20 @@ export type CompletionInput = {
   temperature: number; seed: number; max_tokens: number;
 };
 export type CompletionResult = { choices: { message: { content: string | null }; finish_reason: string | null }[]; usage?: { prompt_tokens: number; completion_tokens: number } };
-export type ModelLoaded = { metadata: Record<string, string>; backend: "WebGPU" | "CPU / WebAssembly"; storage: string; temporaryStorage: boolean; params: { n_ctx: number; n_parallel: number; warmup: boolean; n_batch?: number; n_ubatch?: number } };
+export type ModelLoaded = { metadata: Record<string, string>; backend: "WebGPU" | "CPU / WebAssembly"; storage: string; temporaryStorage: boolean; params: { n_ctx: number; n_parallel: number; warmup: boolean; n_batch?: number; n_ubatch?: number; n_threads?: number; runtime?: "native" | "compatibility"; isolated?: boolean } };
 export type RuntimeCommand = { id: number; task: "load"; modelKey: "small" | "large" | "compact"; preferGpu: boolean; origin: string } | { id: number; task: "complete"; input: CompletionInput };
 export type RuntimeReply = { id: number; task: "progress"; progress: ModelProgress } | { id: number; task: "loaded"; result: ModelLoaded } | { id: number; task: "complete"; result: CompletionResult } | { id: number; task: "error"; message: string };
 export type ModelWorker = { postMessage(message: RuntimeCommand): void; terminate(): void; onmessage: ((event: MessageEvent<RuntimeReply>) => void) | null; onerror: ((event: ErrorEvent) => void) | null };
 type Clock = { set(run: () => void, delay: number): () => void };
 const clock: Clock = { set(run, delay) { const timer = setTimeout(run, delay); return () => clearTimeout(timer); } };
-type Pending = { id: number; task: "load" | "complete"; resolve(value: unknown): void; reject(error: Error): void; cleanup(): void; progress?(value: ModelProgress): void; resetIdle?(stage: ModelProgress["stage"]): void };
+type Pending = { id: number; task: "load" | "complete"; prefix?: string; resolve(value: unknown): void; reject(error: Error): void; cleanup(): void; progress?(value: ModelProgress): void; resetIdle?(stage: ModelProgress["stage"]): void };
 
 export class LocalModelRuntime {
   private pending: Pending | null = null;
   private sequence = 0;
   private ready = false;
   private hasCompleted = false;
+  private completedPrefix: string | undefined;
   private closed = false;
   private worker: ModelWorker;
   private timers: Clock;
@@ -35,7 +36,8 @@ export class LocalModelRuntime {
   }
   complete(input: CompletionInput, signal: AbortSignal) {
     if (!this.isModelLoaded()) return Promise.reject(new Error("Load the optional on-device Meta model first."));
-    return this.request<CompletionResult>({ task: "complete", input }, signal, undefined, this.hasCompleted ? 90000 : 180000);
+    const prefix = JSON.stringify(input.messages.filter(message=>message.role==="system"));
+    return this.request<CompletionResult>({ task: "complete", input }, signal, undefined, this.hasCompleted && this.completedPrefix===prefix ? 90000 : 180000);
   }
   destroy(reason = "On-device AI stopped. Your confirmed answers are unchanged.") {
     if (this.closed) return;
@@ -61,7 +63,7 @@ export class LocalModelRuntime {
           : "The model download stopped making progress. It has been stopped. Your form and confirmed answers are unchanged; check your connection before retrying."), stage === "loading" ? 120000 : 90000);
       };
       const cleanup = () => { cancelIdle(); cancelTotal(); signal.removeEventListener("abort", abort); };
-      this.pending = { id, task: command.task, resolve: value => resolve(value as T), reject, cleanup, progress, resetIdle };
+      this.pending = { id, task: command.task, ...(command.task==="complete"?{prefix:JSON.stringify(command.input.messages.filter(message=>message.role==="system"))}:{}), resolve: value => resolve(value as T), reject, cleanup, progress, resetIdle };
       signal.addEventListener("abort", abort, { once: true });
       cancelTotal = this.timers.set(() => this.destroy(command.task === "load" ? "The model did not finish loading within ten minutes. It has been stopped. Your confirmed answers are unchanged." : "This AI answer took too long. It has been stopped. Your confirmed answers are unchanged."), command.task === "load" ? 600000 : completionDeadline);
       if (command.task === "load") resetIdle("checking");
@@ -80,7 +82,7 @@ export class LocalModelRuntime {
     if ((reply.task === "loaded" && job.task === "load") || (reply.task === "complete" && job.task === "complete")) {
       this.pending = null; job.cleanup();
       if (reply.task === "loaded") this.ready = true;
-      if (reply.task === "complete") this.hasCompleted = true;
+      if (reply.task === "complete") { this.hasCompleted = true; this.completedPrefix = job.prefix; }
       job.resolve(reply.result);
     }
   }

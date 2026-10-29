@@ -1,0 +1,36 @@
+{
+  "scope": "Actual typed browser QA on public version 43. Fictional data only; no voice, phone or GPU claim.",
+  "fallback": {
+    "source": "additional-case-frozen.json",
+    "visibleLabel": "SOURCE WORDING \u00b7 NO AI CALL",
+    "questionTypesMatched": 9,
+    "sourceQuestions": 9,
+    "preferredEmailType": "email",
+    "repeatMailingLinked": true,
+    "proposalClosedWithoutReplacingCurrentForm": true,
+    "modelCalls": 0
+  },
+  "mainAiWorkflow": {
+    "sourcePdf": "../fresh-repair-visit/Fresh_Repair_Visit_Source.pdf",
+    "extractedTextIdenticalToOriginal": true,
+    "receipt": "v43-main-small-v8-raw.json",
+    "model": "Meta Llama 3.2 1B Instruct",
+    "schemaApprovedThroughActualUi": true,
+    "sourceRows": 10,
+    "distinctFacts": 9,
+    "fractionalCountRejected": "2.5",
+    "impossibleDateRejected": "2026-02-30",
+    "confirmedZero": "0",
+    "confirmedNo": "No",
+    "pickupCorrectionFrom": "12 Fictional Cedar Lane",
+    "pickupCorrectionTo": "14 Fictional Cedar Lane",
+    "bothPickupRowsChanged": true,
+    "separateVenuePreserved": "900 Fictional Workshop Road",
+    "realRefreshPreservedFormAndAllFacts": true,
+    "reviewAcknowledgementResetAfterRefresh": true,
+    "reviewExplicitlyAcknowledgedAgain": true,
+    "actualDownloadedPdf": "v43-live-meta-reviewed.pdf"
+  },
+  "automationObservation": "One rapid field transition proposed the earlier address. That proposal was cancelled without confirming; the new input was then read back and both new values were checked before confirmation. No saved answer was overwritten by that cancelled proposal; this does not establish a user-input defect.",
+  "preserved": "Earlier completed phone, speech and supplied-PDF checks remain separate and unchanged."
+}

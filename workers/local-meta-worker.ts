@@ -31,12 +31,9 @@ scope.onmessage = async event => {
       const gpu = (navigator as Navigator & {gpu?:{requestAdapter():Promise<unknown>}}).gpu;
       let useGpu = false;
       try { useGpu = command.preferGpu && !!(await gpu?.requestAdapter()); } catch { /* CPU remains available. */ }
-      // The native memory64 / JSPI 3B path stalled after its weight reads in
-      // the recorded browser attempt. CPU 3B uses the packaged wasm32 runtime;
-      // model bytes, prompts and response validation remain unchanged.
-      if (command.modelKey !== "small" && !useGpu) next.getWorkerResources = () => ({
-        wasmPath:`${command.origin}/wasm/compat/wllama.wasm`,jsPath:`${command.origin}/wasm/compat/wllama.js`,compat:true,noWebGPU:true,
-      });
+      // Let the library select native JSPI on modern browsers. The forced
+      // Asyncify compatibility path loaded but never answered within three
+      // minutes; it remains available automatically to browsers that need it.
       progress("checking",undefined,"model-index");
       const file = await next.modelManager.getModelOrDownload({url:model.url},{progressCallback:({loaded,total})=>progress("downloading",Math.min(100,Math.round(100*loaded/(total||model.bytes))))});
       progress("checking",undefined,"model-open");
@@ -51,9 +48,10 @@ scope.onmessage = async event => {
       const header = await blobs[0].slice(0,16).arrayBuffer();
       if (header.byteLength !== 16) throw new Error("The saved model header is incomplete. Your form is unchanged.");
       progress("loading",100,next.getWorkerResources().compat?"runtime-compatibility":"runtime-native");
-      const params = {n_ctx:command.modelKey!=="small"?1024:4096,n_batch:command.modelKey!=="small"?32:128,n_ubatch:command.modelKey!=="small"?32:128,n_parallel:1,warmup:false,n_threads:scope.crossOriginIsolated?Math.min(4,navigator.hardwareConcurrency||1):1,n_gpu_layers:useGpu?99:0,seed:42};
+      const batch=command.modelKey==="compact"?256:64;
+      const params = {n_ctx:1024,n_batch:batch,n_ubatch:batch,n_parallel:1,warmup:false,n_threads:scope.crossOriginIsolated?Math.min(4,navigator.hardwareConcurrency||1):1,n_gpu_layers:useGpu?99:0,seed:42};
       await next.loadModel(blobs,params);
-      scope.postMessage({id:command.id,task:"loaded",result:{metadata:next.getLoadedContextInfo().metadata,backend:useGpu?"WebGPU":"CPU / WebAssembly",storage:storage.label,temporaryStorage:storage.temporary,params:{n_ctx:params.n_ctx,n_parallel:params.n_parallel,warmup:params.warmup,n_batch:params.n_batch,n_ubatch:params.n_ubatch}}});
+      scope.postMessage({id:command.id,task:"loaded",result:{metadata:next.getLoadedContextInfo().metadata,backend:useGpu?"WebGPU":"CPU / WebAssembly",storage:storage.label,temporaryStorage:storage.temporary,params:{n_ctx:params.n_ctx,n_parallel:params.n_parallel,warmup:params.warmup,n_batch:params.n_batch,n_ubatch:params.n_ubatch,n_threads:next.getNumThreads(),runtime:next.getWorkerResources().compat?"compatibility":"native",isolated:scope.crossOriginIsolated}}});
     } else if (command.task === "complete") {
       if (!engine?.isModelLoaded()) throw new Error("Load the optional on-device Meta model first.");
       const result = await engine.createChatCompletion(command.input);

@@ -1,0 +1,13 @@
+{
+  "scope": "Actual reviewed PDF downloaded from the live AI-proposed form after typed confirmation, linked correction and real refresh. Not a voice or phone study.",
+  "file": "v43-live-meta-reviewed.pdf",
+  "bytes": 63267,
+  "sha256": "305de29e77c54f06fa1c1eaf2ec834653c4780749b02451f4fc988f4910d60e0",
+  "pages": 2,
+  "all_expected_values": true,
+  "corrected_pickup_copies": 2,
+  "old_pickup_absent": true,
+  "separate_venue_preserved": true,
+  "zero_and_no_preserved": true,
+  "visualInspection": "Both complete pages rendered with Poppler and visually inspected: readable text, correct footers and page numbering, no clipping, overlap or missing glyphs."
+}

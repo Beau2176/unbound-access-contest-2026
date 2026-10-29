@@ -1,0 +1,48 @@
+{
+  "scope": "On-device development checks, not a user study",
+  "loads": [
+    {
+      "at": "2026-10-29T06:23:32.545Z",
+      "model": "Meta Llama 3.2 1B Instruct",
+      "revision": "7d1f70022fcab2038000074bd0342e03e1d8b755",
+      "quantization": "Q4_K_M",
+      "outcome": "error",
+      "elapsedMs": 239,
+      "events": [
+        {
+          "stage": "checking",
+          "detail": "worker-start",
+          "elapsedMs": 0
+        },
+        {
+          "stage": "checking",
+          "detail": "origin-model-lock",
+          "elapsedMs": 0
+        }
+      ],
+      "error": "The on-device AI worker could not continue. Your confirmed answers are unchanged. Reload this page before loading it again."
+    },
+    {
+      "at": "2026-10-29T06:25:53.261Z",
+      "model": "Meta Llama 3.2 1B Instruct",
+      "revision": "7d1f70022fcab2038000074bd0342e03e1d8b755",
+      "quantization": "Q4_K_M",
+      "outcome": "error",
+      "elapsedMs": 163,
+      "events": [
+        {
+          "stage": "checking",
+          "detail": "worker-start",
+          "elapsedMs": 0
+        },
+        {
+          "stage": "checking",
+          "detail": "origin-model-lock",
+          "elapsedMs": 0
+        }
+      ],
+      "error": "The on-device AI worker could not continue. Your confirmed answers are unchanged. Reload this page before loading it again."
+    }
+  ],
+  "receipts": []
+}

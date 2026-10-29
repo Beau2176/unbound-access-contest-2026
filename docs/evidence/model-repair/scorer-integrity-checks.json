@@ -1,0 +1,25 @@
+{
+  "scope": "Injected scorer integrity checks; not model calls. Original raw exports remain unchanged.",
+  "checks": [
+    {
+      "case": "missing_unit",
+      "success_claim_rejected": true
+    },
+    {
+      "case": "wrong_unit",
+      "success_claim_rejected": true
+    },
+    {
+      "case": "duplicate_unit",
+      "success_claim_rejected": true
+    },
+    {
+      "case": "forged_assembled",
+      "success_claim_rejected": true
+    },
+    {
+      "case": "changed_source",
+      "success_claim_rejected": true
+    }
+  ]
+}

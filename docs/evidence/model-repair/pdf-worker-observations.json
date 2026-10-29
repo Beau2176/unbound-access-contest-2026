@@ -1,0 +1,18 @@
+{
+  "scope": "Browser UI observations only, not a model receipt or phone test.",
+  "originalSource": "docs/evidence/fresh-repair-visit/Fresh_Repair_Visit_Source.pdf",
+  "originalPdfTextCharacters": 426,
+  "v39": {
+    "pdfTextIdenticalToFrozenExtractedSource": true,
+    "consoleWarning": "Warning: Setting up fake worker."
+  },
+  "v40": {
+    "customPortAttempt": "PDF text remained empty at observation; no completed import captured. The manually supplied worker port was replaced by the PDF.js-owned ready handshake. No parsing duration was measured."
+  },
+  "v41": {
+    "pdfTextIdenticalToFrozenExtractedSource": true,
+    "pdfTextCharacters": 426,
+    "visibleAlerts": []
+  },
+  "limits": "No new voice, phone, GPU or OCR result. Earlier phone/PDF evidence remains unchanged."
+}

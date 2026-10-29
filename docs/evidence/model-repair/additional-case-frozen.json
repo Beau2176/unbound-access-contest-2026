@@ -1,0 +1,15 @@
+{
+  "scope": "Additional authored development case, frozen before its first live model run. Not held-out. Never included in runtime prompts.",
+  "source": "Fictional community garden signup\nVolunteer name (required)\nMailing address (required)\nPreferred email (optional)\nHow many watering cans? (required)\nContribution in dollars (required)\nNeed a receipt? Yes or No (required)\nStarting date YYYY-MM-DD (required)\nDescribe the help you can offer (required)\nRepeat mailing address (required)",
+  "expected_kinds": [
+    "text",
+    "text",
+    "email",
+    "number",
+    "money",
+    "yesno",
+    "date",
+    "longtext",
+    "text"
+  ]
+}

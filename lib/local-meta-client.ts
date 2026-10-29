@@ -7,13 +7,15 @@ import { acquireModelLease } from "./local-model-lease";
 import type { ModelLease } from "./local-model-lease";
 export type { LocalLoadReport } from "./model-loading-report";
 import { removeModelDownloads } from "./local-model-storage";
-import ModelWorker from "../workers/local-meta-worker?worker";
+// An inline bundled worker inherits the document's isolation policy. The host
+// serves static worker files outside the SSR header path, without COEP.
+import ModelWorker from "../workers/local-meta-worker?worker&inline";
 import { LOCAL_META_MODELS, assertLocalModelMetadata, localAnswerRequest, localExtractionRequest, parseLocalAnswer, executeLocalExtraction } from "./local-meta-policy";
 import type { LocalField, LocalModelKey } from "./local-meta-policy";
 import type { FormDefinition } from "./access";
 
-type LocalCall = { sourceId: string; raw: string; elapsedMs: number; tokens?: { prompt: number; completion: number } };
-export type LocalReceipt = { at: string; model: string; revision: string; quantization?: string; contract: string; task: "extract" | "answer"; input: unknown; request: unknown; raw: string; rawFormat?: string; calls?: LocalCall[]; assembledFields?: unknown; elapsedMs: number; tokens?: { prompt: number; completion: number }; accepted: boolean; error?: string };
+type LocalCall = { sourceId: string; stage?: "kind"|"numeric-unit"; request?: unknown; raw: string; elapsedMs: number; tokens?: { prompt: number; completion: number } };
+export type LocalReceipt = { at: string; model: string; revision: string; quantization?: string; contract: string; task: "extract" | "answer" | "health"; input: unknown; request: unknown; raw: string; rawFormat?: string; calls?: LocalCall[]; assembledFields?: unknown; elapsedMs: number; tokens?: { prompt: number; completion: number }; accepted: boolean; error?: string };
 type LocalState = { loads: LocalLoadReport[]; phase: "idle" | "downloading" | "loading" | "ready" | "running" | "error"; progress: number; message: string; receipts: LocalReceipt[]; modelKey?: LocalModelKey; temporaryStorage?: boolean; backend?: "WebGPU" | "CPU / WebAssembly" };
 const initial: LocalState = { phase: "idle", progress: 0, message: "On-device AI is off. Practice forms are ready to use.", receipts: [], loads: [] };
 const LOAD_REPORT_KEY = "unbound-meta-loads-v1";
@@ -113,21 +115,21 @@ export async function runLocalMeta(args: { task: "extract"; text: string } | { t
   update({ phase: "running", message: args.task === "extract" ? "Meta is proposing question types on this device. Your current form is unchanged." : "Meta is proposing an answer on this device. Nothing is confirmed yet." });
   let raw = "", tokens: LocalReceipt["tokens"], assembledFields: unknown;
   const calls: LocalCall[] = [];
-  const receipt = (accepted: boolean, error?: string): LocalReceipt => ({ at, model: model.name, revision: model.revision, quantization:model.quantization, contract: args.task === "extract" ? "source-line-types-v3" : "grounded-answer-v2", task: args.task, input: args.task === "extract" ? { source: args.text } : { field: args.field, utterance: args.text }, request, raw, ...(args.task === "extract" ? {rawFormat: "Newline-joined model responses. Each exact original response is preserved separately in calls; assembledFields is application-derived.", calls, assembledFields} : {}), elapsedMs: Math.round(performance.now() - started), tokens, accepted, ...(error ? { error } : {}) });
+  const receipt = (accepted: boolean, error?: string): LocalReceipt => ({ at, model: model.name, revision: model.revision, quantization:model.quantization, contract: args.task === "extract" ? "source-line-types-v8-numeric-verification" : "grounded-answer-v2", task: args.task, input: args.task === "extract" ? { source: args.text } : { field: args.field, utterance: args.text }, request, raw, ...(args.task === "extract" ? {rawFormat: "Newline-joined model responses. Each exact original response is preserved separately in calls; assembledFields is application-derived.", calls, assembledFields} : {}), elapsedMs: Math.round(performance.now() - started), tokens, accepted, ...(error ? { error } : {}) });
   try {
     let data: FormDefinition | ReturnType<typeof parseLocalAnswer>;
     if ("requests" in request) {
-      const result = await executeLocalExtraction(request, async (step, sourceId) => {
+      const result = await executeLocalExtraction(request, async (step, sourceId, stage) => {
         const callStarted = performance.now();
         const result = await runtime.complete({ messages: step.messages, response_format: { type: "json_schema", json_schema: { name: "question_type", schema: step.schema, strict: true } }, temperature: 0, seed: 42, max_tokens: 24 }, signal);
         const callRaw = result.choices[0]?.message.content ?? "";
         const usage = result.usage ? {prompt: result.usage.prompt_tokens, completion: result.usage.completion_tokens} : undefined;
-        calls.push({sourceId,raw:callRaw,elapsedMs:Math.round(performance.now()-callStarted),tokens:usage});
+        calls.push({sourceId,stage,request:step,raw:callRaw,elapsedMs:Math.round(performance.now()-callStarted),tokens:usage});
         raw = calls.map(call => call.raw).join("\n");
         if (usage) tokens = {prompt:(tokens?.prompt??0)+usage.prompt,completion:(tokens?.completion??0)+usage.completion};
         if (signal.aborted || result.choices[0]?.finish_reason === "length") throw new Error(signal.aborted ? "AI task cancelled. Your answers are unchanged." : "The model response reached its limit. Your form is unchanged.");
         return callRaw;
-      }, {signal,onProgress:(current,total)=>update({message:`Meta is reading question ${current} of ${total} on this device. Your current form is unchanged.`})});
+      }, {signal,onProgress:(current,total,stage)=>update({message:stage==="numeric-unit"?`Meta is checking numeric unit ${current} of ${total}. Your current form is unchanged.`:`Meta is reading question ${current} of ${total} on this device. Your current form is unchanged.`})});
       data=result.data; assembledFields=result.fields;
     } else {
       const result = await runtime.complete({ messages: request.messages, response_format: { type: "json_schema", json_schema: { name: "proposed_answer", schema: request.schema, strict: true } }, temperature: 0, seed: 42, max_tokens: 220 }, signal);
@@ -143,4 +145,26 @@ export async function runLocalMeta(args: { task: "extract"; text: string } | { t
     update({ receipts: [...state.receipts.slice(-7), receipt(false, message)], message });
     throw new Error(message);
   } finally { clearTimeout(timer); if(controller === taskController) { controller = null; update({ phase: engine?.isModelLoaded() ? "ready" : "idle" }); } }
+}
+
+export async function checkLocalMetaHealth() {
+  if (!engine?.isModelLoaded() || state.phase !== "ready") throw new Error("Load the optional on-device Meta model first.");
+  const model = LOCAL_META_MODELS[state.modelKey??"small"], runtime = engine;
+  const taskController = new AbortController(); controller = taskController;
+  const started = performance.now(), at = new Date().toISOString();
+  const request = {messages:[{role:"user" as const,content:'Return {"ready":true}.'}],response_format:{type:"json_schema" as const,json_schema:{name:"health",strict:true,schema:{type:"object",required:["ready"],additionalProperties:false,properties:{ready:{const:true}}}}},temperature:0,seed:42,max_tokens:16};
+  let raw = "", tokens: LocalReceipt["tokens"];
+  update({phase:"running",message:"Checking that the model can produce its first short response. Your form is unchanged."});
+  const receipt = (accepted:boolean,error?:string):LocalReceipt=>({at,model:model.name,revision:model.revision,quantization:model.quantization,contract:"first-response-health-v1",task:"health",input:{},request,raw,tokens,elapsedMs:Math.round(performance.now()-started),accepted,...(error?{error}:{})});
+  try {
+    const result = await runtime.complete(request,taskController.signal);
+    raw = result.choices[0]?.message.content??"";
+    tokens = result.usage?{prompt:result.usage.prompt_tokens,completion:result.usage.completion_tokens}:undefined;
+    if(result.choices[0]?.finish_reason==="length" || JSON.parse(raw).ready!==true) throw new Error("The model's short response could not be checked.");
+    const recorded=receipt(true); update({receipts:[...state.receipts.slice(-7),recorded],message:`Model response checked in ${(recorded.elapsedMs/1000).toFixed(1)} seconds. This checks runtime response, not form accuracy.`});
+    return recorded;
+  } catch(error) {
+    const message=error instanceof Error?error.message:"The model response check failed.";
+    update({receipts:[...state.receipts.slice(-7),receipt(false,message)],message}); throw new Error(message);
+  } finally { if(controller===taskController){controller=null;update({phase:engine?.isModelLoaded()?"ready":"idle"});} }
 }

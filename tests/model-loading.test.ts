@@ -94,6 +94,18 @@ test("timeout releases the page-owned model lease without waiting for an uncoope
   clock.advance(180001);await rejected;assert.equal(releases,1);assert.equal(worker.terminated,1);assert.equal(clock.jobs.size,0);
   runtime.destroy();assert.equal(releases,1);
 });
+test("a short health check does not consume the longer budget for a new task's first system prompt",async()=>{
+  const worker=new FakeWorker(),clock=new Clock(),runtime=new LocalModelRuntime(worker,clock);
+  const loading=runtime.load(loadArgs,new AbortController().signal,()=>{});worker.emit({id:1,task:"loaded",result:loaded});await loading;
+  const health=runtime.complete(completion,new AbortController().signal);
+  worker.emit({id:2,task:"complete",result:{choices:[{message:{content:'{"ready":true}'},finish_reason:"stop"}]}});await health;
+  const extraction={...completion,messages:[{role:"system" as const,content:"Classify source questions"},...completion.messages]};
+  const first=runtime.complete(extraction,new AbortController().signal);void first.catch(()=>{});
+  clock.advance(90001);assert.equal(worker.terminated,0);
+  worker.emit({id:3,task:"complete",result:{choices:[{message:{content:'{"kind":"text"}'},finish_reason:"stop"}]}});await first;
+  const warm=runtime.complete(extraction,new AbortController().signal),rejected=assert.rejects(warm,/too long/);
+  clock.advance(90001);await rejected;assert.equal(worker.terminated,1);
+});
 test("cancellation and worker errors release their page-owned model lease exactly once",async()=>{
   for(const mode of ["cancel","error"]){
     const worker=new FakeWorker(),clock=new Clock(),controller=new AbortController();let releases=0;

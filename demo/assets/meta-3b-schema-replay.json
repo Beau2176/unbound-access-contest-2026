@@ -1,0 +1,93 @@
+{
+  "source": "Fictional bicycle repair appointment\nContact name (required)\nContact email (optional)\nAppointment date YYYY-MM-DD (required)\nRepair budget in dollars (required)\nDescribe the bicycle problem (required)\nHome address (required)\nRepeat the same home address (required)\nWorkshop address (required)",
+  "proposal": {
+    "title": "Fictional bicycle repair appointment",
+    "fields": [
+      {
+        "id": "line_2",
+        "label": "Contact name",
+        "kind": "text",
+        "required": true,
+        "sourceQuote": "Contact name (required)",
+        "sourcePage": 1,
+        "factKey": "line_2",
+        "help": "Answer the question shown in the source."
+      },
+      {
+        "id": "line_3",
+        "label": "Contact email",
+        "kind": "email",
+        "required": false,
+        "sourceQuote": "Contact email (optional)",
+        "sourcePage": 1,
+        "factKey": "line_3",
+        "help": "Give an email address."
+      },
+      {
+        "id": "line_4",
+        "label": "Appointment date YYYY-MM-DD",
+        "kind": "date",
+        "required": true,
+        "sourceQuote": "Appointment date YYYY-MM-DD (required)",
+        "sourcePage": 1,
+        "factKey": "line_4",
+        "help": "Use a real date in YYYY-MM-DD format."
+      },
+      {
+        "id": "line_5",
+        "label": "Repair budget in dollars",
+        "kind": "money",
+        "required": true,
+        "sourceQuote": "Repair budget in dollars (required)",
+        "sourcePage": 1,
+        "factKey": "line_5",
+        "help": "Give the amount in dollars."
+      },
+      {
+        "id": "line_6",
+        "label": "Describe the bicycle problem",
+        "kind": "longtext",
+        "required": true,
+        "sourceQuote": "Describe the bicycle problem (required)",
+        "sourcePage": 1,
+        "factKey": "line_6",
+        "help": "Describe your answer in your own words."
+      },
+      {
+        "id": "line_7",
+        "label": "Home address",
+        "kind": "text",
+        "required": true,
+        "sourceQuote": "Home address (required)",
+        "sourcePage": 1,
+        "factKey": "line_7",
+        "help": "Answer the question shown in the source."
+      },
+      {
+        "id": "line_8",
+        "label": "Repeat the same home address",
+        "kind": "text",
+        "required": true,
+        "sourceQuote": "Repeat the same home address (required)",
+        "sourcePage": 1,
+        "factKey": "line_7",
+        "help": "Answer the question shown in the source."
+      },
+      {
+        "id": "line_9",
+        "label": "Workshop address",
+        "kind": "text",
+        "required": true,
+        "sourceQuote": "Workshop address (required)",
+        "sourcePage": 1,
+        "factKey": "line_9",
+        "help": "Answer the question shown in the source."
+      }
+    ],
+    "warnings": [
+      "Meta proposed field types. Exact labels, pages, required flags and explicitly repeated identical labels come from the source, not generated text. Check every question before approving.",
+      "This path supports short forms with one question per line. Conditions and numeric ranges need a prepared form or a full manually reviewed proposal."
+    ]
+  },
+  "provenance": "Replay of the assembled application schema from the preserved actual 3B receipt; not a new inference."
+}

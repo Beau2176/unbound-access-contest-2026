@@ -1,84 +1,88 @@
 1
-00:00:00,000 --> 00:00:08,115
-Small print, repeated facts, and too much typing can make paperwork exhausting. Unbound Access takes one question at a time.
+00:00:00,000 --> 00:00:06,210
+Paperwork can be exhausting when typing is difficult. UNBOUND Access asks one question at a time.
 
 2
-00:00:08,440 --> 00:00:15,890
-Large controls and read aloud support spoken or typed answers. The person reviews every change and keeps control of the record.
+00:00:06,400 --> 00:00:14,565
+This edited demo uses real app screens, fictional typed answers, and synthetic narration. It is not continuous voice capture.
 
 3
-00:00:16,200 --> 00:00:24,870
-This edited walkthrough uses actual app screens, fictional typed data, and generic synthetic narration. It is not continuous voice capture.
+00:00:14,760 --> 00:00:22,730
+Optional Meta Llama three point two, with three billion parameters, runs in the browser and proposes each question's answer type.
 
 4
-00:00:25,200 --> 00:00:32,265
-An answer is only a proposal. Cancel leaves saved answers unchanged. Confirm moves to the next question.
+00:00:22,920 --> 00:00:29,400
+For this authored bicycle repair form, the smaller one billion parameter model matched two of eight types and was rejected.
 
 5
-00:00:32,600 --> 00:00:38,960
-The prepared form says household size must be one through twelve. Thirteen is rejected before it can be saved.
+00:00:29,600 --> 00:00:37,155
+The three billion parameter model matched all eight. Exact requests and unchanged responses are saved in the public repository.
 
 6
-00:00:39,280 --> 00:00:46,655
-Two is accepted. Zero dollars is also a valid income answer, rather than being mistaken for a missing value.
+00:00:37,360 --> 00:00:45,770
+That is one development case, not an independent accuracy benchmark. CPU extraction took about one hundred sixty three seconds.
 
 7
-00:00:46,960 --> 00:00:54,140
-Answer Yes to access support and the required follow up appears. Here the fictional request is questions read aloud.
+00:00:45,960 --> 00:00:53,310
+The source asks for a contact name, an email, a date, a budget, a problem description, and three address rows.
 
 8
-00:00:54,440 --> 00:01:01,715
-Now correct the home address from forty to forty one Practice Street. The app shows both linked fields and their previous values.
+00:00:53,520 --> 00:00:59,655
+Both home rows refer to one fact. The workshop is a different fact, even though all three ask for an address.
 
 9
-00:01:02,040 --> 00:01:10,630
-Confirmation updates both home answers together. The separate landlord address stays ninety Venue Lane. Shared facts do not cross different people.
+00:00:59,840 --> 00:01:07,730
+The app derives labels, pages, required flags, and repeated facts from the source. Those are not credited as model output.
 
 10
-00:01:10,960 --> 00:01:18,765
-Review the source linked answers, acknowledge the review, and download the PDF. Persistent Save and Open links allow another attempt.
+00:01:07,920 --> 00:01:15,675
+This screen replays that saved proposal through manual import. The person checks every question and shared fact before approving it.
 
 11
-00:01:19,080 --> 00:01:26,385
-These are both pages of the actual browser downloaded file. The corrected addresses and zero income survived export and were checked.
+00:01:15,880 --> 00:01:23,855
+Every answer still needs confirmation. A separate real Meta call interpreted zero dollars as zero, in about ninety five seconds.
 
 12
-00:01:26,720 --> 00:01:33,205
-This is a readable answer record, not a filled original agency form. Nothing is signed or submitted.
+00:01:24,040 --> 00:01:30,320
+The model never saves that proposal automatically. The person can cancel it, correct it, or confirm it.
 
 13
-00:01:33,520 --> 00:01:42,450
-Built with Llama. Optional Meta Llama three point two, one billion parameters, runs genuine inference inside the browser through w llama.
+00:01:30,520 --> 00:01:38,105
+Here, correcting the home address proposes both copies together. Confirmation changes them to one hundred one Practice Street.
 
 14
-00:01:42,760 --> 00:01:52,070
-The revised development run correctly interpreted three clear answers: three people, zero dollars, and No. Its unchanged raw outputs are preserved.
+00:01:38,320 --> 00:01:45,310
+The workshop stays at nine hundred Separate Venue Road. A shared fact never silently becomes somebody else's address.
 
 15
-00:01:52,400 --> 00:01:59,260
-It also guessed three when the input was uncertain. The current source guard rejects that guess. This is not a model success.
+00:01:45,520 --> 00:01:53,470
+After reviewing the answers, the person checks the acknowledgement and prepares the PDF. Save and Open links remain available.
 
 16
-00:01:59,560 --> 00:02:10,515
-Question extraction failed required flag validation. General extraction remains experimental and unreliable. Prepared forms and direct controls remain available.
+00:01:53,680 --> 00:02:01,230
+This is the actual one page file downloaded in the earlier three billion parameter browser workflow, with fictional information.
 
 17
-00:02:10,840 --> 00:02:19,745
-The optional model download is about eight hundred eight megabytes, with explicit consent and removal controls. CPU inference is slow.
+00:02:01,440 --> 00:02:08,710
+The file preserved both corrected home addresses, the separate workshop address, and the zero budget. Nothing was signed or submitted.
 
 18
-00:02:20,080 --> 00:02:28,335
-No API key, card, or paid fallback is needed. Local model tasks stay in the browser; browser speech may use a remote service.
+00:02:08,920 --> 00:02:16,920
+The latest reliability checks kept sixty long corrections through a refresh. Contradictory follow up answers block a reviewed record.
 
 19
-00:02:28,640 --> 00:02:36,930
-Eighty six automated checks passed. The complete typed browser journey and downloaded PDF were verified separately from model quality.
+00:02:17,120 --> 00:02:24,825
+One hundred seven automated checks pass. These are engineering tests, not model accuracy or proof of universal accessibility.
 
 20
-00:02:37,240 --> 00:02:47,735
-One tester reported phone audio, microphone, and sample PDF opening. Full phone dictation, timed usability, and GPU offload remain unverified.
+00:02:25,040 --> 00:02:33,725
+The three billion parameter model is an optional two point zero two gigabyte download. No API key, payment card, or paid fallback is needed.
 
 21
-00:02:48,040 --> 00:02:56,105
-Try the working form, inspect real inference receipts, and read the public source. Every confirmed answer remains yours to review.
+00:02:33,920 --> 00:02:41,755
+A tester reported the repaired phone PDF download worked. Full hands free completion and measured usability remain unverified.
+
+22
+00:02:41,960 --> 00:02:49,940
+Try the app, review the original model receipts, and inspect the source. Every confirmed answer stays under the person's control.
 

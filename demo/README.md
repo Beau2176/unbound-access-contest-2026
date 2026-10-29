@@ -1,21 +1,22 @@
-# Narrated app walkthrough
+# Updated competition walkthrough
 
-This is an edited sequence of actual application screenshots, two source-derived editorial graphics, and an output from the application's real PDF exporter. It is not a continuous screen recording or a captured voice-input journey. All example answers are fictional.
+Current edit: 170.2 seconds (2:50), 1920×1080, 25 fps, H.264/AAC, stereo 48 kHz. This edited video uses actual app images, source-derived evidence graphics, and the unchanged one-page PDF from the earlier actual 3B browser workflow. It is not continuous voice capture or a new inference run.
 
-The screenshots were captured with the approved cloud-browser controls during this session. `workshop-reviewed.pdf` was generated locally by the same `reviewDocument` function using the nine answers shown in the browser; it is not described as a successful cloud-browser download. The phone tester independently reported downloading/opening the sample PDF. The current cloud-browser download-event wait timed out even though the app displayed its persistent Save/Open links.
+The sequence shows the successful 3B eight-type development case and separate zero-dollar answer, the failed 1B comparison, model versus application-derived metadata, explicit confirmation, isolated linked-address correction and reviewed export. New app images replay the preserved schema through manual import with fictional answers; their on-screen labels identify the replay. The PDF comes from docs/evidence/local-meta/browser-3b-reviewed-answer-record.pdf, whose SHA256 is checked before rendering. These model results are development examples, not held-out accuracy benchmarks.
 
-Narration is generic offline synthetic speech from FFmpeg's libflite `slt` voice. No voice cloning, paid synthesis, external narration upload or paid model inference was used. Caption intervals use actual full-phrase synthesized durations, not invented word timestamps. They follow the synthesis inputs; no independent speech recognition or listening review was available. Captions are burned in; leave the SRT disabled when viewing the MP4 to avoid a duplicate text layer.
+Narration uses the established generic offline FFmpeg/libflite slt voice. There is no cloning, paid synthesis, provider upload or new inference. Complete phrases are synthesized at native speed and measured; picture intervals add only short breathing gaps. There is no speech acceleration or target-runtime padding. The complete mix is normalized once, then encoded. No music or effects compete with the voice.
+
+Captions follow exact synthesis inputs and measured full-phrase intervals. They are burned in; disable the SRT when watching the MP4 to avoid duplicated text. No independent listening or speech-recognition alignment was available. All 22 encoded visual states, 42 cut-boundary frames, full decoding, caption layout/timing and measured loudness were checked. These checks do not establish pleasant audible delivery or a fully hands-free phone session.
 
 ## Reproduce
 
-Requirements: the application dependencies, Node 24+, Python 3 with Pillow, FFmpeg with `flite`/`libx264`/AAC, and Poppler `pdftoppm`.
+Requirements: Python 3, Pillow, NumPy for QA, FFmpeg with flite/libx264/AAC, and Poppler pdftoppm. Source assets and actual receipts are in the public source project. Fonts and dependencies retain their notices.
 
 ```sh
-node --experimental-strip-types scripts/render-demo-pdf.mjs
-pdftoppm -png -r 100 demo/assets/workshop-reviewed.pdf demo/assets/pdf
-python3 demo/render.py
+python3 demo/render_v2.py --prepare-audio
+python3 demo/render_v2.py
 ```
 
-The render writes `public/artifacts/unbound-access-demo.mp4`, phrase captions, transcript, measured timeline, and source/stream metadata. Narration and output remain at 1.0× speed. The scene duration includes a short reading/breath pause; it does not stretch speech to a target duration. Full decode, representative encoded frames, join frames and stream timings are checked. Audible delivery was not independently checked in this environment.
+The render writes public/artifacts/unbound-access-demo-v2.mp4, demo/timeline.json, demo/transcript.txt, demo/captions.srt, and ignored audio/frames under demo/work/v2/. The movie is also copied to the original unbound-access-demo.mp4 path so the saved contest entry still reaches it. sequence-v2.json is the editable script/cue list. The timeline records source-to-final mapping, metadata, hashes, phrase timing and verification limits. docs/evidence/video-v2-qa.json records final encode checks.
 
-Project-specific assets and code are MIT licensed. Font and dependencies retain their upstream notices. The synthetic voice uses the installed FFmpeg/libflite distribution; no claim is made that it is Boyd's voice.
+render.py is retained as the legacy renderer, not the production command. The original movie remains in Site/Git history. Project assets/code are MIT; font/library/model notices remain in THIRD_PARTY_NOTICES.md. The generic narration is not Boyd's voice.

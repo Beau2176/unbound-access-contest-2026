@@ -1,0 +1,31 @@
+{
+  "scope": "Current video encode verification, not independent listening or a usability study",
+  "duration_seconds": 170.2,
+  "video_sha256": "2ec2af51278e3e84c2a4f36c1d9124d0f2afb82223b4a547ce32766b4bc75050",
+  "narration_playback_rate": 1.0,
+  "scenes": 22,
+  "representative_encoded_states_reviewed": 22,
+  "join_frames_checked": 42,
+  "all_join_frames_match_expected_scenes": true,
+  "maximum_join_rms": 2.34,
+  "full_audio_video_decode": "passed by render_v2.py",
+  "caption_layout": "all cues fit within three lines",
+  "caption_reading_speed_flags": [],
+  "encoded_audio": {
+    "input_i": "-16.02",
+    "input_tp": "-4.51",
+    "input_lra": "2.30",
+    "input_thresh": "-26.20",
+    "output_i": "-15.88",
+    "output_tp": "-4.41",
+    "output_lra": "2.20",
+    "output_thresh": "-26.05",
+    "normalization_type": "dynamic",
+    "target_offset": "-0.12"
+  },
+  "listening_review": "not_performed",
+  "speech_alignment": "Exact synthesis inputs and measured phrase lengths, without independent speech-recognition alignment",
+  "private_phone_images_or_values": "excluded",
+  "new_inference": "none; prior receipts and an explicitly labelled manual-schema replay",
+  "pdf_source": "docs/evidence/local-meta/browser-3b-reviewed-answer-record.pdf"
+}

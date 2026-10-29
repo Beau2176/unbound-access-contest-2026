@@ -2,6 +2,12 @@
 
 107 automated checks passed. TypeScript passes. These deterministic model/speech fixtures are engineering checks, not model-quality or phone tests. Real browser/model work is separate below.
 
+## Updated competition video
+
+The new 170.2-second edit presents the preserved 3B eight-question result and zero-dollar answer, the earlier 1B failure, explicit application-derived metadata, and the actual earlier one-page 3B workflow PDF. Fresh app images replay the saved schema through manual import with fictional typed answers; every such shot is labelled as a replay, not new live inference. The underlying model receipts and downloaded PDF were not changed. No private phone image or actual personal answer is used.
+
+The 1920×1080 H.264/AAC export has 22 measured speech-led scenes at native speed, with no forced three-minute padding. All encoded visual states and 42 cut-boundary frames were checked against the expected scenes, and the full audio/video streams decode successfully. Captions fit their layout and have no reading-speed flags above 20 characters per second. The encoded mix is about -16 LUFS, with headroom. Independent listening and speech-recognition alignment were unavailable; those are not recorded as passed. The reproducible Python project, synthesis input transcript, measured phrase intervals, SRT and source manifest are in demo/. See evidence/video-v2-qa.json. The old stable contest-video URL serves the same new bytes; the judge page also uses a versioned URL.
+
 ## Session, condition and voice reliability pass
 
 Two failures were reproduced in the previous implementation: sixty near-limit text corrections produced a 370,358-character session that could not restore, and a Yes-to-No correction in an imported form did not flag its answered follow-up. Three injected browser speech failures also escaped the controller: microphone creation, utterance creation and cancellation. Six new tests were observed failing before those fixes; all now pass.

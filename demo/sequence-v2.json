@@ -1,0 +1,192 @@
+[
+  {
+    "id": "opening",
+    "asset": "unbound-demo-hero.png",
+    "chapter": "One question at your pace",
+    "kind": "Actual app screen",
+    "text": "Paperwork can be exhausting when typing is difficult. UNBOUND Access asks one question at a time."
+  },
+  {
+    "id": "scope",
+    "asset": "unbound-demo-answer-review.png",
+    "chapter": "The person stays in control",
+    "kind": "Edited app walkthrough",
+    "text": "This edited demo uses real app screens, fictional typed answers, and synthetic narration. It is not continuous voice capture.",
+    "crop": [
+      405,
+      180,
+      1260,
+      740
+    ]
+  },
+  {
+    "id": "meta-role",
+    "asset": "v2-model-source.png",
+    "chapter": "Built with Meta Llama",
+    "kind": "Preserved receipt summary",
+    "text": "Optional Meta Llama three point two, with three billion parameters, runs in the browser and proposes each question's answer type."
+  },
+  {
+    "id": "smaller-model",
+    "asset": "v2-score-1b.png",
+    "chapter": "The earlier attempt failed",
+    "kind": "Recorded development case",
+    "text": "For this authored bicycle repair form, the smaller one billion parameter model matched two of eight types and was rejected."
+  },
+  {
+    "id": "larger-model",
+    "asset": "v2-score-3b.png",
+    "chapter": "The newer run passed source checks",
+    "kind": "Recorded development case",
+    "text": "The three billion parameter model matched all eight. Exact requests and unchanged responses are saved in the public repository."
+  },
+  {
+    "id": "latency-limit",
+    "asset": "v2-score-3b.png",
+    "chapter": "One case, with measured limits",
+    "kind": "Not an independent benchmark",
+    "text": "That is one development case, not an independent accuracy benchmark. CPU extraction took about one hundred sixty three seconds."
+  },
+  {
+    "id": "source-types",
+    "asset": "v2-types.png",
+    "chapter": "Trace the proposed types to their source",
+    "kind": "Preserved receipt summary",
+    "text": "The source asks for a contact name, an email, a date, a budget, a problem description, and three address rows."
+  },
+  {
+    "id": "source-links",
+    "asset": "v2-address-types.png",
+    "chapter": "Eight questions, seven distinct facts",
+    "kind": "Application links from explicit source wording",
+    "text": "Both home rows refer to one fact. The workshop is a different fact, even though all three ask for an address."
+  },
+  {
+    "id": "source-boundaries",
+    "asset": "v2-source-boundaries.png",
+    "chapter": "What the model contributes",
+    "kind": "Application and model roles",
+    "text": "The app derives labels, pages, required flags, and repeated facts from the source. Those are not credited as model output."
+  },
+  {
+    "id": "schema-replay",
+    "asset": "v2-schema-review.jpg",
+    "chapter": "Review the proposed questions",
+    "kind": "Saved-schema replay \u00b7 no new AI call",
+    "text": "This screen replays that saved proposal through manual import. The person checks every question and shared fact before approving it.",
+    "crop": [
+      375,
+      510,
+      945,
+      715
+    ]
+  },
+  {
+    "id": "zero-record",
+    "asset": "v2-zero-receipt.png",
+    "chapter": "A real answer call: zero dollars",
+    "kind": "Preserved original response",
+    "text": "Every answer still needs confirmation. A separate real Meta call interpreted zero dollars as zero, in about ninety five seconds."
+  },
+  {
+    "id": "zero-confirmation",
+    "asset": "v2-zero-proposal.jpg",
+    "chapter": "Propose, then confirm",
+    "kind": "Saved-schema replay \u00b7 typed input",
+    "text": "The model never saves that proposal automatically. The person can cancel it, correct it, or confirm it.",
+    "crop": [
+      420,
+      295,
+      1240,
+      640
+    ]
+  },
+  {
+    "id": "linked-correction",
+    "asset": "v2-linked-correction.jpg",
+    "chapter": "Correct both home copies together",
+    "kind": "Saved-schema replay \u00b7 typed input",
+    "text": "Here, correcting the home address proposes both copies together. Confirmation changes them to one hundred one Practice Street.",
+    "crop": [
+      420,
+      295,
+      1240,
+      770
+    ]
+  },
+  {
+    "id": "separate-address",
+    "asset": "v2-address-review.jpg",
+    "chapter": "Keep separate facts separate",
+    "kind": "Saved-schema replay \u00b7 typed input",
+    "text": "The workshop stays at nine hundred Separate Venue Road. A shared fact never silently becomes somebody else's address.",
+    "crop": [
+      420,
+      295,
+      1240,
+      700
+    ]
+  },
+  {
+    "id": "pdf-ready",
+    "asset": "v2-pdf-ready.jpg",
+    "chapter": "Review before export",
+    "kind": "Saved-schema replay \u00b7 typed input",
+    "text": "After reviewing the answers, the person checks the acknowledgement and prepares the PDF. Save and Open links remain available.",
+    "crop": [
+      420,
+      285,
+      1240,
+      640
+    ]
+  },
+  {
+    "id": "actual-pdf",
+    "asset": "v2-actual-3b-pdf.png",
+    "chapter": "The actual recorded PDF output",
+    "kind": "Earlier 3B workflow download",
+    "text": "This is the actual one page file downloaded in the earlier three billion parameter browser workflow, with fictional information."
+  },
+  {
+    "id": "pdf-values",
+    "asset": "v2-pdf-detail.png",
+    "chapter": "Verify the exported values",
+    "kind": "Exact crops from the actual PDF",
+    "text": "The file preserved both corrected home addresses, the separate workshop address, and the zero budget. Nothing was signed or submitted."
+  },
+  {
+    "id": "reliability",
+    "asset": "v2-reliability.png",
+    "chapter": "Recovery and explicit review",
+    "kind": "Engineering verification",
+    "text": "The latest reliability checks kept sixty long corrections through a refresh. Contradictory follow up answers block a reviewed record."
+  },
+  {
+    "id": "test-scope",
+    "asset": "v2-check-count.png",
+    "chapter": "What the checks establish",
+    "kind": "Engineering verification",
+    "text": "One hundred seven automated checks pass. These are engineering tests, not model accuracy or proof of universal accessibility."
+  },
+  {
+    "id": "download-and-cost",
+    "asset": "v2-model-consent.png",
+    "chapter": "Optional, with a clear download cost",
+    "kind": "Current model configuration",
+    "text": "The three billion parameter model is an optional two point zero two gigabyte download. No API key, payment card, or paid fallback is needed."
+  },
+  {
+    "id": "phone-scope",
+    "asset": "v2-phone-scope.png",
+    "chapter": "Device evidence and remaining work",
+    "kind": "Tester report \u00b7 limits retained",
+    "text": "A tester reported the repaired phone PDF download worked. Full hands free completion and measured usability remain unverified."
+  },
+  {
+    "id": "close",
+    "asset": "unbound-demo-hero.png",
+    "chapter": "Inspect the working project",
+    "kind": "App, raw receipts and public source",
+    "text": "Try the app, review the original model receipts, and inspect the source. Every confirmed answer stays under the person's control."
+  }
+]

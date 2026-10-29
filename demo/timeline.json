@@ -5,563 +5,981 @@
     1080
   ],
   "audio_sample_rate": 48000,
-  "voice": "FFmpeg libflite slt, offline generic synthetic voice",
+  "style": "Established teal and cream editorial evidence; measured values, hard cuts, no decorative motion.",
+  "voice": "FFmpeg libflite slt; generic offline synthesis at native speed",
+  "playback_rate": 1.0,
   "listening_review": "not_performed",
-  "review_limit": "Frames, stream metadata and full decode checked. Audible quality and speech recognition were not independently checked.",
+  "alignment_limit": "Synthesis inputs and measured phrase intervals; no independent speech-recognition alignment.",
   "target_seconds_max": 180,
-  "measured_sequence_seconds": 179.0,
+  "measured_sequence_seconds": 170.12,
+  "actual_container_seconds": 170.2,
   "events": [
     {
-      "asset_id": "hero",
+      "id": "opening",
+      "asset": "unbound-demo-hero.png",
+      "chapter": "One question at your pace",
+      "kind": "Actual app screen",
+      "text": "Paperwork can be exhausting when typing is difficult. UNBOUND Access asks one question at a time.",
+      "sequence_start": 0.0,
+      "sequence_end": 6.4,
+      "start_frame": 0,
+      "end_frame": 160,
+      "speech_end": 6.21,
       "source_in": 0,
-      "source_out": 8.115,
-      "sequence_start": 0,
-      "sequence_end": 8.44,
-      "speech_end": 8.115,
-      "audio_owner": "work/00.wav",
-      "still_image": "assets/unbound-demo-hero.png",
-      "frames": 211,
-      "playback_rate": 1.0
+      "source_out": 6.21,
+      "audio_owner": "work/v2/00.wav",
+      "playback_rate": 1.0,
+      "frames": 160
     },
     {
-      "asset_id": "hero",
+      "id": "scope",
+      "asset": "unbound-demo-answer-review.png",
+      "chapter": "The person stays in control",
+      "kind": "Edited app walkthrough",
+      "text": "This edited demo uses real app screens, fictional typed answers, and synthetic narration. It is not continuous voice capture.",
+      "crop": [
+        405,
+        180,
+        1260,
+        740
+      ],
+      "sequence_start": 6.4,
+      "sequence_end": 14.76,
+      "start_frame": 160,
+      "end_frame": 369,
+      "speech_end": 14.565,
       "source_in": 0,
-      "source_out": 7.45,
-      "sequence_start": 8.44,
-      "sequence_end": 16.2,
-      "speech_end": 15.89,
-      "audio_owner": "work/01.wav",
-      "still_image": "assets/unbound-demo-hero.png",
-      "frames": 194,
-      "playback_rate": 1.0
+      "source_out": 8.165,
+      "audio_owner": "work/v2/01.wav",
+      "playback_rate": 1.0,
+      "frames": 209
     },
     {
-      "asset_id": "answer-review",
+      "id": "meta-role",
+      "asset": "v2-model-source.png",
+      "chapter": "Built with Meta Llama",
+      "kind": "Preserved receipt summary",
+      "text": "Optional Meta Llama three point two, with three billion parameters, runs in the browser and proposes each question's answer type.",
+      "sequence_start": 14.76,
+      "sequence_end": 22.92,
+      "start_frame": 369,
+      "end_frame": 573,
+      "speech_end": 22.73,
       "source_in": 0,
-      "source_out": 8.67,
-      "sequence_start": 16.2,
-      "sequence_end": 25.2,
-      "speech_end": 24.869999999999997,
-      "audio_owner": "work/02.wav",
-      "still_image": "assets/unbound-demo-answer-review.png",
-      "frames": 225,
-      "playback_rate": 1.0
+      "source_out": 7.97,
+      "audio_owner": "work/v2/02.wav",
+      "playback_rate": 1.0,
+      "frames": 204
     },
     {
-      "asset_id": "answer-review",
+      "id": "smaller-model",
+      "asset": "v2-score-1b.png",
+      "chapter": "The earlier attempt failed",
+      "kind": "Recorded development case",
+      "text": "For this authored bicycle repair form, the smaller one billion parameter model matched two of eight types and was rejected.",
+      "sequence_start": 22.92,
+      "sequence_end": 29.6,
+      "start_frame": 573,
+      "end_frame": 740,
+      "speech_end": 29.400000000000002,
       "source_in": 0,
-      "source_out": 7.065,
-      "sequence_start": 25.2,
-      "sequence_end": 32.6,
-      "speech_end": 32.265,
-      "audio_owner": "work/03.wav",
-      "still_image": "assets/unbound-demo-answer-review.png",
-      "frames": 185,
-      "playback_rate": 1.0
+      "source_out": 6.48,
+      "audio_owner": "work/v2/03.wav",
+      "playback_rate": 1.0,
+      "frames": 167
     },
     {
-      "asset_id": "number-limit",
+      "id": "larger-model",
+      "asset": "v2-score-3b.png",
+      "chapter": "The newer run passed source checks",
+      "kind": "Recorded development case",
+      "text": "The three billion parameter model matched all eight. Exact requests and unchanged responses are saved in the public repository.",
+      "sequence_start": 29.6,
+      "sequence_end": 37.36,
+      "start_frame": 740,
+      "end_frame": 934,
+      "speech_end": 37.155,
       "source_in": 0,
-      "source_out": 6.36,
-      "sequence_start": 32.6,
-      "sequence_end": 39.28,
-      "speech_end": 38.96,
-      "audio_owner": "work/04.wav",
-      "still_image": "assets/unbound-demo-number-limit.png",
-      "frames": 167,
-      "playback_rate": 1.0
+      "source_out": 7.555,
+      "audio_owner": "work/v2/04.wav",
+      "playback_rate": 1.0,
+      "frames": 194
     },
     {
-      "asset_id": "number-limit",
+      "id": "latency-limit",
+      "asset": "v2-score-3b.png",
+      "chapter": "One case, with measured limits",
+      "kind": "Not an independent benchmark",
+      "text": "That is one development case, not an independent accuracy benchmark. CPU extraction took about one hundred sixty three seconds.",
+      "sequence_start": 37.36,
+      "sequence_end": 45.96,
+      "start_frame": 934,
+      "end_frame": 1149,
+      "speech_end": 45.769999999999996,
       "source_in": 0,
-      "source_out": 7.375,
-      "sequence_start": 39.28,
-      "sequence_end": 46.96,
-      "speech_end": 46.655,
-      "audio_owner": "work/05.wav",
-      "still_image": "assets/unbound-demo-number-limit.png",
-      "frames": 192,
-      "playback_rate": 1.0
+      "source_out": 8.41,
+      "audio_owner": "work/v2/05.wav",
+      "playback_rate": 1.0,
+      "frames": 215
     },
     {
-      "asset_id": "conditional",
+      "id": "source-types",
+      "asset": "v2-types.png",
+      "chapter": "Trace the proposed types to their source",
+      "kind": "Preserved receipt summary",
+      "text": "The source asks for a contact name, an email, a date, a budget, a problem description, and three address rows.",
+      "sequence_start": 45.96,
+      "sequence_end": 53.52,
+      "start_frame": 1149,
+      "end_frame": 1338,
+      "speech_end": 53.31,
       "source_in": 0,
-      "source_out": 7.18,
-      "sequence_start": 46.96,
-      "sequence_end": 54.44,
-      "speech_end": 54.14,
-      "audio_owner": "work/06.wav",
-      "still_image": "assets/unbound-demo-conditional.png",
-      "frames": 187,
-      "playback_rate": 1.0
+      "source_out": 7.35,
+      "audio_owner": "work/v2/06.wav",
+      "playback_rate": 1.0,
+      "frames": 189
     },
     {
-      "asset_id": "linked-correction",
+      "id": "source-links",
+      "asset": "v2-address-types.png",
+      "chapter": "Eight questions, seven distinct facts",
+      "kind": "Application links from explicit source wording",
+      "text": "Both home rows refer to one fact. The workshop is a different fact, even though all three ask for an address.",
+      "sequence_start": 53.52,
+      "sequence_end": 59.84,
+      "start_frame": 1338,
+      "end_frame": 1496,
+      "speech_end": 59.655,
       "source_in": 0,
-      "source_out": 7.275,
-      "sequence_start": 54.44,
-      "sequence_end": 62.04,
-      "speech_end": 61.714999999999996,
-      "audio_owner": "work/07.wav",
-      "still_image": "assets/unbound-demo-linked-correction.png",
-      "frames": 190,
-      "playback_rate": 1.0
+      "source_out": 6.135,
+      "audio_owner": "work/v2/07.wav",
+      "playback_rate": 1.0,
+      "frames": 158
     },
     {
-      "asset_id": "linked-correction",
+      "id": "source-boundaries",
+      "asset": "v2-source-boundaries.png",
+      "chapter": "What the model contributes",
+      "kind": "Application and model roles",
+      "text": "The app derives labels, pages, required flags, and repeated facts from the source. Those are not credited as model output.",
+      "sequence_start": 59.84,
+      "sequence_end": 67.92,
+      "start_frame": 1496,
+      "end_frame": 1698,
+      "speech_end": 67.73,
       "source_in": 0,
-      "source_out": 8.59,
-      "sequence_start": 62.04,
-      "sequence_end": 70.96,
-      "speech_end": 70.63,
-      "audio_owner": "work/08.wav",
-      "still_image": "assets/unbound-demo-linked-correction.png",
-      "frames": 223,
-      "playback_rate": 1.0
+      "source_out": 7.89,
+      "audio_owner": "work/v2/08.wav",
+      "playback_rate": 1.0,
+      "frames": 202
     },
     {
-      "asset_id": "pdf-ready",
+      "id": "schema-replay",
+      "asset": "v2-schema-review.jpg",
+      "chapter": "Review the proposed questions",
+      "kind": "Saved-schema replay \u00b7 no new AI call",
+      "text": "This screen replays that saved proposal through manual import. The person checks every question and shared fact before approving it.",
+      "crop": [
+        375,
+        510,
+        945,
+        715
+      ],
+      "sequence_start": 67.92,
+      "sequence_end": 75.88,
+      "start_frame": 1698,
+      "end_frame": 1897,
+      "speech_end": 75.675,
       "source_in": 0,
-      "source_out": 7.805,
-      "sequence_start": 70.96,
-      "sequence_end": 79.08,
-      "speech_end": 78.76499999999999,
-      "audio_owner": "work/09.wav",
-      "still_image": "assets/unbound-demo-pdf-ready.png",
-      "frames": 203,
-      "playback_rate": 1.0
+      "source_out": 7.755,
+      "audio_owner": "work/v2/09.wav",
+      "playback_rate": 1.0,
+      "frames": 199
     },
     {
-      "asset_id": "pdf-output",
+      "id": "zero-record",
+      "asset": "v2-zero-receipt.png",
+      "chapter": "A real answer call: zero dollars",
+      "kind": "Preserved original response",
+      "text": "Every answer still needs confirmation. A separate real Meta call interpreted zero dollars as zero, in about ninety five seconds.",
+      "sequence_start": 75.88,
+      "sequence_end": 84.04,
+      "start_frame": 1897,
+      "end_frame": 2101,
+      "speech_end": 83.85499999999999,
       "source_in": 0,
-      "source_out": 7.305,
-      "sequence_start": 79.08,
-      "sequence_end": 86.72,
-      "speech_end": 86.38499999999999,
-      "audio_owner": "work/10.wav",
-      "still_image": "assets/pdf-output.png",
-      "frames": 191,
-      "playback_rate": 1.0
+      "source_out": 7.975,
+      "audio_owner": "work/v2/10.wav",
+      "playback_rate": 1.0,
+      "frames": 204
     },
     {
-      "asset_id": "pdf-output",
+      "id": "zero-confirmation",
+      "asset": "v2-zero-proposal.jpg",
+      "chapter": "Propose, then confirm",
+      "kind": "Saved-schema replay \u00b7 typed input",
+      "text": "The model never saves that proposal automatically. The person can cancel it, correct it, or confirm it.",
+      "crop": [
+        420,
+        295,
+        1240,
+        640
+      ],
+      "sequence_start": 84.04,
+      "sequence_end": 90.52,
+      "start_frame": 2101,
+      "end_frame": 2263,
+      "speech_end": 90.32000000000001,
       "source_in": 0,
-      "source_out": 6.485,
-      "sequence_start": 86.72,
-      "sequence_end": 93.52,
-      "speech_end": 93.205,
-      "audio_owner": "work/11.wav",
-      "still_image": "assets/pdf-output.png",
-      "frames": 170,
-      "playback_rate": 1.0
+      "source_out": 6.28,
+      "audio_owner": "work/v2/11.wav",
+      "playback_rate": 1.0,
+      "frames": 162
     },
     {
-      "asset_id": "meta-receipt",
+      "id": "linked-correction",
+      "asset": "v2-linked-correction.jpg",
+      "chapter": "Correct both home copies together",
+      "kind": "Saved-schema replay \u00b7 typed input",
+      "text": "Here, correcting the home address proposes both copies together. Confirmation changes them to one hundred one Practice Street.",
+      "crop": [
+        420,
+        295,
+        1240,
+        770
+      ],
+      "sequence_start": 90.52,
+      "sequence_end": 98.32,
+      "start_frame": 2263,
+      "end_frame": 2458,
+      "speech_end": 98.10499999999999,
       "source_in": 0,
-      "source_out": 8.93,
-      "sequence_start": 93.52,
-      "sequence_end": 102.75999999999999,
-      "speech_end": 102.44999999999999,
-      "audio_owner": "work/12.wav",
-      "still_image": "assets/meta-receipt.png",
-      "frames": 231,
-      "playback_rate": 1.0
+      "source_out": 7.585,
+      "audio_owner": "work/v2/12.wav",
+      "playback_rate": 1.0,
+      "frames": 195
     },
     {
-      "asset_id": "meta-receipt",
+      "id": "separate-address",
+      "asset": "v2-address-review.jpg",
+      "chapter": "Keep separate facts separate",
+      "kind": "Saved-schema replay \u00b7 typed input",
+      "text": "The workshop stays at nine hundred Separate Venue Road. A shared fact never silently becomes somebody else's address.",
+      "crop": [
+        420,
+        295,
+        1240,
+        700
+      ],
+      "sequence_start": 98.32,
+      "sequence_end": 105.52,
+      "start_frame": 2458,
+      "end_frame": 2638,
+      "speech_end": 105.30999999999999,
       "source_in": 0,
-      "source_out": 9.31,
-      "sequence_start": 102.75999999999999,
-      "sequence_end": 112.39999999999999,
-      "speech_end": 112.07,
-      "audio_owner": "work/13.wav",
-      "still_image": "assets/meta-receipt.png",
-      "frames": 241,
-      "playback_rate": 1.0
+      "source_out": 6.99,
+      "audio_owner": "work/v2/13.wav",
+      "playback_rate": 1.0,
+      "frames": 180
     },
     {
-      "asset_id": "meta-receipt",
+      "id": "pdf-ready",
+      "asset": "v2-pdf-ready.jpg",
+      "chapter": "Review before export",
+      "kind": "Saved-schema replay \u00b7 typed input",
+      "text": "After reviewing the answers, the person checks the acknowledgement and prepares the PDF. Save and Open links remain available.",
+      "crop": [
+        420,
+        285,
+        1240,
+        640
+      ],
+      "sequence_start": 105.52,
+      "sequence_end": 113.68,
+      "start_frame": 2638,
+      "end_frame": 2842,
+      "speech_end": 113.47,
       "source_in": 0,
-      "source_out": 6.86,
-      "sequence_start": 112.39999999999999,
-      "sequence_end": 119.55999999999999,
-      "speech_end": 119.25999999999999,
-      "audio_owner": "work/14.wav",
-      "still_image": "assets/meta-receipt.png",
-      "frames": 179,
-      "playback_rate": 1.0
+      "source_out": 7.95,
+      "audio_owner": "work/v2/14.wav",
+      "playback_rate": 1.0,
+      "frames": 204
     },
     {
-      "asset_id": "meta-receipt",
+      "id": "actual-pdf",
+      "asset": "v2-actual-3b-pdf.png",
+      "chapter": "The actual recorded PDF output",
+      "kind": "Earlier 3B workflow download",
+      "text": "This is the actual one page file downloaded in the earlier three billion parameter browser workflow, with fictional information.",
+      "sequence_start": 113.68,
+      "sequence_end": 121.44,
+      "start_frame": 2842,
+      "end_frame": 3036,
+      "speech_end": 121.23,
       "source_in": 0,
-      "source_out": 10.955,
-      "sequence_start": 119.55999999999999,
-      "sequence_end": 130.83999999999997,
-      "speech_end": 130.515,
-      "audio_owner": "work/15.wav",
-      "still_image": "assets/meta-receipt.png",
-      "frames": 282,
-      "playback_rate": 1.0
+      "source_out": 7.55,
+      "audio_owner": "work/v2/15.wav",
+      "playback_rate": 1.0,
+      "frames": 194
     },
     {
-      "asset_id": "evidence-card",
+      "id": "pdf-values",
+      "asset": "v2-pdf-detail.png",
+      "chapter": "Verify the exported values",
+      "kind": "Exact crops from the actual PDF",
+      "text": "The file preserved both corrected home addresses, the separate workshop address, and the zero budget. Nothing was signed or submitted.",
+      "sequence_start": 121.44,
+      "sequence_end": 128.92,
+      "start_frame": 3036,
+      "end_frame": 3223,
+      "speech_end": 128.71,
       "source_in": 0,
-      "source_out": 8.905,
-      "sequence_start": 130.83999999999997,
-      "sequence_end": 140.07999999999998,
-      "speech_end": 139.74499999999998,
-      "audio_owner": "work/16.wav",
-      "still_image": "assets/evidence-card.png",
-      "frames": 231,
-      "playback_rate": 1.0
+      "source_out": 7.27,
+      "audio_owner": "work/v2/16.wav",
+      "playback_rate": 1.0,
+      "frames": 187
     },
     {
-      "asset_id": "evidence-card",
+      "id": "reliability",
+      "asset": "v2-reliability.png",
+      "chapter": "Recovery and explicit review",
+      "kind": "Engineering verification",
+      "text": "The latest reliability checks kept sixty long corrections through a refresh. Contradictory follow up answers block a reviewed record.",
+      "sequence_start": 128.92,
+      "sequence_end": 137.12,
+      "start_frame": 3223,
+      "end_frame": 3428,
+      "speech_end": 136.92,
       "source_in": 0,
-      "source_out": 8.255,
-      "sequence_start": 140.07999999999998,
-      "sequence_end": 148.64,
-      "speech_end": 148.33499999999998,
-      "audio_owner": "work/17.wav",
-      "still_image": "assets/evidence-card.png",
-      "frames": 214,
-      "playback_rate": 1.0
+      "source_out": 8.0,
+      "audio_owner": "work/v2/17.wav",
+      "playback_rate": 1.0,
+      "frames": 205
     },
     {
-      "asset_id": "evidence-card",
+      "id": "test-scope",
+      "asset": "v2-check-count.png",
+      "chapter": "What the checks establish",
+      "kind": "Engineering verification",
+      "text": "One hundred seven automated checks pass. These are engineering tests, not model accuracy or proof of universal accessibility.",
+      "sequence_start": 137.12,
+      "sequence_end": 145.04,
+      "start_frame": 3428,
+      "end_frame": 3626,
+      "speech_end": 144.82500000000002,
       "source_in": 0,
-      "source_out": 8.29,
-      "sequence_start": 148.64,
-      "sequence_end": 157.23999999999998,
-      "speech_end": 156.92999999999998,
-      "audio_owner": "work/18.wav",
-      "still_image": "assets/evidence-card.png",
-      "frames": 215,
-      "playback_rate": 1.0
+      "source_out": 7.705,
+      "audio_owner": "work/v2/18.wav",
+      "playback_rate": 1.0,
+      "frames": 198
     },
     {
-      "asset_id": "evidence-card",
+      "id": "download-and-cost",
+      "asset": "v2-model-consent.png",
+      "chapter": "Optional, with a clear download cost",
+      "kind": "Current model configuration",
+      "text": "The three billion parameter model is an optional two point zero two gigabyte download. No API key, payment card, or paid fallback is needed.",
+      "sequence_start": 145.04,
+      "sequence_end": 153.92,
+      "start_frame": 3626,
+      "end_frame": 3848,
+      "speech_end": 153.725,
       "source_in": 0,
-      "source_out": 10.495,
-      "sequence_start": 157.23999999999998,
-      "sequence_end": 168.04,
-      "speech_end": 167.73499999999999,
-      "audio_owner": "work/19.wav",
-      "still_image": "assets/evidence-card.png",
-      "frames": 270,
-      "playback_rate": 1.0
+      "source_out": 8.685,
+      "audio_owner": "work/v2/19.wav",
+      "playback_rate": 1.0,
+      "frames": 222
     },
     {
-      "asset_id": "hero",
+      "id": "phone-scope",
+      "asset": "v2-phone-scope.png",
+      "chapter": "Device evidence and remaining work",
+      "kind": "Tester report \u00b7 limits retained",
+      "text": "A tester reported the repaired phone PDF download worked. Full hands free completion and measured usability remain unverified.",
+      "sequence_start": 153.92,
+      "sequence_end": 161.96,
+      "start_frame": 3848,
+      "end_frame": 4049,
+      "speech_end": 161.755,
       "source_in": 0,
-      "source_out": 8.065,
-      "sequence_start": 168.04,
-      "sequence_end": 179.0,
-      "speech_end": 176.105,
-      "audio_owner": "work/20.wav",
-      "still_image": "assets/unbound-demo-hero.png",
-      "frames": 274,
-      "playback_rate": 1.0
+      "source_out": 7.835,
+      "audio_owner": "work/v2/20.wav",
+      "playback_rate": 1.0,
+      "frames": 201
+    },
+    {
+      "id": "close",
+      "asset": "unbound-demo-hero.png",
+      "chapter": "Inspect the working project",
+      "kind": "App, raw receipts and public source",
+      "text": "Try the app, review the original model receipts, and inspect the source. Every confirmed answer stays under the person's control.",
+      "sequence_start": 161.96,
+      "sequence_end": 170.12,
+      "start_frame": 4049,
+      "end_frame": 4253,
+      "speech_end": 169.94,
+      "source_in": 0,
+      "source_out": 7.98,
+      "audio_owner": "work/v2/21.wav",
+      "playback_rate": 1.0,
+      "frames": 204
     }
   ],
   "captions": [
     {
-      "start": 0,
-      "end": 8.115,
-      "text": "Small print, repeated facts, and too much typing can make paperwork exhausting. Unbound Access takes one question at a time.",
+      "start": 0.0,
+      "end": 6.21,
+      "text": "Paperwork can be exhausting when typing is difficult. UNBOUND Access asks one question at a time.",
       "mode": "subtitle",
-      "timing": "measured full synthesized phrase; no independent transcript alignment"
+      "timing": "Measured synthesized full phrase; no invented word timestamps."
     },
     {
-      "start": 8.44,
-      "end": 15.89,
-      "text": "Large controls and read aloud support spoken or typed answers. The person reviews every change and keeps control of the record.",
+      "start": 6.4,
+      "end": 14.565,
+      "text": "This edited demo uses real app screens, fictional typed answers, and synthetic narration. It is not continuous voice capture.",
       "mode": "subtitle",
-      "timing": "measured full synthesized phrase; no independent transcript alignment"
+      "timing": "Measured synthesized full phrase; no invented word timestamps."
     },
     {
-      "start": 16.2,
-      "end": 24.869999999999997,
-      "text": "This edited walkthrough uses actual app screens, fictional typed data, and generic synthetic narration. It is not continuous voice capture.",
+      "start": 14.76,
+      "end": 22.73,
+      "text": "Optional Meta Llama three point two, with three billion parameters, runs in the browser and proposes each question's answer type.",
       "mode": "subtitle",
-      "timing": "measured full synthesized phrase; no independent transcript alignment"
+      "timing": "Measured synthesized full phrase; no invented word timestamps."
     },
     {
-      "start": 25.2,
-      "end": 32.265,
-      "text": "An answer is only a proposal. Cancel leaves saved answers unchanged. Confirm moves to the next question.",
+      "start": 22.92,
+      "end": 29.400000000000002,
+      "text": "For this authored bicycle repair form, the smaller one billion parameter model matched two of eight types and was rejected.",
       "mode": "subtitle",
-      "timing": "measured full synthesized phrase; no independent transcript alignment"
+      "timing": "Measured synthesized full phrase; no invented word timestamps."
     },
     {
-      "start": 32.6,
-      "end": 38.96,
-      "text": "The prepared form says household size must be one through twelve. Thirteen is rejected before it can be saved.",
+      "start": 29.6,
+      "end": 37.155,
+      "text": "The three billion parameter model matched all eight. Exact requests and unchanged responses are saved in the public repository.",
       "mode": "subtitle",
-      "timing": "measured full synthesized phrase; no independent transcript alignment"
+      "timing": "Measured synthesized full phrase; no invented word timestamps."
     },
     {
-      "start": 39.28,
-      "end": 46.655,
-      "text": "Two is accepted. Zero dollars is also a valid income answer, rather than being mistaken for a missing value.",
+      "start": 37.36,
+      "end": 45.769999999999996,
+      "text": "That is one development case, not an independent accuracy benchmark. CPU extraction took about one hundred sixty three seconds.",
       "mode": "subtitle",
-      "timing": "measured full synthesized phrase; no independent transcript alignment"
+      "timing": "Measured synthesized full phrase; no invented word timestamps."
     },
     {
-      "start": 46.96,
-      "end": 54.14,
-      "text": "Answer Yes to access support and the required follow up appears. Here the fictional request is questions read aloud.",
+      "start": 45.96,
+      "end": 53.31,
+      "text": "The source asks for a contact name, an email, a date, a budget, a problem description, and three address rows.",
       "mode": "subtitle",
-      "timing": "measured full synthesized phrase; no independent transcript alignment"
+      "timing": "Measured synthesized full phrase; no invented word timestamps."
     },
     {
-      "start": 54.44,
-      "end": 61.714999999999996,
-      "text": "Now correct the home address from forty to forty one Practice Street. The app shows both linked fields and their previous values.",
+      "start": 53.52,
+      "end": 59.655,
+      "text": "Both home rows refer to one fact. The workshop is a different fact, even though all three ask for an address.",
       "mode": "subtitle",
-      "timing": "measured full synthesized phrase; no independent transcript alignment"
+      "timing": "Measured synthesized full phrase; no invented word timestamps."
     },
     {
-      "start": 62.04,
-      "end": 70.63,
-      "text": "Confirmation updates both home answers together. The separate landlord address stays ninety Venue Lane. Shared facts do not cross different people.",
+      "start": 59.84,
+      "end": 67.73,
+      "text": "The app derives labels, pages, required flags, and repeated facts from the source. Those are not credited as model output.",
       "mode": "subtitle",
-      "timing": "measured full synthesized phrase; no independent transcript alignment"
+      "timing": "Measured synthesized full phrase; no invented word timestamps."
     },
     {
-      "start": 70.96,
-      "end": 78.76499999999999,
-      "text": "Review the source linked answers, acknowledge the review, and download the PDF. Persistent Save and Open links allow another attempt.",
+      "start": 67.92,
+      "end": 75.675,
+      "text": "This screen replays that saved proposal through manual import. The person checks every question and shared fact before approving it.",
       "mode": "subtitle",
-      "timing": "measured full synthesized phrase; no independent transcript alignment"
+      "timing": "Measured synthesized full phrase; no invented word timestamps."
     },
     {
-      "start": 79.08,
-      "end": 86.38499999999999,
-      "text": "These are both pages of the actual browser downloaded file. The corrected addresses and zero income survived export and were checked.",
+      "start": 75.88,
+      "end": 83.85499999999999,
+      "text": "Every answer still needs confirmation. A separate real Meta call interpreted zero dollars as zero, in about ninety five seconds.",
       "mode": "subtitle",
-      "timing": "measured full synthesized phrase; no independent transcript alignment"
+      "timing": "Measured synthesized full phrase; no invented word timestamps."
     },
     {
-      "start": 86.72,
-      "end": 93.205,
-      "text": "This is a readable answer record, not a filled original agency form. Nothing is signed or submitted.",
+      "start": 84.04,
+      "end": 90.32000000000001,
+      "text": "The model never saves that proposal automatically. The person can cancel it, correct it, or confirm it.",
       "mode": "subtitle",
-      "timing": "measured full synthesized phrase; no independent transcript alignment"
+      "timing": "Measured synthesized full phrase; no invented word timestamps."
     },
     {
-      "start": 93.52,
-      "end": 102.44999999999999,
-      "text": "Built with Llama. Optional Meta Llama three point two, one billion parameters, runs genuine inference inside the browser through w llama.",
+      "start": 90.52,
+      "end": 98.10499999999999,
+      "text": "Here, correcting the home address proposes both copies together. Confirmation changes them to one hundred one Practice Street.",
       "mode": "subtitle",
-      "timing": "measured full synthesized phrase; no independent transcript alignment"
+      "timing": "Measured synthesized full phrase; no invented word timestamps."
     },
     {
-      "start": 102.75999999999999,
-      "end": 112.07,
-      "text": "The revised development run correctly interpreted three clear answers: three people, zero dollars, and No. Its unchanged raw outputs are preserved.",
+      "start": 98.32,
+      "end": 105.30999999999999,
+      "text": "The workshop stays at nine hundred Separate Venue Road. A shared fact never silently becomes somebody else's address.",
       "mode": "subtitle",
-      "timing": "measured full synthesized phrase; no independent transcript alignment"
+      "timing": "Measured synthesized full phrase; no invented word timestamps."
     },
     {
-      "start": 112.39999999999999,
-      "end": 119.25999999999999,
-      "text": "It also guessed three when the input was uncertain. The current source guard rejects that guess. This is not a model success.",
+      "start": 105.52,
+      "end": 113.47,
+      "text": "After reviewing the answers, the person checks the acknowledgement and prepares the PDF. Save and Open links remain available.",
       "mode": "subtitle",
-      "timing": "measured full synthesized phrase; no independent transcript alignment"
+      "timing": "Measured synthesized full phrase; no invented word timestamps."
     },
     {
-      "start": 119.55999999999999,
-      "end": 130.515,
-      "text": "Question extraction failed required flag validation. General extraction remains experimental and unreliable. Prepared forms and direct controls remain available.",
+      "start": 113.68,
+      "end": 121.23,
+      "text": "This is the actual one page file downloaded in the earlier three billion parameter browser workflow, with fictional information.",
       "mode": "subtitle",
-      "timing": "measured full synthesized phrase; no independent transcript alignment"
+      "timing": "Measured synthesized full phrase; no invented word timestamps."
     },
     {
-      "start": 130.83999999999997,
-      "end": 139.74499999999998,
-      "text": "The optional model download is about eight hundred eight megabytes, with explicit consent and removal controls. CPU inference is slow.",
+      "start": 121.44,
+      "end": 128.71,
+      "text": "The file preserved both corrected home addresses, the separate workshop address, and the zero budget. Nothing was signed or submitted.",
       "mode": "subtitle",
-      "timing": "measured full synthesized phrase; no independent transcript alignment"
+      "timing": "Measured synthesized full phrase; no invented word timestamps."
     },
     {
-      "start": 140.07999999999998,
-      "end": 148.33499999999998,
-      "text": "No API key, card, or paid fallback is needed. Local model tasks stay in the browser; browser speech may use a remote service.",
+      "start": 128.92,
+      "end": 136.92,
+      "text": "The latest reliability checks kept sixty long corrections through a refresh. Contradictory follow up answers block a reviewed record.",
       "mode": "subtitle",
-      "timing": "measured full synthesized phrase; no independent transcript alignment"
+      "timing": "Measured synthesized full phrase; no invented word timestamps."
     },
     {
-      "start": 148.64,
-      "end": 156.92999999999998,
-      "text": "Eighty six automated checks passed. The complete typed browser journey and downloaded PDF were verified separately from model quality.",
+      "start": 137.12,
+      "end": 144.82500000000002,
+      "text": "One hundred seven automated checks pass. These are engineering tests, not model accuracy or proof of universal accessibility.",
       "mode": "subtitle",
-      "timing": "measured full synthesized phrase; no independent transcript alignment"
+      "timing": "Measured synthesized full phrase; no invented word timestamps."
     },
     {
-      "start": 157.23999999999998,
-      "end": 167.73499999999999,
-      "text": "One tester reported phone audio, microphone, and sample PDF opening. Full phone dictation, timed usability, and GPU offload remain unverified.",
+      "start": 145.04,
+      "end": 153.725,
+      "text": "The three billion parameter model is an optional two point zero two gigabyte download. No API key, payment card, or paid fallback is needed.",
       "mode": "subtitle",
-      "timing": "measured full synthesized phrase; no independent transcript alignment"
+      "timing": "Measured synthesized full phrase; no invented word timestamps."
     },
     {
-      "start": 168.04,
-      "end": 176.105,
-      "text": "Try the working form, inspect real inference receipts, and read the public source. Every confirmed answer remains yours to review.",
+      "start": 153.92,
+      "end": 161.755,
+      "text": "A tester reported the repaired phone PDF download worked. Full hands free completion and measured usability remain unverified.",
       "mode": "subtitle",
-      "timing": "measured full synthesized phrase; no independent transcript alignment"
+      "timing": "Measured synthesized full phrase; no invented word timestamps."
+    },
+    {
+      "start": 161.96,
+      "end": 169.94,
+      "text": "Try the app, review the original model receipts, and inspect the source. Every confirmed answer stays under the person's control.",
+      "mode": "subtitle",
+      "timing": "Measured synthesized full phrase; no invented word timestamps."
     }
   ],
   "assets": [
     {
-      "asset_id": "hero",
       "path": "assets/unbound-demo-hero.png",
-      "width": 1348,
-      "height": 926,
-      "role": "actual app screenshot"
+      "sha256": "1651d7ef9ac1274ecfae32c035fa29100e028744ef6e225e81637830be5883e1",
+      "original_dimensions": [
+        1348,
+        926
+      ],
+      "crop": null,
+      "kind": "Actual app screen"
     },
     {
-      "asset_id": "hero",
-      "path": "assets/unbound-demo-hero.png",
-      "width": 1348,
-      "height": 926,
-      "role": "actual app screenshot"
-    },
-    {
-      "asset_id": "answer-review",
       "path": "assets/unbound-demo-answer-review.png",
-      "width": 1348,
-      "height": 926,
-      "role": "actual app screenshot"
+      "sha256": "072ebd5275a517765430862e6a69ea942b8ecb0ae972f0079ce678224a2af166",
+      "original_dimensions": [
+        1348,
+        926
+      ],
+      "crop": [
+        405,
+        180,
+        1260,
+        740
+      ],
+      "kind": "Edited app walkthrough"
     },
     {
-      "asset_id": "answer-review",
-      "path": "assets/unbound-demo-answer-review.png",
-      "width": 1348,
-      "height": 926,
-      "role": "actual app screenshot"
+      "path": "assets/v2-model-source.png",
+      "sha256": "0e09334a6e7ea6bb4c50c45ca7ed96990c9a84ab6998ca758b99595ea23b2187",
+      "original_dimensions": [
+        1500,
+        790
+      ],
+      "crop": null,
+      "kind": "Preserved receipt summary"
     },
     {
-      "asset_id": "number-limit",
-      "path": "assets/unbound-demo-number-limit.png",
-      "width": 1348,
-      "height": 926,
-      "role": "actual app screenshot"
+      "path": "assets/v2-score-1b.png",
+      "sha256": "c9343996ee47d484adf77dc51e1a84adb4660a8898d58167b9f433c1d5aef05a",
+      "original_dimensions": [
+        1500,
+        790
+      ],
+      "crop": null,
+      "kind": "Recorded development case"
     },
     {
-      "asset_id": "number-limit",
-      "path": "assets/unbound-demo-number-limit.png",
-      "width": 1348,
-      "height": 926,
-      "role": "actual app screenshot"
+      "path": "assets/v2-score-3b.png",
+      "sha256": "4bb631813a35c46f8b2986265f9545bd98acdcf195b5522106942ff4df078dff",
+      "original_dimensions": [
+        1500,
+        790
+      ],
+      "crop": null,
+      "kind": "Recorded development case"
     },
     {
-      "asset_id": "conditional",
-      "path": "assets/unbound-demo-conditional.png",
-      "width": 1348,
-      "height": 926,
-      "role": "actual app screenshot"
+      "path": "assets/v2-score-3b.png",
+      "sha256": "4bb631813a35c46f8b2986265f9545bd98acdcf195b5522106942ff4df078dff",
+      "original_dimensions": [
+        1500,
+        790
+      ],
+      "crop": null,
+      "kind": "Not an independent benchmark"
     },
     {
-      "asset_id": "linked-correction",
-      "path": "assets/unbound-demo-linked-correction.png",
-      "width": 1348,
-      "height": 926,
-      "role": "actual app screenshot"
+      "path": "assets/v2-types.png",
+      "sha256": "e7561144260694efbc1d01a0fa150334e5af0875d1d2a18418342ae161e8f494",
+      "original_dimensions": [
+        1500,
+        790
+      ],
+      "crop": null,
+      "kind": "Preserved receipt summary"
     },
     {
-      "asset_id": "linked-correction",
-      "path": "assets/unbound-demo-linked-correction.png",
-      "width": 1348,
-      "height": 926,
-      "role": "actual app screenshot"
+      "path": "assets/v2-address-types.png",
+      "sha256": "ed1d2ef04d390b7a222b7e59a6bda9e5bc35b81379234030578225e4625239f4",
+      "original_dimensions": [
+        1500,
+        790
+      ],
+      "crop": null,
+      "kind": "Application links from explicit source wording"
     },
     {
-      "asset_id": "pdf-ready",
-      "path": "assets/unbound-demo-pdf-ready.png",
-      "width": 1348,
-      "height": 926,
-      "role": "actual app screenshot"
+      "path": "assets/v2-source-boundaries.png",
+      "sha256": "3127fa2ab993cb3b2f47dab5d2b2433af5f5a2446fe62380a20ab858262efcc6",
+      "original_dimensions": [
+        1500,
+        790
+      ],
+      "crop": null,
+      "kind": "Application and model roles"
     },
     {
-      "asset_id": "pdf-output",
-      "path": "assets/pdf-output.png",
-      "width": 1348,
-      "height": 926,
-      "role": "source-derived receipt summary / actual browser-download PDF"
+      "path": "assets/v2-schema-review.jpg",
+      "sha256": "4b5614b846a845af45c62a77e52808dbcf4b93255a0edd7eff832bd22cc37e49",
+      "original_dimensions": [
+        1348,
+        926
+      ],
+      "crop": [
+        375,
+        510,
+        945,
+        715
+      ],
+      "kind": "Saved-schema replay \u00b7 no new AI call"
     },
     {
-      "asset_id": "pdf-output",
-      "path": "assets/pdf-output.png",
-      "width": 1348,
-      "height": 926,
-      "role": "source-derived receipt summary / actual browser-download PDF"
+      "path": "assets/v2-zero-receipt.png",
+      "sha256": "12fce54097cb17b0fd4e8d0620f4e5d430bb9ddc5c59940a74473978fb8b97b6",
+      "original_dimensions": [
+        1500,
+        790
+      ],
+      "crop": null,
+      "kind": "Preserved original response"
     },
     {
-      "asset_id": "meta-receipt",
-      "path": "assets/meta-receipt.png",
-      "width": 1348,
-      "height": 926,
-      "role": "source-derived receipt summary / actual browser-download PDF"
+      "path": "assets/v2-zero-proposal.jpg",
+      "sha256": "bc7e9d724ee28fd93ff1aa0e9670bddf5662af29c7a83d0764817e65a1e03f17",
+      "original_dimensions": [
+        1348,
+        926
+      ],
+      "crop": [
+        420,
+        295,
+        1240,
+        640
+      ],
+      "kind": "Saved-schema replay \u00b7 typed input"
     },
     {
-      "asset_id": "meta-receipt",
-      "path": "assets/meta-receipt.png",
-      "width": 1348,
-      "height": 926,
-      "role": "source-derived receipt summary / actual browser-download PDF"
+      "path": "assets/v2-linked-correction.jpg",
+      "sha256": "6da1ce6906310086aad89166456f7eebbec44c7dce11954faa54f2e12284aab9",
+      "original_dimensions": [
+        1348,
+        926
+      ],
+      "crop": [
+        420,
+        295,
+        1240,
+        770
+      ],
+      "kind": "Saved-schema replay \u00b7 typed input"
     },
     {
-      "asset_id": "meta-receipt",
-      "path": "assets/meta-receipt.png",
-      "width": 1348,
-      "height": 926,
-      "role": "source-derived receipt summary / actual browser-download PDF"
+      "path": "assets/v2-address-review.jpg",
+      "sha256": "2bb5064d14ef2772b753c54327c19c5bc621e48574e2a6af55e41ca96f92e93c",
+      "original_dimensions": [
+        1348,
+        926
+      ],
+      "crop": [
+        420,
+        295,
+        1240,
+        700
+      ],
+      "kind": "Saved-schema replay \u00b7 typed input"
     },
     {
-      "asset_id": "meta-receipt",
-      "path": "assets/meta-receipt.png",
-      "width": 1348,
-      "height": 926,
-      "role": "source-derived receipt summary / actual browser-download PDF"
+      "path": "assets/v2-pdf-ready.jpg",
+      "sha256": "4a4a3d9507fde899a00a75b15ce5a43c5e96b4cb31524b1070e7b54a1c946cc4",
+      "original_dimensions": [
+        1348,
+        926
+      ],
+      "crop": [
+        420,
+        285,
+        1240,
+        640
+      ],
+      "kind": "Saved-schema replay \u00b7 typed input"
     },
     {
-      "asset_id": "evidence-card",
-      "path": "assets/evidence-card.png",
-      "width": 1348,
-      "height": 926,
-      "role": "source-derived receipt summary / actual browser-download PDF"
+      "path": "assets/v2-actual-3b-pdf.png",
+      "sha256": "772c056c5c63ff698cd6347d6a208b4fbc8ad1d3aae787bda95a32ea0178143f",
+      "original_dimensions": [
+        1034,
+        1462
+      ],
+      "crop": null,
+      "kind": "Earlier 3B workflow download"
     },
     {
-      "asset_id": "evidence-card",
-      "path": "assets/evidence-card.png",
-      "width": 1348,
-      "height": 926,
-      "role": "source-derived receipt summary / actual browser-download PDF"
+      "path": "assets/v2-pdf-detail.png",
+      "sha256": "5e3934e1be79a3df6c496e4728da0a1113992135df14f5e6865b21dfae1e8c95",
+      "original_dimensions": [
+        1500,
+        790
+      ],
+      "crop": null,
+      "kind": "Exact crops from the actual PDF"
     },
     {
-      "asset_id": "evidence-card",
-      "path": "assets/evidence-card.png",
-      "width": 1348,
-      "height": 926,
-      "role": "source-derived receipt summary / actual browser-download PDF"
+      "path": "assets/v2-reliability.png",
+      "sha256": "20df06255d4d2150eee4c813c851f54ddc8a30bb386de2e03d50d0382e5b6e1a",
+      "original_dimensions": [
+        1500,
+        790
+      ],
+      "crop": null,
+      "kind": "Engineering verification"
     },
     {
-      "asset_id": "evidence-card",
-      "path": "assets/evidence-card.png",
-      "width": 1348,
-      "height": 926,
-      "role": "source-derived receipt summary / actual browser-download PDF"
+      "path": "assets/v2-check-count.png",
+      "sha256": "2b627d8407f7e37e993807f365c8b8a7a8ea9a7ce9ddeafcdeebcc84af11e9d9",
+      "original_dimensions": [
+        1500,
+        790
+      ],
+      "crop": null,
+      "kind": "Engineering verification"
     },
     {
-      "asset_id": "hero",
+      "path": "assets/v2-model-consent.png",
+      "sha256": "48394a167bd5c32ec95205f5de2c963ad47f057141270a779e97f4bdece416b3",
+      "original_dimensions": [
+        1500,
+        790
+      ],
+      "crop": null,
+      "kind": "Current model configuration"
+    },
+    {
+      "path": "assets/v2-phone-scope.png",
+      "sha256": "3570cd49e0cf8acc7d00a5b3b2bf9c0a841a479cb2d7f42d00570c2113cefd17",
+      "original_dimensions": [
+        1500,
+        790
+      ],
+      "crop": null,
+      "kind": "Tester report \u00b7 limits retained"
+    },
+    {
       "path": "assets/unbound-demo-hero.png",
-      "width": 1348,
-      "height": 926,
-      "role": "actual app screenshot"
+      "sha256": "1651d7ef9ac1274ecfae32c035fa29100e028744ef6e225e81637830be5883e1",
+      "original_dimensions": [
+        1348,
+        926
+      ],
+      "crop": null,
+      "kind": "App, raw receipts and public source"
     }
   ],
+  "caption_checks": [
+    {
+      "id": "opening",
+      "caption_lines": 2,
+      "characters_per_second": 15.62,
+      "needs_reading_speed_review": false
+    },
+    {
+      "id": "scope",
+      "caption_lines": 2,
+      "characters_per_second": 15.31,
+      "needs_reading_speed_review": false
+    },
+    {
+      "id": "meta-role",
+      "caption_lines": 2,
+      "characters_per_second": 16.19,
+      "needs_reading_speed_review": false
+    },
+    {
+      "id": "smaller-model",
+      "caption_lines": 2,
+      "characters_per_second": 18.98,
+      "needs_reading_speed_review": false
+    },
+    {
+      "id": "larger-model",
+      "caption_lines": 2,
+      "characters_per_second": 16.81,
+      "needs_reading_speed_review": false
+    },
+    {
+      "id": "latency-limit",
+      "caption_lines": 2,
+      "characters_per_second": 15.1,
+      "needs_reading_speed_review": false
+    },
+    {
+      "id": "source-types",
+      "caption_lines": 2,
+      "characters_per_second": 14.97,
+      "needs_reading_speed_review": false
+    },
+    {
+      "id": "source-links",
+      "caption_lines": 2,
+      "characters_per_second": 17.77,
+      "needs_reading_speed_review": false
+    },
+    {
+      "id": "source-boundaries",
+      "caption_lines": 2,
+      "characters_per_second": 15.46,
+      "needs_reading_speed_review": false
+    },
+    {
+      "id": "schema-replay",
+      "caption_lines": 2,
+      "characters_per_second": 17.02,
+      "needs_reading_speed_review": false
+    },
+    {
+      "id": "zero-record",
+      "caption_lines": 2,
+      "characters_per_second": 16.05,
+      "needs_reading_speed_review": false
+    },
+    {
+      "id": "zero-confirmation",
+      "caption_lines": 2,
+      "characters_per_second": 16.4,
+      "needs_reading_speed_review": false
+    },
+    {
+      "id": "linked-correction",
+      "caption_lines": 2,
+      "characters_per_second": 16.61,
+      "needs_reading_speed_review": false
+    },
+    {
+      "id": "separate-address",
+      "caption_lines": 2,
+      "characters_per_second": 16.74,
+      "needs_reading_speed_review": false
+    },
+    {
+      "id": "pdf-ready",
+      "caption_lines": 2,
+      "characters_per_second": 15.85,
+      "needs_reading_speed_review": false
+    },
+    {
+      "id": "actual-pdf",
+      "caption_lines": 2,
+      "characters_per_second": 16.95,
+      "needs_reading_speed_review": false
+    },
+    {
+      "id": "pdf-values",
+      "caption_lines": 2,
+      "characters_per_second": 18.43,
+      "needs_reading_speed_review": false
+    },
+    {
+      "id": "reliability",
+      "caption_lines": 2,
+      "characters_per_second": 16.62,
+      "needs_reading_speed_review": false
+    },
+    {
+      "id": "test-scope",
+      "caption_lines": 2,
+      "characters_per_second": 16.22,
+      "needs_reading_speed_review": false
+    },
+    {
+      "id": "download-and-cost",
+      "caption_lines": 2,
+      "characters_per_second": 16.12,
+      "needs_reading_speed_review": false
+    },
+    {
+      "id": "phone-scope",
+      "caption_lines": 2,
+      "characters_per_second": 16.08,
+      "needs_reading_speed_review": false
+    },
+    {
+      "id": "close",
+      "caption_lines": 2,
+      "characters_per_second": 16.17,
+      "needs_reading_speed_review": false
+    }
+  ],
+  "input_mix_loudness": {
+    "input_i": "-16.80",
+    "input_tp": "-1.67",
+    "input_lra": "2.40",
+    "input_thresh": "-26.96",
+    "output_i": "-16.09",
+    "output_tp": "-1.50",
+    "output_lra": "2.30",
+    "output_thresh": "-26.26",
+    "normalization_type": "dynamic",
+    "target_offset": "0.09"
+  },
+  "output_sha256": "2ec2af51278e3e84c2a4f36c1d9124d0f2afb82223b4a547ce32766b4bc75050",
   "output_probe": {
     "streams": [
       {
@@ -581,6 +999,10 @@
         "has_b_frames": 2,
         "pix_fmt": "yuv420p",
         "level": 40,
+        "color_range": "tv",
+        "color_space": "bt709",
+        "color_transfer": "bt709",
+        "color_primaries": "bt709",
         "chroma_location": "left",
         "field_order": "progressive",
         "refs": 1,
@@ -590,14 +1012,14 @@
         "r_frame_rate": "25/1",
         "avg_frame_rate": "25/1",
         "time_base": "1/25000",
-        "start_pts": 525,
-        "start_time": "0.021000",
-        "duration_ts": 4475000,
-        "duration": "179.000000",
-        "bit_rate": "86574",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 4253000,
+        "duration": "170.120000",
+        "bit_rate": "84712",
         "bits_per_raw_sample": "8",
-        "nb_frames": "4475",
-        "extradata_size": 46,
+        "nb_frames": "4253",
+        "extradata_size": 49,
         "disposition": {
           "default": 1,
           "dub": 0,
@@ -645,10 +1067,10 @@
         "time_base": "1/48000",
         "start_pts": 0,
         "start_time": "0.000000",
-        "duration_ts": 8593264,
-        "duration": "179.026333",
-        "bit_rate": "121648",
-        "nb_frames": "8391",
+        "duration_ts": 8169600,
+        "duration": "170.200000",
+        "bit_rate": "157237",
+        "nb_frames": "7976",
         "extradata_size": 5,
         "disposition": {
           "default": 1,
@@ -678,15 +1100,15 @@
       }
     ],
     "format": {
-      "filename": "/workspace/sites/unbound-access-contest-2026/public/artifacts/unbound-access-demo.mp4",
+      "filename": "/workspace/sites/unbound-access-contest-2026/public/artifacts/unbound-access-demo-v2.mp4",
       "nb_streams": 2,
       "nb_programs": 0,
       "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
       "format_long_name": "QuickTime / MOV",
       "start_time": "0.000000",
-      "duration": "179.026333",
-      "size": "4798511",
-      "bit_rate": "214427",
+      "duration": "170.200000",
+      "size": "5278265",
+      "bit_rate": "248097",
       "probe_score": 100,
       "tags": {
         "major_brand": "isom",

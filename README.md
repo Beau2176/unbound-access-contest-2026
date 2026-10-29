@@ -15,6 +15,7 @@ A real typed browser journey approved the 3B-proposed form, confirmed seven dist
 ## Working features
 
 - Two original fictional prepared forms, large controls, browser read-aloud and speech input, with typed alternatives.
+- [Community Equipment Loan](https://unbound-access-paperwork-by-voice.savorydove14.chatgpt.site/equipment-loan) opens the second prepared form directly. Its answers use a separate tab-storage key, so starting or clearing this workspace preserves answers in the main workspace. Refresh restores the current equipment workspace; Clear session starts it again with a blank equipment form.
 - Read-aloud defaults to normal speed and favors voices named Natural, Neural, Enhanced or Premium, then Google English when offered. Reading voice & speed provides a voice picker, four speeds and a microphone-free preview shared by questions, reviews and the phone check. Choices are remembered separately from answers; availability and subjective sound quality depend on the device.
 - Every proposed answer or correction requires confirmation. Ambiguous correction targets ask for clarification. Applicant and another person's addresses remain separate.
 - Detected uncertain answers such as “I am not sure” now ask a field-specific clarification before any optional AI request. Saved answers stay unchanged, and the person can give a definite answer or skip. Standalone unknown answers are caught for text fields without discarding descriptive text such as “I do not know how to apply and need help.” Raw Meta diagnostics still expose model failures separately.

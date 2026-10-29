@@ -1,0 +1,20 @@
+{
+  "date_local": "2026-10-28",
+  "timezone": "America/Denver",
+  "change": "Direct equipment-loan route with an isolated tab session; uses the existing prepared form.",
+  "route": "/equipment-loan",
+  "preview_ui_checks": [
+    "Confirmed a fictional name in the main workspace.",
+    "Opened /equipment-loan in the same tab and observed a blank Community Equipment Loan form with seven distinct answer groups across eight source rows.",
+    "Proposed and confirmed a different fictional borrower name.",
+    "Reloaded the equipment route and observed the saved borrower name and one of seven answers confirmed.",
+    "Used Clear session then Clear answers and observed a blank equipment form.",
+    "Returned through the home link and observed the original main-workspace name still saved."
+  ],
+  "automated_checks": {
+    "existing_tests_passed": 122,
+    "typescript": "passed",
+    "git_diff_check": "passed"
+  },
+  "limits": "Typed development UI check only. No new phone, microphone, live model, usability, unseen-form extraction or PDF result is claimed. No supplied private answer values are included."
+}

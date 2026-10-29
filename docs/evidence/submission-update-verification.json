@@ -1,0 +1,21 @@
+{
+  "scope": "Visible saved-entry verification after fresh reload; not organizer eligibility/judging approval",
+  "recorded_at": "2026-10-29T01:51:53.425967+00:00",
+  "same_existing_entry": true,
+  "updated_fields": [
+    "Project Description",
+    "Describe your use of Meta products to build the submitted project",
+    "Why are Meta's models important to your solution?",
+    "Provide feedback from your experience using Meta products",
+    "Provide feedback from your experience using partner technologies."
+  ],
+  "all_five_persisted_exactly": true,
+  "no_unsaved_changes": true,
+  "update_button_disabled": true,
+  "track": "Indie Developer Track",
+  "theme": "Build for Your World",
+  "sole_human_participant": "Boyd Koehler",
+  "existing_permission_checkbox_retained": true,
+  "new_duplicate_entry": false,
+  "money_spent": 0
+}

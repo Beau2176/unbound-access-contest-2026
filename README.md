@@ -6,7 +6,7 @@ One question at a time: spoken or typed answers, explicit confirmation, isolated
 
 ## Current result - October 28, 2026
 
-The existing Indie Developer / Build for Your World entry was confirmed submitted earlier today. This is the same project, with subsequent improvements. Updated portal text is prepared in docs/SUBMISSION_DRAFT.md; it has not been applied in the currently signed-out contest session. The commercial Founders Beta is separate. No card, subscription, API key, top-up or paid inference was used.
+The existing Indie Developer / Build for Your World entry was confirmed submitted earlier today. This is the same project, with subsequent improvements. The five revised narrative fields in docs/SUBMISSION_DRAFT.md were saved to that same entry and verified after a fresh page load. Track, theme, participant and the previously checked permission were retained; no duplicate was created. The commercial Founders Beta is separate. No card, subscription, API key, top-up or paid inference was used.
 
 **Real Meta extraction now has a working browser example.** Meta Llama 3.2 3B Instruct correctly proposed all eight expected question types for the authored bicycle-repair development form in 162,825 ms on CPU. The same per-question contract with 1B matched two of eight and was rejected. This is one development case, not a held-out accuracy benchmark or phone-performance result. Exact source wording, required flags, pages and narrowly matched repeated labels are application-derived; they are not credited as model outputs.
 

@@ -23,7 +23,7 @@ All seven distinct facts were reviewed and acknowledged before the actual PDF do
 
 This was typed browser QA. It does not establish a completed phone voice journey, a measured accessibility benefit or GPU performance. 3B is a separately consented 2.02 GB download and CPU inference is slow. General extraction remains experimental; detected unsupported constraints and explicit type conflicts fail closed. Earlier failures are retained rather than counted as successes.
 
-The existing entry was previously confirmed submitted; current replacement text is prepared but the current contest session is signed out. No duplicate or new permission grant was submitted. No money was spent.
+The existing entry was updated with the five revised narrative fields and verified after a fresh reload: every field matched the prepared text, the update control was disabled with no unsaved changes, and the original permission remained checked. Track/theme/participant were retained. No duplicate or new permission grant was submitted. No money was spent.
 
 ---
 

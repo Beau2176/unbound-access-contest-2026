@@ -1,6 +1,6 @@
-# Existing entry - factual update ready to save
+# Existing entry - saved update verified
 
-Original entry confirmed submitted October 28, 2026. Update that same entry, not a duplicate. The current contest session is signed out; this replacement text has not yet been saved there. The existing promotion permission was previously approved and accepted; no new agreement is assumed.
+Original entry confirmed submitted October 28, 2026. These five revised narrative answers were saved to that same entry and verified after a fresh page load. All five matched the prepared text; Update Project was disabled with no unsaved changes. Track, theme, sole human participant and the previously checked promotion permission remained unchanged. No duplicate or new agreement was submitted. The partner-feedback field is a single-line input, so its paragraphs were joined with a space.
 
 ## Team Name
 

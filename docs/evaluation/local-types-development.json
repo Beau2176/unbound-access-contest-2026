@@ -1,0 +1,60 @@
+{
+  "scope": "Small authored development cases, not a held-out benchmark or usability study",
+  "scoring": "Compare actual raw field classifications to expected values after inference. Expected values are not included in requests. Source-derived flags and links are scored separately from model output.",
+  "cases": [
+    {
+      "id": "seed-exchange",
+      "source": "Fictional seed exchange registration\nFull name (required)\nEmail address (optional)\nHow many seed packets? (required)\nWould you like a reminder? Yes or No (optional)",
+      "expected_model_fields": {
+        "line_1": "skip",
+        "line_2": "text",
+        "line_3": "email",
+        "line_4": "number",
+        "line_5": "yesno"
+      },
+      "expected_required": [
+        true,
+        false,
+        true,
+        false
+      ]
+    },
+    {
+      "id": "bicycle-repair",
+      "source": "Fictional bicycle repair appointment\nContact name (required)\nContact email (optional)\nAppointment date YYYY-MM-DD (required)\nRepair budget in dollars (required)\nDescribe the bicycle problem (required)\nHome address (required)\nRepeat the same home address (required)\nWorkshop address (required)",
+      "expected_model_fields": {
+        "line_1": "skip",
+        "line_2": "text",
+        "line_3": "email",
+        "line_4": "date",
+        "line_5": "money",
+        "line_6": "longtext",
+        "line_7": "text",
+        "line_8": "text",
+        "line_9": "text"
+      },
+      "expected_required": [
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "expected_links": [
+        [
+          "line_7",
+          "line_8"
+        ]
+      ],
+      "expected_independent": "line_9"
+    }
+  ],
+  "contracts": [
+    "source-line-types-v1",
+    "source-line-types-v2",
+    "source-line-types-v3"
+  ]
+}

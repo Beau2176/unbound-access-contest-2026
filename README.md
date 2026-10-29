@@ -1,30 +1,41 @@
 # UNBOUND Access - Paperwork by Voice
 
-One form question at a time, spoken or typed answers, explicit confirmation, shared-fact corrections and a readable PDF answer record.
+One question at a time: spoken or typed answers, explicit confirmation, isolated shared-fact corrections and a readable PDF answer record.
 
-[Open the app](https://unbound-access-paperwork-by-voice.savorydove14.chatgpt.site) · [Demo and judge walkthrough](https://unbound-access-paperwork-by-voice.savorydove14.chatgpt.site/contest) · [Real Meta run checks](https://unbound-access-paperwork-by-voice.savorydove14.chatgpt.site/local-meta)
+[Open the app](https://unbound-access-paperwork-by-voice.savorydove14.chatgpt.site) · [Judge walkthrough](https://unbound-access-paperwork-by-voice.savorydove14.chatgpt.site/contest) · [Live Meta checks](https://unbound-access-paperwork-by-voice.savorydove14.chatgpt.site/local-meta)
 
-**Current status, October 28, 2026:** the existing Indie Developer / Build for Your World entry was submitted and confirmed earlier today. This source contains subsequent improvements to that same project. Prepared-form workflows work without AI. Genuine on-device Meta Llama 3.2 1B inference has run in the public HTTPS app, with preserved raw receipts and disclosed failures. Hosted NVIDIA/OpenRouter inference remains unconfigured. No paid inference, card, subscription or top-up was used.
+## Current result - October 28, 2026
 
-## What works
+The existing Indie Developer / Build for Your World entry was confirmed submitted earlier today. This is the same project, with subsequent improvements. Updated portal text is prepared in docs/SUBMISSION_DRAFT.md; it has not been applied in the currently signed-out contest session. The commercial Founders Beta is separate. No card, subscription, API key, top-up or paid inference was used.
 
-- Two original fictional forms; large controls, read-aloud, browser speech input and a typed alternative.
-- Every answer/correction requires confirmation. Explicitly linked applicant facts update together; another person's address remains separate. Ambiguous voice correction targets ask for clarification.
-- Required/conditional questions, numeric/date/email checks, contradiction and stale-change protection, source quotes/pages and answer history.
-- In-tab recovery, clear session, final review and complete/incomplete PDF exports with persistent Save PDF / Open PDF controls. PDFs are answer records, not filled agency originals.
-- Optional on-device Meta proposals for an answer or a short source-question schema. A compact JSON contract, input grounding checks, source validation and human confirmation stand between inference and saved state.
-- A separate phone-check page tests sample speech and sample PDF handling without reading the current paperwork session.
-- A preserved Muse Glimmer public-playground attempt and separately reviewed eight-edit derivative. Loading that example makes no new model call; arbitrary manual imports cannot verify provider identity.
+**Real Meta extraction now has a working browser example.** Meta Llama 3.2 3B Instruct correctly proposed all eight expected question types for the authored bicycle-repair development form in 162,825 ms on CPU. The same per-question contract with 1B matched two of eight and was rejected. This is one development case, not a held-out accuracy benchmark or phone-performance result. Exact source wording, required flags, pages and narrowly matched repeated labels are application-derived; they are not credited as model outputs.
 
-## Genuine local Meta use and limits
+A real typed browser journey approved the 3B-proposed form, confirmed seven distinct facts across eight source rows, used a separate real 3B call to interpret “zero dollars” as 0 (95,032 ms), corrected both home-address rows from 100 to 101 Practice Street while preserving 900 Separate Venue Road, and downloaded the reviewed one-page PDF. The actual downloaded bytes were reopened, checked against all expected values, rendered and visually inspected. See [raw receipts, failed attempts and PDF evidence](docs/evidence/local-meta/README.md).
 
-Built with Llama. The optional model is Meta Llama 3.2 1B Instruct, GGUF Q4_K_M, using wllama 3.8.1. It downloads about 808 MB after explicit opt-in, from a pinned hugging-quants revision. No weights are committed. HTTPS, sufficient memory and download bandwidth are required. CPU is slow; WebGPU is requested only when opted in and available, with no claim that GPU offload was verified.
+## Working features
 
-The revised development run handled three clear answers correctly: household three, zero dollars and No. The uncertain-count case guessed three. The current source guard rejects such an unsupported answer; this is a guard success, not a model-quality success. Its question extraction also failed required-flag validation. See [unchanged receipts and evaluation](docs/evidence/local-meta/README.md). These few development cases are not an accuracy benchmark. Arbitrary form extraction remains experimental and unreliable; prepared forms and direct controls remain available.
+- Two original fictional prepared forms, large controls, browser read-aloud and speech input, with typed alternatives.
+- Every proposed answer or correction requires confirmation. Ambiguous correction targets ask for clarification. Applicant and another person's addresses remain separate.
+- Required and conditional questions, numeric/date/email checks, contradiction detection, stale-change protection, source quotes/pages and answer history.
+- In-tab recovery, explicit clear session, final review and reviewed/incomplete PDF records with persistent Save/Open links. PDFs are answer records, not filled agency originals.
+- Optional local Meta answer interpretation. Experimental question proposals use 3B, one bounded inference per source line, with visible progress, source/type checks and source review before form replacement.
+- Exportable receipts preserve each exact model response and request separately from the application's assembled field map. Structural acceptance is not an accuracy score.
+- An isolated phone-check page and a preserved Muse Glimmer playground attempt with a separately reviewed eight-edit derivative. Loading the captured example makes no new model call; arbitrary manual imports retain unverified provider provenance.
 
-## Run and check
+## Model choices and costs
 
-Node 24 recommended, pnpm as pinned by packageManager:
+Built with Llama. Both optional models use GGUF Q4_K_M and wllama 3.8.1 from pinned hugging-quants revisions. No weights are committed or included in the source ZIP.
+
+- 1B: 808 MB; retained for answer experiments. Earlier clear answer checks succeeded, but uncertain input produced a guess which the source guard rejects. Its source-question classification was unreliable, so the UI does not use it for question proposals.
+- 3B: 2.02 GB, separately selected and consented. Used for the successful eight-question case above. It needs more device memory and CPU inference is slow. A successful browser development case does not establish that it works on every phone or arbitrary form.
+
+The import flow initially selects 3B and clearly shows its download size. Changing size resets consent. Model files use a dedicated browser cache; removal clears this app's model files, including after turning AI off. Prepared forms work without model downloads. Device graphics can be requested, but GPU offload has not been verified.
+
+Hosted NVIDIA/OpenRouter adapters remain optional, server-only and unconfigured. The old OpenRouter free route is absent. No paid fallback exists. Do not revisit blocked NVIDIA key/clipboard controls or paste credentials into chat/source.
+
+## Run and verify
+
+Node 24 recommended, pnpm pinned in packageManager:
 
 ```sh
 pnpm install
@@ -34,22 +45,18 @@ pnpm build
 pnpm dev
 ```
 
-The build copies WASM runtime assets from the pinned npm packages. For the managed environment, use `sites-preview start <checkout>` and its returned URL; local Meta inference must be tested over HTTPS. The full suite currently has 86 passing automated checks; those use deterministic fixtures/stubs, not model-quality benchmarks.
+The build copies WASM assets from pinned npm packages. In the managed environment use `sites-preview start <checkout>`; actual inference requires HTTPS. There are **91 passing automated checks**, using deterministic fixtures/stubs for model and speech behavior. Real inference evidence is recorded separately. TypeScript and production packaging are checked separately.
 
-Hosted adapters remain server-only and optional: `META_PROVIDER=nvidia` with `NVIDIA_API_KEY`, or explicitly configured `META_PROVIDER=openrouter` with `OPENROUTER_API_KEY`. Neither credential is configured in the contest deployment. The NVIDIA adapter checks the fixed free listing/model before inference; the old OpenRouter candidate is absent from the current catalog. No paid fallback exists. Do not revisit blocked key/clipboard controls or paste credentials in chat.
+## Data, boundaries and remaining work
 
-## Data and scope
+Fictional data only. Answers/history use sessionStorage in this tab. Receipts remain in page memory until explicitly downloaded. Local model tasks process text in this browser; browser speech may use a remote service. Hosted AI, if separately configured and chosen, sends selected fictional text to its named provider. See [data disclosures](https://unbound-access-paperwork-by-voice.savorydove14.chatgpt.site/privacy).
 
-Fictional data only. Confirmed answers/history use sessionStorage in this browser tab; model receipts stay in page memory until exported. The optional model download uses a dedicated browser cache with an explicit removal control. In local mode source text/utterances are processed in the browser. Browser speech can use a remote service; offline speech is not claimed. Hosted AI, if separately configured and consented, sends selected fictional text to its named provider. Hosting logs may contain normal request metadata. See [data disclosures](https://unbound-access-paperwork-by-voice.savorydove14.chatgpt.site/privacy).
+Text PDFs: up to 5 MB, 10 pages and 16,000 characters. Experimental local AI: short sources up to 4,000 characters and 30 nonempty lines, one question per line. Detected conditions/numeric limits and explicit source/type conflicts are rejected. Use prepared forms or a fully reviewed manual proposal for those features. Human review remains essential. No OCR, signatures, payments, eligibility decisions, agency integrations or automatic submissions.
 
-Text-based PDFs only: up to 5 MB, 10 pages and 16,000 characters. Local AI accepts a smaller short-form subset, up to 4,000 characters and 30 nonempty lines; it does not encode conditional requirements or numeric ranges. No OCR, signatures, raw payment processing, agency integrations, eligibility decisions, legal/medical advice or automatic submissions.
+One tester earlier reported basic Android audio, microphone and opening a saved sample PDF. A full phone dictation session, timed usability comparison, GPU performance and arbitrary-form generalization remain unverified. Current browser journeys used typed controls; no speed-improvement percentage or clinical benefit is claimed.
 
-## Evidence and contest scope
+The 2:59 edited demo uses earlier actual app screenshots, a browser-downloaded PDF and generic offline synthetic narration. It predates the new 3B result; the current judge page and preserved receipts provide that update. Source ZIP excludes weights, secrets, dependencies and generated build output. Original code is MIT; Llama/dependencies retain their licenses in THIRD_PARTY_NOTICES.md.
 
-A real typed cloud-browser run completed the Community Help Intake, cancelled an unconfirmed draft, rejected household size 13 against the source's 1-12 bound, accepted zero income, revealed a conditional follow-up, corrected both home fields while preserving the landlord address, and downloaded a reviewed two-page PDF. The actual PDF is preserved in docs/evidence/local-meta. This is not a phone dictation test. One earlier tester reported phone audio, microphone and opening the saved sample PDF; full phone dictation and measured usability remain unverified.
+The original event entry remains the only entry. Deadline last verified: November 4, 2026, 7 p.m. America/Denver. Meta open-weight use does not imply organizer eligibility approval; the named Muse-only bonus is not claimed.
 
-The edited demo uses actual app screenshots, the actual downloaded PDF, source-derived evidence cards and generic offline synthetic narration. It is not continuous voice capture. The public source archive includes all project code, evidence, model license and demo reproduction scripts, excluding model weights, secrets, dependencies and generated downloads.
-
-The participant guide rubric is impact 30%, Meta tooling 25%, engineering 20%, demo 25%. Deadline: November 4, 2026, 7 p.m. America/Denver. Llama is a Meta open-weight model, but no eligibility ruling is implied. The named Muse-only open-weight bonus is not claimed. See [current entry text](docs/SUBMISSION_DRAFT.md) and [evaluation](docs/EVALUATION.md).
-
-Product direction and acceptance testing: Boyd Koehler, UNBOUND FORGEWORKS LLC. AI-assisted implementation: OpenAI coding assistant. Project-specific code/forms began in the event build window. The commercial Founders Beta is separate. Original code is MIT; upstream dependencies and Llama retain their licenses. See [third-party notices](THIRD_PARTY_NOTICES.md).
+Product direction and acceptance testing: Boyd Koehler, UNBOUND FORGEWORKS LLC. AI-assisted implementation: OpenAI coding assistant. Project-specific work began during the event window.

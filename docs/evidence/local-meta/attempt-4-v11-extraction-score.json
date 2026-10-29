@@ -1,0 +1,42 @@
+{
+  "scope": "Authored development examples, not a held-out benchmark",
+  "receipt_sha256": "6a4546583edcc205a96dd72a058a8a4023e6990f9876576a45f3c8b8b5ca6719",
+  "raw_file": "attempt-4-v11-extraction.json",
+  "results": [
+    {
+      "case": "seed-exchange",
+      "elapsedMs": 73032,
+      "parser_accepted": true,
+      "question_types_correct": 4,
+      "question_types_total": 4,
+      "mismatches": [],
+      "semantic_pass": true
+    },
+    {
+      "case": "bicycle-repair",
+      "elapsedMs": 54978,
+      "parser_accepted": true,
+      "question_types_correct": 5,
+      "question_types_total": 8,
+      "mismatches": [
+        {
+          "id": "line_4",
+          "expected": "date",
+          "actual": "number"
+        },
+        {
+          "id": "line_5",
+          "expected": "money",
+          "actual": "yesno"
+        },
+        {
+          "id": "line_6",
+          "expected": "longtext",
+          "actual": "text"
+        }
+      ],
+      "semantic_pass": false
+    }
+  ],
+  "source_metadata": "Exact labels, pages, required flags and repeated-label links are derived by application code; no model credit is assigned."
+}

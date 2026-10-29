@@ -1,0 +1,23 @@
+{
+  "scope": "Authored development example, not a held-out benchmark",
+  "raw_sha256": "d903054fb5b7a1ebc067e669e9aaa5831118c62e3c9263b276d0d4e58bbb62e5",
+  "model": "Meta Llama 3.2 3B Instruct",
+  "contract": "source-line-types-v3",
+  "case": "bicycle-repair",
+  "question_types_correct": 8,
+  "question_types_total": 8,
+  "parser_accepted": true,
+  "elapsedMs": 162825,
+  "call_times_ms": [
+    77716,
+    10525,
+    13070,
+    12812,
+    13003,
+    11527,
+    12983,
+    11182
+  ],
+  "mismatches": [],
+  "source_metadata": "Labels, required flags, pages and exact repeated-label links are application-derived, not model outputs."
+}

@@ -1,0 +1,28 @@
+{
+  "scope": "Actual typed browser workflow; not phone dictation or a usability benchmark",
+  "pdf": "browser-3b-reviewed-answer-record.pdf",
+  "sha256": "aad00a2c44cca445e0217849e44f315dee5b40ad6cde94c2003a4ac4b0180b77",
+  "pages": 1,
+  "source_rows": 8,
+  "distinct_confirmed_facts": 7,
+  "corrected_home_address_occurrences": 2,
+  "old_home_address_absent": true,
+  "separate_workshop_address_preserved": true,
+  "zero_budget_preserved": true,
+  "all_expected_values_present": true,
+  "visual_review": "One rendered page inspected; no clipping, overlap or footer collision",
+  "model_answer": {
+    "model": "Meta Llama 3.2 3B Instruct",
+    "input": {
+      "field": {
+        "id": "line_5",
+        "label": "Repair budget in dollars",
+        "kind": "money"
+      },
+      "utterance": "zero dollars"
+    },
+    "raw": "{\"value\":\"0\",\"question\":\"\"}",
+    "elapsedMs": 95032,
+    "accepted": true
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "scope": "Authored development example, not a held-out benchmark",
+  "model": "Meta Llama 3.2 1B Instruct",
+  "contract": "source-line-types-v3",
+  "case": "bicycle-repair",
+  "question_types_correct": 2,
+  "question_types_total": 8,
+  "parser_accepted": false,
+  "elapsedMs": 56818,
+  "mismatches": [
+    {
+      "id": "line_2",
+      "expected": "text",
+      "actual": "yesno"
+    },
+    {
+      "id": "line_3",
+      "expected": "email",
+      "actual": "yesno"
+    },
+    {
+      "id": "line_4",
+      "expected": "date",
+      "actual": "yesno"
+    },
+    {
+      "id": "line_5",
+      "expected": "money",
+      "actual": "yesno"
+    },
+    {
+      "id": "line_6",
+      "expected": "longtext",
+      "actual": "text"
+    },
+    {
+      "id": "line_8",
+      "expected": "text",
+      "actual": "yesno"
+    }
+  ]
+}

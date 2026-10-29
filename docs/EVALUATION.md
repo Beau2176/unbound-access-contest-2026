@@ -1,10 +1,34 @@
-# Current update - October 28, 2026
+# Current evaluation - October 28, 2026
 
-86 automated checks passed, including on-device contract/grounding regression cases. Typecheck and production packaging are checked separately. Genuine local Meta model runs and a full typed browser/PDF journey are documented in [local evidence](evidence/local-meta/README.md). The revised raw model handled three clear answers, guessed the uncertain answer and failed source-question extraction. Do not count structural acceptance or a source-guard rejection as model correctness. General extraction remains experimental. No completed phone dictation, timed usability or GPU-offload claim is made.
+91 automated checks passed. TypeScript passes. These deterministic model/speech fixtures are engineering checks, not model-quality or phone tests. Real browser/model work is separate below.
 
-Original event entry was confirmed submitted earlier October 28. Below is the preserved earlier evaluation history; its 79-test and unconfigured-local-model descriptions refer to that earlier state.
+## Actual source-type development cases
+
+| Version / model | Case | Matched question types | Validator | CPU elapsed |
+| --- | --- | --- | --- | --- |
+| v11 / 1B | Seed exchange | 4 / 4 | Accepted | 73,032 ms |
+| v11 / 1B | Bicycle repair | 5 / 8 | Structurally accepted; semantic failure | 54,978 ms |
+| v13 / 1B, per question | Bicycle repair | 2 / 8 | Rejected | 56,818 ms |
+| v14 / 3B, per question | Bicycle repair | 8 / 8 | Accepted | 162,825 ms |
+
+The v12 main-app attempt was rejected for treating a title as a question; only its visible UI outcome was preserved. No raw response or latency is claimed for that attempt. Other exact responses, prompts and scoring records are in evidence/local-meta. The cases were used during development; this table is not a held-out benchmark, overall accuracy estimate or generalization claim. Source-derived wording, flags/pages and exact-label links are application work, not model outputs.
+
+The successful 3B contract asks for one question type per model call. The first explicit fictional title is source metadata. Each response is retained unchanged in `calls`; the assembled field map is separately labelled. Current UI question proposals use 3B. The smaller model remains available for earlier answer experiments and is not offered for question extraction.
+
+## Actual complete 3B-to-PDF browser journey
+
+The checked eight-row schema was approved before replacing the current form. Morgan Example, morgan@example.invalid and 2026-11-02 were confirmed. A separate real 3B answer request interpreted “zero dollars” as 0 in 95,032 ms; it remained a proposal until confirmed. The description and distinct home/workshop addresses were confirmed using direct controls. A later 100-to-101 Practice Street correction showed both old/new linked values and changed only those two home rows. The workshop remained 900 Separate Venue Road.
+
+All seven distinct facts were reviewed and acknowledged before the actual PDF download. `browser-3b-reviewed-answer-record.pdf` is that unchanged one-page download. pypdf checks found all expected values, exactly two corrected home addresses, the unchanged workshop address, zero budget and no old home address. Its rendered page was visually inspected: no clipping, overlap or footer collision. Raw extraction/answer receipts and PDF QA metadata are preserved alongside it.
+
+This was typed browser QA. It does not establish a completed phone voice journey, a measured accessibility benefit or GPU performance. 3B is a separately consented 2.02 GB download and CPU inference is slow. General extraction remains experimental; detected unsupported constraints and explicit type conflicts fail closed. Earlier failures are retained rather than counted as successes.
+
+The existing entry was previously confirmed submitted; current replacement text is prepared but the current contest session is signed out. No duplicate or new permission grant was submitted. No money was spent.
 
 ---
+
+# Historical evaluation before the 3B browser run
+
 
 # Evaluation record - October 28, 2026
 

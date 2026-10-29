@@ -1,6 +1,14 @@
-# Current evaluation - October 28, 2026
+# Current evaluation - October 29, 2026
 
-91 automated checks passed. TypeScript passes. These deterministic model/speech fixtures are engineering checks, not model-quality or phone tests. Real browser/model work is separate below.
+96 automated checks passed. TypeScript passes. These deterministic model/speech fixtures are engineering checks, not model-quality or phone tests. Real browser/model work is separate below.
+
+## Reported phone review and email dictation correction
+
+The tester reported that the phone review worked. Private Android screenshots showed confirmed answers, matching linked home-address rows, a separate landlord address, final-review acknowledgement and prepared PDF Save/Open links. The tester reported one manual intervention: email dictation spelled “at” instead of inserting @. These screenshots contain personal information and are not included in public evidence. This report does not establish a fully hands-free session or that this particular phone PDF was saved and reopened.
+
+Email fields now convert standalone “at,” “AT,” “A-T,” “A T,” “at sign” and “dot” separators, including mixed actual symbols and spoken words. This applies equally to application speech and phone keyboard dictation. It preserves valid addresses and case, does not rewrite other field types or join arbitrary words, and rejects ambiguous/incomplete addresses. Email preparation bypasses optional model interpretation. The visible/spoken proposal uses the converted address and still requires confirmation.
+
+Five new regression tests cover the reported variants, typed-address preservation, field isolation, rejection without modifying saved answers, and confirmation/restoration/export. Browser UI checks with fictional transcripts verified the converted proposal, cancellation and confirmation; no actual microphone recognition is claimed for that browser check. A phone retest of the email fix, a fully hands-free session and quantitative usability testing remain pending.
 
 ## Actual source-type development cases
 

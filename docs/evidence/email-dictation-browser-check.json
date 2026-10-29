@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-29",
+  "scope": "Actual browser UI with typed fictional speech transcripts; no microphone recognition or phone retest claimed",
+  "surface": "managed preview",
+  "cases": [
+    {
+      "input": "alex A-T example dot com",
+      "proposal": "alex@example.com",
+      "unconfirmed_count": 0,
+      "cancelled": true
+    },
+    {
+      "input": "alex at example dot com",
+      "proposal": "alex@example.com",
+      "confirmed": true,
+      "shown_in_review": "alex@example.com"
+    },
+    {
+      "action": "reload then open Contact email",
+      "restored": "alex@example.com"
+    },
+    {
+      "input": "alex smith at example dot com",
+      "outcome": "rejected with email guidance",
+      "saved_email_after_rejection": "alex@example.com"
+    }
+  ],
+  "automated_checks": 96,
+  "typescript": "passed",
+  "phone_report": "Tester completed review and prepared PDF; email at separator needed manual correction before this change",
+  "privacy": "No personal screenshot or personal field values included",
+  "remaining": "Phone retest of this email fix and a measured hands-free session"
+}

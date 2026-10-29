@@ -20,9 +20,19 @@ export function isRequired(field: Field, session: Session): boolean {
   return field.required || !!(field.requiredWhen && session.answers[field.requiredWhen.fieldId]?.value === field.requiredWhen.equals);
 }
 const words: Record<string, number> = { zero: 0, one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10, eleven: 11, twelve: 12 };
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export function normalizeValue(field: Field, input: string): string {
   const value = input.trim();
   if (!value) return "";
+  if (field.kind === "email") {
+    // Phone keyboard dictation arrives as typed input too. Convert explicit
+    // separators only; keep other spaces so ambiguous addresses fail validation.
+    if (emailPattern.test(value)) return value;
+    return value.replace(/\s+(?:at(?:\s+sign)?|a\s*-\s*t|a\s+t)\s+/gi, "@")
+      .replace(/\s*@\s*/g, "@")
+      .replace(/\s+dot\s+/gi, ".")
+      .replace(/\s*\.\s*/g, ".");
+  }
   if (field.kind === "yesno") {
     if (/^(yes|y|yeah|yep|true)$/i.test(value)) return "Yes";
     if (/^(no|n|nope|false)$/i.test(value)) return "No";
@@ -43,7 +53,7 @@ export function valueError(field: Field, value: string): string | null {
     if (!Number.isFinite(n) || n < (field.min ?? 0) || (field.max !== undefined && n > field.max)) return `Use a value from ${field.min ?? 0}${field.max !== undefined ? ` to ${field.max}` : " upward"}.`;
   }
   if (field.kind === "yesno" && !["Yes", "No"].includes(value)) return "Choose Yes or No.";
-  if (field.kind === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return "Check the email address.";
+  if (field.kind === "email" && !emailPattern.test(value)) return "Check the email address. You can say alex at example dot com.";
   if (field.kind === "date") {
     const date = new Date(value);
     if (!/^\d{4}-\d{2}-\d{2}$/.test(value) || !Number.isFinite(date.getTime()) || date.toISOString().slice(0, 10) !== value) return "Use a real date in YYYY-MM-DD format.";

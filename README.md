@@ -4,9 +4,9 @@ One question at a time: spoken or typed answers, explicit confirmation, isolated
 
 [Open the app](https://unbound-access-paperwork-by-voice.savorydove14.chatgpt.site) · [Judge walkthrough](https://unbound-access-paperwork-by-voice.savorydove14.chatgpt.site/contest) · [Live Meta checks](https://unbound-access-paperwork-by-voice.savorydove14.chatgpt.site/local-meta)
 
-## Current result - October 28, 2026
+## Current result - October 29, 2026
 
-The existing Indie Developer / Build for Your World entry was confirmed submitted earlier today. This is the same project, with subsequent improvements. The five revised narrative fields in docs/SUBMISSION_DRAFT.md were saved to that same entry and verified after a fresh page load. Track, theme, participant and the previously checked permission were retained; no duplicate was created. The commercial Founders Beta is separate. No card, subscription, API key, top-up or paid inference was used.
+The existing Indie Developer / Build for Your World entry was confirmed submitted October 28. This is the same project, with subsequent improvements. The five revised narrative fields in docs/SUBMISSION_DRAFT.md were saved to that same entry and verified after a fresh page load. Track, theme, participant and the previously checked permission were retained; no duplicate was created. The commercial Founders Beta is separate. No card, subscription, API key, top-up or paid inference was used.
 
 **Real Meta extraction now has a working browser example.** Meta Llama 3.2 3B Instruct correctly proposed all eight expected question types for the authored bicycle-repair development form in 162,825 ms on CPU. The same per-question contract with 1B matched two of eight and was rejected. This is one development case, not a held-out accuracy benchmark or phone-performance result. Exact source wording, required flags, pages and narrowly matched repeated labels are application-derived; they are not credited as model outputs.
 
@@ -17,6 +17,7 @@ A real typed browser journey approved the 3B-proposed form, confirmed seven dist
 - Two original fictional prepared forms, large controls, browser read-aloud and speech input, with typed alternatives.
 - Every proposed answer or correction requires confirmation. Ambiguous correction targets ask for clarification. Applicant and another person's addresses remain separate.
 - Required and conditional questions, numeric/date/email checks, contradiction detection, stale-change protection, source quotes/pages and answer history.
+- Email dictation converts explicit spoken separators such as “alex at example dot com” and “alex A-T example dot com” to alex@example.com for confirmation. It also handles phone keyboard dictation. Email conversion uses application rules without a model request; ambiguous addresses still need correction.
 - In-tab recovery, explicit clear session, final review and reviewed/incomplete PDF records with persistent Save/Open links. PDFs are answer records, not filled agency originals.
 - Optional local Meta answer interpretation. Experimental question proposals use 3B, one bounded inference per source line, with visible progress, source/type checks and source review before form replacement.
 - Exportable receipts preserve each exact model response and request separately from the application's assembled field map. Structural acceptance is not an accuracy score.
@@ -45,7 +46,7 @@ pnpm build
 pnpm dev
 ```
 
-The build copies WASM assets from pinned npm packages. In the managed environment use `sites-preview start <checkout>`; actual inference requires HTTPS. There are **91 passing automated checks**, using deterministic fixtures/stubs for model and speech behavior. Real inference evidence is recorded separately. TypeScript and production packaging are checked separately.
+The build copies WASM assets from pinned npm packages. In the managed environment use `sites-preview start <checkout>`; actual inference requires HTTPS. There are **96 passing automated checks**, using deterministic fixtures/stubs for model and speech behavior. Real inference evidence is recorded separately. TypeScript and production packaging are checked separately.
 
 ## Data, boundaries and remaining work
 
@@ -53,7 +54,7 @@ Fictional data only. Answers/history use sessionStorage in this tab. Receipts re
 
 Text PDFs: up to 5 MB, 10 pages and 16,000 characters. Experimental local AI: short sources up to 4,000 characters and 30 nonempty lines, one question per line. Detected conditions/numeric limits and explicit source/type conflicts are rejected. Use prepared forms or a fully reviewed manual proposal for those features. Human review remains essential. No OCR, signatures, payments, eligibility decisions, agency integrations or automatic submissions.
 
-One tester earlier reported basic Android audio, microphone and opening a saved sample PDF. A full phone dictation session, timed usability comparison, GPU performance and arbitrary-form generalization remain unverified. Current browser journeys used typed controls; no speed-improvement percentage or clinical benefit is claimed.
+One tester earlier reported basic Android audio, microphone and opening a saved sample PDF. The tester subsequently reported completing the phone review; screenshots showed confirmed answers, linked-address consistency, final acknowledgement and prepared PDF links. Email dictation required a manual @ correction. That reported defect now has deterministic regression coverage and browser UI checks with fictional transcripts; a phone retest of the fix remains pending. This does not establish a fully hands-free session, timed usability improvement, GPU performance or arbitrary-form generalization. Personal screenshots and their values are excluded from public materials.
 
 The 2:59 edited demo uses earlier actual app screenshots, a browser-downloaded PDF and generic offline synthetic narration. It predates the new 3B result; the current judge page and preserved receipts provide that update. Source ZIP excludes weights, secrets, dependencies and generated build output. Original code is MIT; Llama/dependencies retain their licenses in THIRD_PARTY_NOTICES.md.
 

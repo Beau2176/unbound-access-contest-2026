@@ -2,6 +2,16 @@
 
 122 automated checks passed. TypeScript passes. These deterministic model/speech fixtures are engineering checks, not model-quality or phone tests. Real browser/model work is separate below.
 
+## Fresh source PDF: manual workflow passed, live extraction blocked
+
+A newly authored two-page Neighborhood Repair Visit PDF, absent from the prepared-form list, was loaded through the actual public app. Ten source rows cover nine distinct facts and all seven answer types. Expected types and planned fictional answers were saved before the first model-load attempt. Both source pages and all question labels survived PDF text extraction.
+
+Two fresh 3B CPU-loading attempts made browser inspection time out before any extraction was requested. Reload recovered the app. No new model response, extraction score or loading-time measurement exists for this case; the cause was not established. The preserved earlier successful 3B case remains separate.
+
+A separately authored manual question proposal was visibly labelled model/provider unverified and checked before approval. A wrong page citation was rejected. Actual typed controls checked missing required values, fractional-count and impossible-date rejection, uncertainty clarification, spoken-email transcript normalization, zero and No preservation, cancelled/confirmed linked-address corrections, separate-venue isolation and reload recovery. All nine facts were confirmed across ten rows. The actual reviewed two-page PDF downloaded, reopened, passed content checks and was visually inspected without visible clipping or overlap.
+
+This tests an unfamiliar source through the manual-proposal workflow, not successful automatic extraction or arbitrary-form accuracy. No prepared form, model contract or validation rule was added for this case. No phone, microphone, hands-free, GPU, timed-usability or PDF-accessibility result is claimed. Zero dollars spent. See [the complete fresh-form evidence](evidence/fresh-repair-visit/README.md).
+
 ## Clarification before AI
 
 Detected uncertainty now produces a field-specific question in the paperwork app before optional local or hosted inference. It creates no answer proposal and leaves confirmed answers and linked facts unchanged. A visible box beside the input, its accessible description and the existing status announcement carry the question; guided voice reads it and can listen for the next answer. The person can answer clearly or skip for now. Core proposal creation also rejects detected uncertain non-answers. The authenticated hosted handler can return the same explicitly application-labelled clarification without a provider request, including when a provider is unavailable; authentication, origin, consent and schema checks still run first.

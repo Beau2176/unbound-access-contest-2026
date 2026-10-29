@@ -39,6 +39,8 @@ Hosted NVIDIA/OpenRouter adapters remain optional, server-only and unconfigured.
 
 ## Run and verify
 
+A new two-page source PDF was also checked through the actual manual-import, answer, correction, reload and reviewed-PDF workflow. That workflow passed with ten source rows and nine distinct facts. Fresh live 3B extraction was blocked at model loading before inference; it is not an accuracy pass. The source and expectations were saved before the attempts, and no prepared template or model contract was changed for this case. See [the fresh-source result and limitations](docs/evidence/fresh-repair-visit/README.md).
+
 Node 24 recommended, pnpm pinned in packageManager:
 
 ```sh

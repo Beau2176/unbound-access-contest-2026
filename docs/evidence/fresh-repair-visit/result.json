@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-28 America/Denver",
+  "site_version_tested": 23,
+  "case": "Fictional Neighborhood Repair Visit",
+  "authorship": "New fictional source and expected types authored before first model load; not present in prepared app forms. Development case, not held-out benchmark.",
+  "source_pdf_sha256": "2d5f61ca0edb379cf940ab6fa93c205bccb765b6fae20537b68e9d96b0a54209",
+  "frozen_expectations_sha256": "3bad6056dab6cdbe04d793efb6627c10740a885df2e6ca1fa948f0c9dc6c60d9",
+  "source_rows": 10,
+  "distinct_facts": 9,
+  "source_pages": 2,
+  "answer_types": [
+    "text",
+    "email",
+    "number",
+    "money",
+    "yesno",
+    "date",
+    "longtext"
+  ],
+  "result": "Manual question-proposal workflow passed; live Meta extraction blocked before inference.",
+  "passed_checks": [
+    "PDF text extraction includes all ten labels and two source pages",
+    "Incorrect page citation rejected before replacing existing form",
+    "Manual review shows all question types, required/optional flags, source pages and repeated-address link",
+    "Missing required values block reviewed acknowledgement",
+    "Fractional count 2.5 rejected",
+    "Uncertain tool count asks clarification without proposing or saving a count",
+    "Impossible calendar date 2026-02-30 rejected",
+    "Typed spoken-email transcript normalizes to riley@example.invalid before confirmation",
+    "Zero-dollar budget and No reminder remain saved",
+    "Cancelling linked correction retains original two pickup-address rows",
+    "Confirmed correction changes both pickup copies and leaves venue separate",
+    "Imported form and all nine confirmed facts survive reload",
+    "Final review acknowledgement resets after reload and is explicitly checked again",
+    "Real reviewed PDF download reopened, content checked and both pages visually inspected"
+  ],
+  "unverified": [
+    "Live Meta extraction on this source",
+    "Fully hands-free or microphone-driven completion",
+    "Phone model-loading performance",
+    "Measured usability benefit or end-to-end completion time",
+    "PDF accessibility conformance"
+  ],
+  "cost_dollars": 0,
+  "no_prepared_form_added": true,
+  "no_model_contract_or_answer_rules_changed": true
+}

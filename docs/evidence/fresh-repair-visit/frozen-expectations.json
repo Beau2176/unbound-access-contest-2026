@@ -1,0 +1,103 @@
+{
+  "label": "Fresh development case frozen before first inference; authored for this run, absent from app prepared forms. Not a held-out benchmark.",
+  "source": "[Page 1]\nFictional Neighborhood Repair Visit\nParticipant name (required)\nContact email (optional)\nNumber of tools you plan to bring (required)\nAmount available for repair in dollars (required)\nWould you like a reminder? Yes or No (required)\n[Page 2]\nRequested visit date (required; YYYY-MM-DD)\nDescribe the repair needed (required)\nPickup address (required)\nRepair venue address (required)\nRepeat pickup address (required)",
+  "source_sha256": "b8e2b11c4848681b560f194e4c4cfa480ae49832054cdbee38c3464003833d9d",
+  "pdf_sha256": "2d5f61ca0edb379cf940ab6fa93c205bccb765b6fae20537b68e9d96b0a54209",
+  "expected_title": "Fictional Neighborhood Repair Visit",
+  "expected_rows": [
+    {
+      "id": "line_2",
+      "label": "Participant name (required)",
+      "kind": "text",
+      "page": 1,
+      "required": true,
+      "fact": "name"
+    },
+    {
+      "id": "line_3",
+      "label": "Contact email (optional)",
+      "kind": "email",
+      "page": 1,
+      "required": false,
+      "fact": "email"
+    },
+    {
+      "id": "line_4",
+      "label": "Number of tools you plan to bring (required)",
+      "kind": "number",
+      "page": 1,
+      "required": true,
+      "fact": "tools"
+    },
+    {
+      "id": "line_5",
+      "label": "Amount available for repair in dollars (required)",
+      "kind": "money",
+      "page": 1,
+      "required": true,
+      "fact": "budget"
+    },
+    {
+      "id": "line_6",
+      "label": "Would you like a reminder? Yes or No (required)",
+      "kind": "yesno",
+      "page": 1,
+      "required": true,
+      "fact": "reminder"
+    },
+    {
+      "id": "line_7",
+      "label": "Requested visit date (required; YYYY-MM-DD)",
+      "kind": "date",
+      "page": 2,
+      "required": true,
+      "fact": "date"
+    },
+    {
+      "id": "line_8",
+      "label": "Describe the repair needed (required)",
+      "kind": "longtext",
+      "page": 2,
+      "required": true,
+      "fact": "description"
+    },
+    {
+      "id": "line_9",
+      "label": "Pickup address (required)",
+      "kind": "text",
+      "page": 2,
+      "required": true,
+      "fact": "pickup"
+    },
+    {
+      "id": "line_10",
+      "label": "Repair venue address (required)",
+      "kind": "text",
+      "page": 2,
+      "required": true,
+      "fact": "venue"
+    },
+    {
+      "id": "line_11",
+      "label": "Repeat pickup address (required)",
+      "kind": "text",
+      "page": 2,
+      "required": true,
+      "fact": "pickup"
+    }
+  ],
+  "expected_distinct_facts": 9,
+  "planned_fictional_answers": {
+    "name": "Riley Example",
+    "email": "riley@example.invalid",
+    "tools": "3",
+    "budget": "0",
+    "reminder": "No",
+    "date": "2026-11-03",
+    "description": "The folding table hinge is loose.",
+    "pickup": "12 Fictional Cedar Lane",
+    "venue": "900 Fictional Workshop Road"
+  },
+  "planned_pickup_correction": "14 Fictional Cedar Lane",
+  "model_result": null
+}

@@ -1,0 +1,108 @@
+{
+  "title": "Fictional Neighborhood Repair Visit",
+  "fields": [
+    {
+      "id": "line_2",
+      "label": "Participant name",
+      "kind": "text",
+      "required": true,
+      "sourceQuote": "Participant name (required)",
+      "sourcePage": 1,
+      "factKey": "name",
+      "help": "Use the name or address shown in your fictional answer."
+    },
+    {
+      "id": "line_3",
+      "label": "Contact email",
+      "kind": "email",
+      "required": false,
+      "sourceQuote": "Contact email (optional)",
+      "sourcePage": 1,
+      "factKey": "email",
+      "help": "Give an email address or skip this optional question."
+    },
+    {
+      "id": "line_4",
+      "label": "Number of tools you plan to bring",
+      "kind": "number",
+      "required": true,
+      "sourceQuote": "Number of tools you plan to bring (required)",
+      "sourcePage": 1,
+      "factKey": "tools",
+      "help": "Give a whole number."
+    },
+    {
+      "id": "line_5",
+      "label": "Amount available for repair in dollars",
+      "kind": "money",
+      "required": true,
+      "sourceQuote": "Amount available for repair in dollars (required)",
+      "sourcePage": 1,
+      "factKey": "budget",
+      "help": "Give the amount in dollars."
+    },
+    {
+      "id": "line_6",
+      "label": "Would you like a reminder? Yes or No",
+      "kind": "yesno",
+      "required": true,
+      "sourceQuote": "Would you like a reminder? Yes or No (required)",
+      "sourcePage": 1,
+      "factKey": "reminder",
+      "help": "Choose Yes or No."
+    },
+    {
+      "id": "line_7",
+      "label": "Requested visit date (required; YYYY-MM-DD)",
+      "kind": "date",
+      "required": true,
+      "sourceQuote": "Requested visit date (required; YYYY-MM-DD)",
+      "sourcePage": 2,
+      "factKey": "date",
+      "help": "Use a real date in YYYY-MM-DD format."
+    },
+    {
+      "id": "line_8",
+      "label": "Describe the repair needed",
+      "kind": "longtext",
+      "required": true,
+      "sourceQuote": "Describe the repair needed (required)",
+      "sourcePage": 2,
+      "factKey": "description",
+      "help": "Describe the repair in your own words."
+    },
+    {
+      "id": "line_9",
+      "label": "Pickup address",
+      "kind": "text",
+      "required": true,
+      "sourceQuote": "Pickup address (required)",
+      "sourcePage": 2,
+      "factKey": "pickup",
+      "help": "Use the name or address shown in your fictional answer."
+    },
+    {
+      "id": "line_10",
+      "label": "Repair venue address",
+      "kind": "text",
+      "required": true,
+      "sourceQuote": "Repair venue address (required)",
+      "sourcePage": 2,
+      "factKey": "venue",
+      "help": "Use the name or address shown in your fictional answer."
+    },
+    {
+      "id": "line_11",
+      "label": "Repeat pickup address",
+      "kind": "text",
+      "required": true,
+      "sourceQuote": "Repeat pickup address (required)",
+      "sourcePage": 2,
+      "factKey": "pickup",
+      "help": "Use the name or address shown in your fictional answer."
+    }
+  ],
+  "warnings": [
+    "Authored proposal for a fresh development workflow check. No successful Meta inference is claimed for this import. Verify every question, source page and repeated address before approving."
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "pages": 2,
+  "bytes": 63267,
+  "sha256": "20b7c30eca811d9e908ae450bfcc3cf7d4a6030f8df8df284c20646cbe9e170c",
+  "all_ten_rows_present": true,
+  "corrected_pickup_copies": 2,
+  "old_pickup_absent": true,
+  "separate_venue_copies": 1,
+  "zero_and_no_preserved": true,
+  "source_page_2_references": true,
+  "pdf_tagged": false,
+  "visual_review": "passed: both complete rendered pages inspected, no visible clipping, overlap or missing glyphs"
+}
